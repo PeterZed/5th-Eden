@@ -13,6 +13,7 @@ var eden = {
     qualities in the sim whose level affects its own rate of change.
     */
     dynamism: {level: null, flux: null, surge: 1};
+    metaDynamism: {level: null, flux: null, surge: 1};
     garden: [],
     cellCount: 0,
     
