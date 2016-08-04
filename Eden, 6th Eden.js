@@ -1,18 +1,9 @@
 var eden = {
-    name: "5th Eden",
+    name: "6th Eden",
     x: 8, // Default for now. 256 might be too big. Hope to have user prompt eventually.
     y: 8, // Default for now. 256 might be too big. Hope to have user prompt eventually.
     turn: 1,
     
-    /*
-    Dynamism represents the average of how often Eden's regions of cells fluctuate.
-    The level is the average in turn numbers between each fluctuation phase.
-    The dynamism changes after every fluctuation. So, when the level is high, the world is
-    slow to change and the rate of change is slow to change. But, when the level is low, the
-    world is quick to change, as is the rate of change. Thus, it is the only dynamic
-    qualities in the sim whose level affects its own rate of change.
-    */
-    dynamism: {level: null, flux: null, surge: 1};
     garden: [],
     cellCount: 0,
     

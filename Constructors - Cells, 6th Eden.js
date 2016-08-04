@@ -44,13 +44,12 @@ function Cell(xCoord, yCoord) {
         {condition: "light", level: null, flux: null, surge: 1},
         {condition: "radiation", level: null, flux: null, surge: 1},
         {condition: "temperature", level: null, flux: null, surge: 1},
-        {condition: "pressure", level: null, flux: null, surge: 1},
         {condition: "airComposition", level: null, flux: null, surge: 1},
         {condition: "chemicalEnvironment", level: null, flux: null, surge: 1},
-        {condition: "aridity", level: null, flux: null, surge: 1},
         {condition: "acidity", level: null, flux: null, surge: 1},
         {condition: "salinity", level: null, flux: null, surge: 1},
         {condition: "nutrients", level: null, flux: null, surge: 1},
+        {condition: "moisture", level: null, flux: null, surge: 1},
         {condition: "waste", level: null, flux: null, surge: 1}
     ];
 }
