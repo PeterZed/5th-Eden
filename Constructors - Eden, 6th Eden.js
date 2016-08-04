@@ -1,5 +1,5 @@
 var eden = {
-    name: "5th Eden",
+    name: "6th Eden",
     x: 8, // Default for now. 256 might be too big. Hope to have user prompt eventually.
     y: 8, // Default for now. 256 might be too big. Hope to have user prompt eventually.
     turn: 1,
