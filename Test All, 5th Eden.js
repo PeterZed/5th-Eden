@@ -514,7 +514,7 @@ var edenMethods = {
     If the probability is high, spontaneous entity emergences will be rare, but frequent enough
     that many might be observed on a play-through. Perhaps the chances will go down as the 
     population increases, as if the presence of real entities disrupts the capacity for one to
-    erupt from the æther? Perhaps the chances go down as the turn number increases, as if Eden
+    erupt from the Ã¦ther? Perhaps the chances go down as the turn number increases, as if Eden
     becomes more stable over time? Should not increase as turn increases, because this will disrupt
     older worlds, which might annoy players - plus there's no reasonable analogue for it. And if it
     went up as the population goes up, it would disrupt the equilibrium that forms - that might be
@@ -748,8 +748,8 @@ var entityMethods = {
     */
     generateName: function(entity) {
         var normal = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        var special = "ÇüéâäàåãçêëèïîìæÆôöòõûùüÿı¢£¥ƒáíóúñÑaßpSsµtFTOd8fe€ŠŒšœŸÀÁÂÃÄÅÈÉÊËÌÍÎÏ" +
-                       "ĞÒÓÔÕÖÙÚÛÜİŞşğØø" + "`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?";
+        var special = "Ã‡Ã¼Ã©Ã¢Ã¤Ã Ã¥Ã£Ã§ÃªÃ«Ã¨Ã¯Ã®Ã¬Ã¦Ã†Ã´Ã¶Ã²ÃµÃ»Ã¹Ã¼Ã¿Ã½Â¢Â£Â¥ÂƒÃ¡Ã­Ã³ÃºÃ±Ã‘aÃŸpSsÂµtFTOd8feÂ€ÂŠÂŒÂšÂÂœÂÂŸÃ€ÃÃ‚ÃƒÃ„Ã…ÃˆÃ‰ÃŠÃ‹ÃŒÃÃÃ" +
+                       "ÃÃ’Ã“Ã”Ã•Ã–Ã™ÃšÃ›ÃœÃÃÃ¾Ã°Ã˜Ã¸" + "`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?";
         var insertSpecial;
         var randomNormal;
         var randomSpecial;
