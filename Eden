@@ -1,0 +1,10 @@
+function Eden (name, columns, rows) {
+  this.name = name;
+  
+  this.xAxis = columns;
+  this.yAxis = rows;
+  this.cellCount = this.xAxis * this.yAxis;
+  this.grid = [];
+  
+  this.dynamism = {level: null, flux: null, surge: 1};
+};
