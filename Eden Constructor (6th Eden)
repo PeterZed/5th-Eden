@@ -23,7 +23,7 @@ function Eden(name, columns, rows, dynamism) {
   this.dynamism = {level: null, flux: null, surge: 1};
   
   this.entityInfo = {
-    primogenitor: {name: "Caritas", id: "00000000"},
+    primogenitor: {name: "Charitas", id: "00000000"},
     essenceCount: 32; // All entities that have existed, whether alive or in the afterworld.
     lostSouls: 255,
         
