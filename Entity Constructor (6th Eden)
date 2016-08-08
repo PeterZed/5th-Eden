@@ -1,0 +1,47 @@
+function Entity(xCoord, yCoord) {
+  this.id = "00000000";  // Primogenitor's id, from which each entity's is derived
+  this.name = "";
+  this.ancestry = []; // The entity's ancestors, in order. Contains their ID numbers only.
+  this.lineage = [];  // All its direct descendants, from oldest to youngest.
+  
+  this.x = xCoord;
+  this.y = yCoord;
+  this.localCells = eden.garden[this.y][this.x].localCells;
+  this.locality = eden.name;
+  
+  this.state = "Alive";
+  this.turnOfGenesis = eden.turn;
+  this.genesisLocality = "Cell #" + eden.garden[this.y][this.x].id + ", " +
+    "Coordinates (" + this.x + ", " + this.y + ")"; // Because 'location' is a reserved keyword
+  this.age = 0; // Number of ticks survived thus far.
+  this.victories = 0; // Number of other entities this entity has slain in battle.
+  
+  this.turnOfDeath; // Still alive.
+  this.deathLocality;
+  this.slayer; // Not necessarily slain in battle. This property gives slayer's ID if it is slain.
+  
+  /*
+  The survivalProb[1][1] represents chance of survival on the present cell. The other indices
+  represent the survival prob on the local cells.
+  */
+  this.survivalProb = [[0, 0, 0],
+                       [0, 0, 0],
+                       [0, 0, 0]];
+                         
+  /*
+  The battleProb[1][1] represents the chance of winning in battle on the present cell. The other
+  indices represent the battle prob on the local cells.
+  */
+  this.battleProb = [[1, 1, 1],
+                     [1, 1, 1],
+                     [1, 1, 1]];
+    
+  /*
+  Simply the prob of it both winning the projected battle on a cell and surviving on that
+  cell this turn. Just P(A&B), so it's calculated by multiplying the survivalProb on that cell
+  by the battleProb on that cell.
+  */
+  this.overallProb = [[0, 0, 0],
+                      [0, 0, 0],
+                      [0, 0, 0]];
+};
