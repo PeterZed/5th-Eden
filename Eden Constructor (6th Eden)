@@ -4,7 +4,7 @@ function Eden(name, columns, rows, dynamism) {
   
   this.xAxis = columns;
   this.yAxis = rows;
-  this.cellCount = this.xAxis * this.yAxis;
+  this.cellCount = 0;
   this.garden = [];
   
   this.turn = 1;
