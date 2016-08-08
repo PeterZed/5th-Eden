@@ -1,0 +1,6 @@
+var edenMethods = {
+  initialization: {},
+  cell: {},
+  entity: {},
+  tick: {},
+};
