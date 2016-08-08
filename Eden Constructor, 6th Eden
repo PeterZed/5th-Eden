@@ -1,4 +1,4 @@
-function Eden (name, columns, rows, dynamism) {
+function Eden(name, columns, rows, dynamism) {
   this.name = name;
   
   this.xAxis = columns;
