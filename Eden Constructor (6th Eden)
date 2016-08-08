@@ -1,5 +1,6 @@
 function Eden(name, columns, rows, dynamism) {
   this.name = name;
+  this.id = "00000000"
   
   this.xAxis = columns;
   this.yAxis = rows;
@@ -20,4 +21,18 @@ function Eden(name, columns, rows, dynamism) {
   is 1 / dynamism["level"], and then make the probability roll to de termine.
   */
   this.dynamism = {level: null, flux: null, surge: 1};
+  
+  this.entityInfo = {
+    primogenitor: {name: "Caritas", id: "00000000"},
+    essenceCount: 32; // All entities that have existed, whether alive or in the afterworld.
+    lostSouls: 255,
+        
+    /*
+    Contains references to all entities, using their id numbers as the map keys.
+    Maps are easier to iterate through than objects, so using one seemed more appropriate.
+    */
+    living: new Map(),
+    aliveCount: 0,
+    deathCount: 0 // Total of all deaths regardless of cause.
+  };
 };
