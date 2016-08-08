@@ -1,0 +1,23 @@
+function Eden(name, columns, rows, dynamism) {
+  this.name = name;
+  
+  this.xAxis = columns;
+  this.yAxis = rows;
+  this.cellCount = this.xAxis * this.yAxis;
+  this.garden = [];
+  
+  this.turn = 1;
+  
+  /*
+  Dynamism represents the average number of turns that each cell takes to experience a fluctuation.
+  The magnitude of change is based upon the cell's flux for the relevant property. Dynamism also
+  influences itself. So, when the level is high, the world is slow to change and the rate of
+  change is slow to change. But, when the level is low, the world is quick to change, as is the
+  rate of change. Thus, it is the only dynamic qualities in the sim whose level affects its own
+  rate of change.
+  
+  To reach the average number of turns, make it so the probability of change for a given tick
+  is 1 / dynamism["level"], and then make the probability roll to de termine.
+  */
+  this.dynamism = {level: null, flux: null, surge: 1};
+};
