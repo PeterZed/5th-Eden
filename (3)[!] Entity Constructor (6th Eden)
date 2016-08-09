@@ -1,6 +1,8 @@
-NEEDS UPDATING DUE TO EDEN NO LONGER BEING VARIABLE BUT ITS OWN OBJECT
+/*
+! Battle odds need to be changed to reflect health damage instead of merely survival or not.
+*/
 
-function Entity(xCoord, yCoord) {
+function Entity(xCoord, yCoord, eden) {
   this.id = info.entities.essenceCount + info.entities.lostSoulsCount
   this.name = "";
   this.ancestry = []; // The entity's ancestors, in order. Contains their ID numbers only.
