@@ -1,5 +1,5 @@
 /*
-Iterates through each cell in the garden and runs some function on it.
+Iterates through each cell in the garden and has it run some function.
 */
 
 gardenIteration: function(func) {
