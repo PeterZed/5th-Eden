@@ -10,6 +10,11 @@ function cell(xCoord, yCoord, eden) {
   this.eden = eden;
   this.x = xCoord;
   this.y = yCoord;
-    
-  this.localCells = []; // Lists references to this cell and its eight adjacent neighbors.
+  
+  /*
+  Lists references to this cell and its eight adjacent neighbors.
+  */
+  this.localCells = [[],
+                     [],
+                     []];
 }
