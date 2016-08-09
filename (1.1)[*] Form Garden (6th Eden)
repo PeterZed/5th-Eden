@@ -7,7 +7,7 @@ eden.prototype.formGarden = function() {
     */
     for (var i = 0; i < this.x; i++) {
       this.cellCount++;
-      this.garden[j][i] = new Cell(i,j);
+      this.garden[j][i] = new Cell(i,j,this);
     }
   }
 };
