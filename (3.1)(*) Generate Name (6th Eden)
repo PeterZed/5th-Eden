@@ -1,3 +1,6 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+*/
 entity.prototype.generateName = function() {
   var normal = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   var special = "ÇüéâäàåãçêëèïîìæÆôöòõûùüÿý¢£¥ƒáíóúñÑßµ€ŠŒšŽœžŸÀÁÂÃÄÅÈÉÊËÌÍÎÏ" +
