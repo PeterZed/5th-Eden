@@ -1,0 +1,11 @@
+/*
+Iterates through each cell in the garden and runs some function on it.
+*/
+
+gardenIteration: function(func) {
+  for (var j = 0; j < eden.y; j++) {
+    for (var i = 0; i < eden.x; i++) {
+      func(eden.garden[j][i]);
+    }
+  }
+};
