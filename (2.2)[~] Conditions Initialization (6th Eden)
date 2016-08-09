@@ -1,0 +1,11 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+*/
+cell.prototype.condsInit = function() {
+  var conds = this.conditions;
+  
+  for (var i = 0; i < conds.length; i++) {
+    conds[i].level = Math.floor(Math.random() * 10001) / 100;
+    conds[i].flux = Math.floor(Math.random() * 1001) / 100;
+  }
+};
