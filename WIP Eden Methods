@@ -27,17 +27,6 @@ var edenMethods = {
         eden.dynamism.level = Math.floor(Math.random() * 10001) / 100;
         eden.dynamism.flux = Math.floor(Math.random() * 1001) / 100;
     }
-    
-    /*
-    Iterates through each cell in the garden and runs some function on it.
-    */
-    gardenIteration: function(func) {
-        for (var j = 0; j < eden.y; j++) {
-            for (var i = 0; i < eden.x; i++) {
-                func(eden.garden[j][i]);
-            }
-        }
-    },
 
     /*
     Spawns a new entity, initializes its id, name. Then, updates the relevant eden.entities
