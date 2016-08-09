@@ -1,0 +1,20 @@
+var info = {
+  edens: {
+    count: 0
+  },
+  cells: {
+    count: 0
+  },
+  entities: {
+    essenceCount: 32 // All entities that have ever existed across worlds and timelines.
+    lostSouls: 255 // The buffer zone: Some entities existed prior to deciding to store them all.
+    
+    /*
+    Contains references to all entities, using theirs and their worlds' id numbers as the map keys.
+    Maps are easier to iterate through than objects, so using one seemed more appropriate.
+    */
+    living: new Map(),
+    alive: 0,
+    dead: 0
+  }
+}
