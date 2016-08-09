@@ -1,9 +1,10 @@
 /*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
 Initializes all the needed values for each cell in the garden.
 
 ~ cell.prototype.condsInit() is not yet designed.
 */
-
 eden.prototype.gardenInit = function() {
   for (var j = 0; j < this.y; j++) {
     for (var i = 0; i < this.x; i++) {
