@@ -4,7 +4,7 @@ Establishes which cells surround the cell. In xMod and yMod, this.x and this.y a
 the actual x and y values in the garden for the target cell.
 */
 
-cell.prototype.localCellsInit = function() {
+cell.prototype.localCellsDetermination = function() {
   for (var j = 0; j < 3; j++) {
     this.localCells[j] = [];
     
