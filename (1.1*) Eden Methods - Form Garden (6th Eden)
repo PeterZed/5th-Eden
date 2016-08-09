@@ -8,7 +8,6 @@ Eden.prototype.formGarden = function(eden) {
     for (var i = 0; i < eden.x; i++) {
       eden.cellCount++;
       eden.garden[j][i] = new Cell(i,j);
-      eden.garden[j][i].condsInit(); // WIP condsInit() method still needs to be done
     }
   }
 };
