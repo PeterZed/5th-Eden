@@ -1,3 +1,8 @@
+/*
+The purpose of the cell.prototype.eden property is so that, when needed, the cell can reference its own host Eden object.
+That is, it readily has access to the reference value for the Eden of which it is a part.
+*/
+
 function cell(xCoord, yCoord, eden) {
   this.id = eden.cellCount;
   this.eden = eden;
