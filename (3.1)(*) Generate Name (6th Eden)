@@ -1,0 +1,23 @@
+entity.prototype.generateName = function() {
+  var normal = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var special = "ÇüéâäàåãçêëèïîìæÆôöòõûùüÿý¢£¥ƒáíóúñÑßµ€ŠŒšŽœžŸÀÁÂÃÄÅÈÉÊËÌÍÎÏ" +
+                "ÐÒÓÔÕÖÙÚÛÜÝÞþðØø" +
+                "`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?";
+  var insertSpecial;
+  var randomNormal;
+  var randomSpecial;
+  var nameGen = "";
+        
+  for (var i = 0; i < 8; i++) {
+    insertSpecial = Math.random();
+    if (insertSpecial <= 0.125) {
+      randomSpecial = Math.floor(Math.random() * special.length);
+      nameGen += special[randomSpecial];
+    }
+    else {
+      randomNormal = Math.floor(Math.random() * normal.length);
+      nameGen += normal[randomNormal];
+    }
+  }
+  this.name = nameGen;
+};
