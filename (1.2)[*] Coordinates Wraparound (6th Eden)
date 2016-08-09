@@ -5,14 +5,14 @@ Then returns the reference to the proper cell, essentially making the boundary f
 wraparound at each edge.
 */
 
-eden.prototype.coordsWrap = function(xWrap, yWrap, eden) {
+eden.prototype.coordsWrap = function(xWrap, yWrap) {
   var xCorrect = xWrapped;
   var yCorrect = yWrapped;
         
-  xCorrect >= 0 && xCorrect < eden.x ? xCorrect = eden.x :
-    (xCorrect < 0 ? xCorrect += eden.x : xCorrect -= eden.x);
-  yCorrect >= 0 && yCorrect < eden.y ? yCorrect = eden.y :
-    (yCorrect < 0 ? yCorrect += eden.y : yCorrect -= eden.y);
-  return eden.garden[yCorrect][xCorrect];
+  xCorrect >= 0 && xCorrect < this.x ? xCorrect = this.x :
+    (xCorrect < 0 ? xCorrect += this.x : xCorrect -= this.x);
+  yCorrect >= 0 && yCorrect < this.y ? yCorrect = this.y :
+    (yCorrect < 0 ? yCorrect += this.y : yCorrect -= this.y);
+  return this.garden[yCorrect][xCorrect];
     }
 };
