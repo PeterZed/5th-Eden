@@ -9,9 +9,9 @@ eden.prototype.coordsWrap = function(xWrap, yWrap, eden) {
   var xCorrect = xWrapped;
   var yCorrect = yWrapped;
         
-  xCorrect >= 0 && xCorrect < eden.x ? eden.x :
+  xCorrect >= 0 && xCorrect < eden.x ? xCorrect = eden.x :
     (xCorrect < 0 ? xCorrect += eden.x : xCorrect -= eden.x);
-  yCorrect >= 0 && yCorrect < eden.y ? null :
+  yCorrect >= 0 && yCorrect < eden.y ? yCorrect = eden.y :
     (yCorrect < 0 ? yCorrect += eden.y : yCorrect -= eden.y);
   return eden.garden[yCorrect][xCorrect];
     }
