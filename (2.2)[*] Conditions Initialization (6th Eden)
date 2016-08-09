@@ -1,5 +1,7 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Initializes a cell's conditions' values.
 */
 cell.prototype.condsInit = function() {
   var conds = this.conditions;
