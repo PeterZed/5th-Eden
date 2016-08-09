@@ -1,5 +1,7 @@
 /*
 Initializes all the needed values for each cell in the garden.
+
+~ cell.prototype.condsInit() is not yet designed.
 */
 
 eden.prototype.gardenInit = function() {
