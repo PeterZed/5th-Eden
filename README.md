@@ -17,3 +17,4 @@ comments I have on its progress:
   It may require some research to evaluate best practice, or it could be regarding game design choices.
 ~ means that the file is incomplete, perhaps left off in the middle of some piece somewhere in the code. The piece(s) of the code being
   worked on will be marked in a comment by them.
+h
