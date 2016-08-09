@@ -28,18 +28,6 @@ var edenMethods = {
         eden.dynamism.flux = Math.floor(Math.random() * 1001) / 100;
     }
     
-        formGarden: function() {
-        for (var j = 0; j < eden.y; j++) {
-            eden.garden[j] = [];
-            for (var i = 0; i < eden.x; i++) {
-                eden.cellCount++;
-                eden.garden[j][i] = new Cell(i, j);
-                cellMethods.conditionsInitialization(eden.garden[j][i]);
-            }
-        }
-        this.gardenIteration(cellMethods.localCellsDetermination);
-    },
-    
     /*
     Iterates through each cell in the garden and runs some function on it.
     */
