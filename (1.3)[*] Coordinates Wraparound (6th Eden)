@@ -1,10 +1,11 @@
 /*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
 Some x and y coordinates are sent in as arguments.
 Corrects the x and y coordinates as necessary if they fall outside the scope of the garden.
 Then returns the reference to the proper cell, essentially making the boundary for the garden
 wraparound at each edge.
 */
-
 eden.prototype.coordsWrap = function(xWrap, yWrap) {
   var xCorrect = xWrapped;
   var yCorrect = yWrapped;
