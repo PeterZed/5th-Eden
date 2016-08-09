@@ -8,6 +8,7 @@ function entity(xCoord, yCoord, eden) {
   this.ancestry = []; // The entity's ancestors, in order. Contains their ID numbers only.
   this.lineage = [];  // All its direct descendants, from oldest to youngest.
   
+  this.eden = eden;
   this.x = xCoord;
   this.y = yCoord;
   this.localCells = eden.garden[this.y][this.x].localCells;
