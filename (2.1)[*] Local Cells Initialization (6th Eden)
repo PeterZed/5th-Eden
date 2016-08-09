@@ -1,0 +1,19 @@
+/*
+Establishes which cells surround the cell. In xMod and yMod, this.x and this.y are at -1 because the calling cell is located at
+[1][1] in the localCells array. The purpose of xMod and yMod is to be used in conjunction with the eden.coordsWrap() to determine
+the actual x and y values in the garden for the target cell.
+*/
+
+cell.prototype.localCellsInit = function() {
+  for (var j = 0; j < 3; j++) {
+    this.localCells[j] = [];
+    
+    for (var i = 0; i < 3; i++) {
+      var xMod = this.x - 1 + i;
+      var yMod = this.y - 1 + j;
+      var targetCell = this.eden.coordsWrap(xMod, yMod);
+                
+      this.localCells[j][i] = targetCell;
+    }
+  }
+};
