@@ -12,23 +12,6 @@ var cellMethods = {
     },
     
     /*
-    Establishes which cells surround the cell. Will be used when displaying the
-    minimap in the sidebar for the active cell/entity.
-    */
-    localCellsDetermination: function(cell) {
-        for (var j = 0; j < 3; j++) {
-            cell.localCells[j] = [];
-            for (var i = 0; i < 3; i++) {
-                var xMod = cell.x - 1 + i;
-                var yMod = cell.y - 1 + j;
-                var targetCell = edenMethods.wraparoundBoundary(xMod, yMod);
-                
-                cell.localCells[j][i] = targetCell;
-            }
-        }
-    },
-    
-    /*
     Right now, this code is far from good practice. There's a lot of repetition in checking if the
     level, flux, surge, and jerk are within the domain [0,100]. I could write a reusable method,
     but this is only temporary - in the future, I think that the conditions and attributes won't
