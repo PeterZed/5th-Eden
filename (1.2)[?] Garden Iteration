@@ -1,7 +1,9 @@
 /*
-Iterates through each cell in the garden and has it run some function. Not a piece of code to be added itself, but rather
-this is just for my own reference so that I may copy and paste it. I know that's poor practice, copying and pasting, but I found
-it enticingly simpler.
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Iterates through each cell in the garden and has it run some function. Not a piece of code to be
+added itself, but rather this is just for my own reference so that I may copy and paste it. I know
+that's poor practice, copying and pasting, but I found it enticingly simpler.
 */
 
 for (var j = 0; j < this.y; j++) {
