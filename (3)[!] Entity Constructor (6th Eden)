@@ -1,10 +1,8 @@
 /*
-000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-
 ! Battle odds need to be changed to reflect health damage instead of merely survival or not.
 */
 
-function Entity(xCoord, yCoord, eden) {
+function entity(xCoord, yCoord, eden) {
   this.id = info.entities.essenceCount + info.entities.lostSoulsCount
   this.name = "";
   this.ancestry = []; // The entity's ancestors, in order. Contains their ID numbers only.
