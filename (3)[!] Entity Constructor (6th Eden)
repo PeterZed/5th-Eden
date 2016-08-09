@@ -26,28 +26,7 @@ function entity(xCoord, yCoord, eden) {
   this.deathLocality;
   this.slayer; // Not necessarily slain in battle. This property gives slayer's ID if it is slain.
   
-  /*
-  The survivalProb[1][1] represents chance of survival on the present cell. The other indices
-  represent the survival prob on the local cells.
-  */
-  this.survivalProb = [[0, 0, 0],
-                       [0, 0, 0],
-                       [0, 0, 0]];
-                         
-  /*
-  The battleProb[1][1] represents the chance of winning in battle on the present cell. The other
-  indices represent the battle prob on the local cells.
-  */
-  this.battleProb = [[1, 1, 1],
-                     [1, 1, 1],
-                     [1, 1, 1]];
-    
-  /*
-  Simply the prob of it both winning the projected battle on a cell and surviving on that
-  cell this turn. Just P(A&B), so it's calculated by multiplying the survivalProb on that cell
-  by the battleProb on that cell.
-  */
-  this.overallProb = [[0, 0, 0],
-                      [0, 0, 0],
-                      [0, 0, 0]];
+  this.survivalProb = [[1,1,1],
+                       [1,1,1],
+                       [1,1,1]];
 };
