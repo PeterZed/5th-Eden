@@ -1,38 +1,8 @@
 var entityMethods = {
     /*
-    Sets id. Replaces a final number zeroes of primogenitor's ID string equal to the number of digits
-    that are to make up the final digits of the new ID.
-    */
-    idAssignment: function(entity) {
-        var idMod = String(eden.entities.lostSouls + eden.entities.essenceCount);
-        entity.id = entity.id.slice(0, entity.id.length - idMod.length) + idMod;
-    },
-    
-    /*
     Assigns random 16-character name to entity. Special characters and symbols have a 0.125
     probability of being assigned at each position in the name.
     */
-    generateName: function(entity) {
-        var normal = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        var special = "ÇüéâäàåãçêëèïîìæÆôöòõûùüÿý¢£¥ƒáíóúñÑaßpSsµtFTOd8fe€ŠŒšŽœžŸÀÁÂÃÄÅÈÉÊËÌÍÎÏ" +
-                       "ÐÒÓÔÕÖÙÚÛÜÝÞþðØø" + "`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?";
-        var insertSpecial;
-        var randomNormal;
-        var randomSpecial;
-        var nameGen = "";
-        
-        for (var i = 0; i < 16; i++) {
-            insertSpecial = Math.random();
-            if (insertSpecial <= 0.125) {
-                randomSpecial = Math.floor(Math.random() * special.length);
-                nameGen += special[randomSpecial];
-            } else {
-                randomNormal = Math.floor(Math.random() * normal.length);
-                nameGen += normal[randomNormal];
-            }
-        }
-        entity.name = nameGen;
-    },
     
     /*
     Takes player input to assign a name to the entity.
