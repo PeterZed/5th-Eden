@@ -5,8 +5,8 @@ Parts of code are grouped together by file under the heading (a), where "a" is s
 Edens, Cells, and Entities- and the files related to each- have headings (1), (2), and (3), respectively.
 
 Their methods are in the format (a.b), where "a" is the whole number heading denoting if it falls under Edens, Cells, or Entities,
-and "b" merely organizes the files chronologically by their order of creation. Although, I may later change the "b" so that they occur
-in some specific desired order, but I haven't decided yet.  
+and "b" organizes the files according to what I found the most logical order. The way I see it, it organizes them from bottom-up,
+so that the parts that are required and executed sooner do appear sooner.
 
 For example, (1.1) is the Eden constructor method that is used to form the garden array and all the cells within that particular
 instance of the Eden class. (1.2) is the method that is used to make the boundary references wraparound at the edges of the garden.  
