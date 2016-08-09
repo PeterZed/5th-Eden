@@ -1,11 +1,15 @@
 function Eden(name, columns, rows) {
   this.name = name;
-  this.id = "00000000"
+  this.id = info.edens.count;
   
   this.xAxis = columns;
   this.yAxis = rows;
   this.cellCount = 0;
   this.garden = [];
+  
+  this.living = new Map();
+  this.aliveCount = 0;
+  this.deadCount = 0;
   
   this.turn = 1;
 };
