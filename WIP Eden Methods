@@ -40,23 +40,6 @@ var edenMethods = {
     },
 
     /*
-    Some x and y coordinates are sent in as arguments.
-    Corrects the x and y coordinates as necessary if they fall outside the scope of the garden.
-    Then returns the reference to the proper cell, essentially making the boundary for the garden
-    wraparound at each edge.
-    */
-    wraparoundBoundary: function(xWrapped, yWrapped) {
-        var xCorrect = xWrapped;
-        var yCorrect = yWrapped;
-        
-        xCorrect >= 0 && xCorrect < eden.x ? null :
-            (xCorrect < 0 ? xCorrect += eden.x : xCorrect -= eden.x);
-        yCorrect >= 0 && yCorrect < eden.y ? null :
-            (yCorrect < 0 ? yCorrect += eden.y : yCorrect -= eden.y);
-        return eden.garden[yCorrect][xCorrect];
-    },
-    
-    /*
     Spawns a new entity, initializes its id, name. Then, updates the relevant eden.entities
     properties, and adds the entity to the appropriate cell.
     
@@ -141,18 +124,6 @@ var edenMethods = {
             this.spawnProgenitor(xCoord, yCoord);
             this.spontaneousEntityEmergence();
         }
-    },
-    
-    /*
-    For conditions, attributes, traits, and the world's dynamism, checks to see if any of the
-    properties are below 0, or above the appropriate maximum: Level = 100, Flux = 10, Surge = 1,
-    Jerk = 0.1.
-    */
-    checkLimits: function(property) {
-        property.level >= 0 && property.level <= 100 ? null :
-            (property.level < 0 ? property.level = 0 : property.level = 100);
-        property.flux >= 0 && property.flux <= 10 ? null :
-            (property.flux < 0 ? property.flux = 0 : property.flux = 10);
     },
     
     /*
