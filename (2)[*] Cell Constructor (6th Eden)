@@ -1,7 +1,8 @@
 function cell(xCoord, yCoord, eden) {
-    this.id = eden.cellCount;
-    this.x = xCoord;
-    this.y = yCoord;
+  this.id = eden.cellCount;
+  this.eden = eden;
+  this.x = xCoord;
+  this.y = yCoord;
     
-    this.localCells = []; // Lists references to this cell and its eight adjacent neighbors.
+  this.localCells = []; // Lists references to this cell and its eight adjacent neighbors.
 }
