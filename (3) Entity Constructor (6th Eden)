@@ -1,5 +1,7 @@
+NEEDS UPDATING DUE TO EDEN NO LONGER BEING VARIABLE BUT ITS OWN OBJECT
+
 function Entity(xCoord, yCoord) {
-  this.id = "00000000";  // Primogenitor's id, from which each entity's is derived
+  this.id = info.entities.essenceCount + info.entities.lostSoulsCount
   this.name = "";
   this.ancestry = []; // The entity's ancestors, in order. Contains their ID numbers only.
   this.lineage = [];  // All its direct descendants, from oldest to youngest.
