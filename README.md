@@ -11,10 +11,9 @@ instance of the Eden class. (1.2) is the method that is used to initialize the c
 
   After the groupings (a.b), there is the comment section [c] where "c" is some symbol that denotes the status of the file - i.e., any
 comments I have on its progress:
-/* means that it is complete for the timebeing
+If *, it means that it is complete for the timebeing
 ! means that there is a known issue or consideration to be worked on, which is mentioned in the comment block at the top of the code.
 ? means that there is an uncertainty in how I want to do something, which is mentioned in the comment block at the top of the code.
   It may require some research to evaluate best practice, or it could be regarding game design choices.
 ~ means that the file is incomplete, perhaps left off in the middle of some piece somewhere in the code. The piece(s) of the code being
   worked on will be marked in a comment by them.
-h
