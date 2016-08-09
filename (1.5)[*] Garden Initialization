@@ -1,0 +1,12 @@
+/*
+Initializes all the needed values for each cell in the garden.
+*/
+
+eden.prototype.gardenInit = function() {
+  for (var j = 0; j < this.y; j++) {
+    for (var i = 0; i < this.x; i++) {
+      this.garden[j][i].localCellsDetermination();
+      this.garden[j][i].condsInit();
+    }
+  }
+};
