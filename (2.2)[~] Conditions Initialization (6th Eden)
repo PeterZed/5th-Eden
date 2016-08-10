@@ -2,6 +2,8 @@
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 Initializes a cell's conditions' values.
+
+~Still ongoing development until I work out how I want the conditions to act.
 */
 cell.prototype.condsInit = function() {
   var conds = this.conditions;
