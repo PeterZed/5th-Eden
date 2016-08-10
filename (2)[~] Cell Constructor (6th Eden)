@@ -1,0 +1,43 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+The purpose of the cell.prototype.eden property is so that, when needed, the cell can reference its
+own host Eden object. That is, it readily has access to the reference value for the Eden of which it
+is a part.
+
+~The conditions need to be figured out more. I want to group them according to their function. E.g.,
+Grouping together nourishment, water, and waste as survivalConds; light, noise, and wind as
+sensoryConds; radiation, acidity, airComp, temperature, and salinity as environmentalConds.
+The survivalConds are related to entity metabolism. The sensory conds are related to entity senses.
+The environmentalConds are conditions that I don't know how else to describe, but they seem to go
+together based on how I want their levels to fluctuate.
+*/
+function cell(xCoord, yCoord, eden) {
+  this.id = eden.cellCount;
+  this.eden = eden;
+  this.x = xCoord;
+  this.y = yCoord;
+  
+  /*
+  Lists references to this cell and its eight adjacent neighbors.
+  */
+  this.localCells = [[],
+                     [],
+                     []];
+                     
+   this.conditions = [
+    {condition: "nourishment", level: null, flux: null, surge: 1},
+    {condition: "water", level: null, flux: null, surge: 1},
+    {condition: "waste", level: null, flux: null, surge: 1},
+   
+    {condition: "light", level: null, flux: null, surge: 1},
+    {condition: "noise", level: null, flux: null, surge: 1},
+    {condition: "wind", level: null, flux: null, surge: 1},
+    
+    {condition: "radiation", level: null, flux: null, surge: 1},
+    {condition: "acidity", level: null, flux: null, surge: 1},
+    {condition: "airComp", level: null, flux: null, surge: 1},
+    {condition: "temperature", level: null, flux: null, surge: 1},
+    {condition: "salinity", level: null, flux: null, surge: 1}
+  ];
+}
