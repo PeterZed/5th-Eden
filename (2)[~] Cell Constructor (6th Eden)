@@ -4,13 +4,6 @@
 The purpose of the cell.prototype.eden property is so that, when needed, the cell can reference its
 own host Eden object. That is, it readily has access to the reference value for the Eden of which it
 is a part.
-
-~The conditions need to be figured out more. I want to group them according to their function. E.g.,
-Grouping together nourishment, water, and waste as survivalConds; light, noise, and wind as
-sensoryConds; radiation, acidity, airComp, temperature, and salinity as environmentalConds.
-The survivalConds are related to entity metabolism. The sensory conds are related to entity senses.
-The environmentalConds are conditions that I don't know how else to describe, but they seem to go
-together based on how I want their levels to fluctuate.
 */
 function cell(xCoord, yCoord, eden) {
   this.id = eden.cellCount;
@@ -26,16 +19,39 @@ function cell(xCoord, yCoord, eden) {
   this.localCells = [[],
                      [],
                      []];
-                     
-   this.conditions = [
+  /*
+  Conditions that rise and fall in a cyclical pattern. They are first initialized at some value,
+  have either a positive or negative slope to their delta, rise or fall to an average extreme
+  value, then the slope reverses direction and they fall or rise to the other average extreme
+  value. They are stuck within a range, essentially, but there is some wiggle room as it does not
+  reach the exact same value every time.
+  */
+  this.cyclicalConds = [
     {condition: "nourishment", level: null, flux: null, surge: 1},
     {condition: "water", level: null, flux: null, surge: 1},
-    {condition: "waste", level: null, flux: null, surge: 1},
-   
+    {condition: "waste", level: null, flux: null, surge: 1}
+  ];
+  
+  /*
+  These conds affect different different senses, once those are implemented. Until then they're
+  just for color. Light affects an entity's visual acuity. Noise affects an entity's auditory
+  acuity. Wind affects an entity's olfaction, based on what direction and how strong the
+  wind is blowing (i.e., its level).
+  */
+  this.sensoryConds = [
     {condition: "light", level: null, flux: null, surge: 1},
     {condition: "noise", level: null, flux: null, surge: 1},
-    {condition: "wind", level: null, flux: null, surge: 1},
-    
+    {condition: "wind", level: null, flux: null, surge: 1}
+  ];
+  
+  /*
+  These conditions- besides the sensory conds- are more like physical measurements that could
+  correspond to some value in the real world, though their effects are vastly simpler compared
+  to their real world counterparts.
+  
+  Their fluctuation is related to neighboring cells' fluctuations.
+  */
+  this.enviroConds = [
     {condition: "radiation", level: null, flux: null, surge: 1},
     {condition: "acidity", level: null, flux: null, surge: 1},
     {condition: "airComp", level: null, flux: null, surge: 1},
