@@ -1,7 +1,7 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-! Battle odds need to be changed to reflect health damage instead of merely survival or not.
+~ Survival odds calculation has yet to be implemented
 */
 
 function entity(xCoord, yCoord, eden) {
