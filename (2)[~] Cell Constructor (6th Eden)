@@ -18,7 +18,7 @@ function cell(xCoord, yCoord, eden) {
   this.x = xCoord;
   this.y = yCoord;
   
-  this.entities = [];
+  this.entities = new Map();
   
   /*
   Lists references to this cell and its eight adjacent neighbors.
