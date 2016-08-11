@@ -1,15 +1,4 @@
 var entityMethods = {
-    /*
-    Assigns random 16-character name to entity. Special characters and symbols have a 0.125
-    probability of being assigned at each position in the name.
-    */
-    
-    /*
-    Takes player input to assign a name to the entity.
-    */
-    setName: function(entity, newName) {
-        entity.name = String(newName);
-    },
     
     /*
     Sets each attribute's properties.
@@ -45,31 +34,7 @@ var entityMethods = {
         }
     },
     
-    /*
-    Iterates through a multidimensional array.
-    For odds calculations, it's the entity's localCells array (i.e., its own and the eight
-    adjacent cells) it iterates through and performs the instructed odds calculation on.
-    */
-    multiIteration: function(entity, func, iLimit, jLimit) {
-        for (var j = 0; j < jLimit; j++) {
-            for (var i = 0; i < iLimit; i++) {
-                func(entity, i, j);
-            }
-        }
-    },
-    
-    survivalOddsCalculation: function(entity) {
-        entityMethods.multiIteration(entity, entityMethods.survivalOddsFormula, 3, 3);
-    },
-    
-    battleOddsCalculation: function(entity) {
-        entityMethods.multiIteration(entity, entityMethods.battleOddsFormula, 3, 3);
-    },
-    
-    overallOddsCalculation: function(entity) {
-        entityMethods.multiIteration(entity, entityMethods.overallOddsFormula, 3, 3);
-    },
-    
+   
     /*
     Maximum difference between each paired attribute and condition is 100.
     Right now the survival odds calculation is simple. I hope to improve on it so in the future
