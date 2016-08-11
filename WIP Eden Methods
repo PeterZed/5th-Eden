@@ -27,51 +27,6 @@ var edenMethods = {
         eden.dynamism.level = Math.floor(Math.random() * 10001) / 100;
         eden.dynamism.flux = Math.floor(Math.random() * 1001) / 100;
     }
-
-    /*
-    Spawns a new entity, initializes its id, name. Then, updates the relevant eden.entities
-    properties, and adds the entity to the appropriate cell.
-    
-    Used by every entity production method to create a new entity - whether that's by making a new
-    progenitor, divinely creating a new progenitor, or an entity reproducing.
-    */
-    spawnEntity: function(xCoord, yCoord) {
-        var targetCell = eden.garden[yCoord][xCoord];
-        var entity = new Entity(xCoord, yCoord);
-        
-        eden.entities.essenceCount++;
-        entityMethods.idAssignment(entity);
-        entityMethods.generateName(entity);
-        
-        targetCell.entities.set(entity.id, entity);
-        eden.entities.living.set(entity.id, entity);
-        eden.entities.aliveCount++;
-        
-        return entity;
-    },
-    
-    /*
-    Spawns the progenitor for a lineage. Initializes its attributes and traits.
-    */
-    spawnProgenitor: function(xCoord, yCoord) {
-        var progenitor = this.spawnEntity(xCoord, yCoord);
-        
-        entityMethods.attributesInitialization(progenitor);
-        entityMethods.traitsInitialization(progenitor);
-    },
-    
-    /*
-    POPULATE distributes "num" number of progenitors randomly across the garden. The new entity is
-    spawned in a randomly determined cell.
-    */
-    populate: function(num) {
-        for (var i = 0; i < num; i++) {
-            var xCoord = Math.floor(Math.random() * eden.x);
-            var yCoord = Math.floor(Math.random() * eden.y);
-            
-            this.spawnProgenitor(xCoord, yCoord);
-        }
-    },
     
     /*
     SPONTANEOUS ENTITY EMERGENCE is run each turn. If the chaos value is below the threshold 0.88%,
