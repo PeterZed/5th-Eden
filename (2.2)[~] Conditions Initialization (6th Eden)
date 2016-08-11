@@ -3,13 +3,22 @@
 
 Initializes a cell's conditions' values.
 
-~Still ongoing development until I work out how I want the conditions to act.
+~Still ongoing development until I work out how I want the conditions to act, but otherwise
+functions.
 */
 cell.prototype.condsInit = function() {
-  var conds = this.conditions;
+  for (var i = 0; i < this.cyclicalConds.length; i++) {
+    this.cyclicalConds[i].level = Math.floor(Math.random() * 10001) / 100;
+    this.cyclicalConds[i].flux = Math.floor(Math.random() * 1001) / 100;
+  }
   
-  for (var i = 0; i < conds.length; i++) {
-    conds[i].level = Math.floor(Math.random() * 10001) / 100;
-    conds[i].flux = Math.floor(Math.random() * 1001) / 100;
+  for (var j = 0; j < this.sensoryConds.length; j++) {
+    this.sensoryConds[i].level = Math.floor(Math.random() * 10001) / 100;
+    this.sensoryConds[i].flux = Math.floor(Math.random() * 1001) / 100;
+  }
+
+  for (var k = 0; k < this.enviroConds.length; k++) {
+    this.enviroConds[i].level = Math.floor(Math.random() * 10001) / 100;
+    this.enviroConds[i].flux = Math.floor(Math.random() * 1001) / 100;
   }
 };
