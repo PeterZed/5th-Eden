@@ -1,0 +1,12 @@
+/*
+POPULATE distributes "num" number of progenitors randomly across the garden. The new entity is
+spawned in a randomly determined cell.
+*/
+eden.prototype.populate = function(num) {
+  for (var i = 0; i < num; i++) {
+    var xCoord = Math.floor(Math.random() * eden.x);
+    var yCoord = Math.floor(Math.random() * eden.y);
+            
+    this.spawnProgenitor(xCoord, yCoord);
+  }
+};
