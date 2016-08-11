@@ -5,6 +5,9 @@ Initializes a cell's conditions' values.
 
 ~Still ongoing development until I work out how I want the conditions to act, but otherwise
 functions.
+
+The cyclicalConds are missing their average max and average min values, as well as the adjustment
+to the sinusoidal curve's slope to account for both that and for the present dynamism.
 */
 cell.prototype.condsInit = function() {
   for (var i = 0; i < this.cyclicalConds.length; i++) {
