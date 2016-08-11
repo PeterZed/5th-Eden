@@ -1,0 +1,22 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Spawns a new entity, generates its name. Updates the relevant info.entities
+properties, and adds the entity to the appropriate cell.
+    
+Used by every entity production method to create a new entity - whether that's by making a new
+progenitor, divinely creating a new progenitor, or an entity reproducing.
+*/
+eden.prototype.spawnEntity = function(xCoord, yCoord) {
+  var targetCell = eden.garden[yCoord][xCoord];
+  var entity = new Entity(xCoord, yCoord, this);
+  
+  info.entities.essenceCount++;
+  entity.generateName();
+  
+  targetCell.entities.set(entity.id, entity);
+  this.living.set(entity.id, entity);
+  this.aliveCount++;
+  
+  return entity;
+};
