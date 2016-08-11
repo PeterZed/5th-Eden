@@ -1,0 +1,6 @@
+/*
+Takes player input to assign a name to the entity.
+*/
+entity.prototype.setName = function(newName) {
+  this.name = String(newName);
+};
