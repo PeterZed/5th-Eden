@@ -1,23 +1,5 @@
 var entityMethods = {
     /*
-    Sets each trait's properties.
-    level max initial = 100.00
-    flux max initial = 10.00
-    surge max initial = 1.00
-    jerk max initial = 0.10
-    hyperjerk max and initial = 0.01
-    */
-    traitsInitialization: function(entity) {
-        var traits = entity.traits;
-        
-        for (var trait in traits) {
-            traits[trait].level = Math.floor(Math.random() * 10001) / 100;
-            traits[trait].flux = Math.floor(Math.random() * 1001) / 100;
-        }
-    },
-    
-   
-    /*
     Maximum difference between each paired attribute and condition is 100.
     Right now the survival odds calculation is simple. I hope to improve on it so in the future
     it's based on more than just the sum of the differences between the conditions' levels and the
