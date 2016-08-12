@@ -2,6 +2,9 @@
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 ~ Survival odds calculation has yet to be implemented
+~ I have to test if all of this below would work. For example, I'm not sure within the constructor
+I can define this.x = xCoord and then just below reference this.x within setting this.localCells,
+or if an error would be thrown. I think I've previously tested it though, and it worked out fine.
 */
 
 function entity(xCoord, yCoord, eden) {
@@ -11,10 +14,11 @@ function entity(xCoord, yCoord, eden) {
   this.lineage = [];  // All its direct descendants, from oldest to youngest.
   
   this.eden = eden;
+  this.locality = eden.name;
   this.x = xCoord;
   this.y = yCoord;
-  this.localCells = eden.garden[this.y][this.x].localCells;
-  this.locality = eden.name;
+  this.cell = eden.garden[this.y][this.x];
+  this.localCells = this.cell.localCells;
   
   this.health = 100;
   this.state = "Alive";
