@@ -5,6 +5,10 @@
 ~ I have to test if all of this below would work. For example, I'm not sure within the constructor
 I can define this.x = xCoord and then just below reference this.x within setting this.localCells,
 or if an error would be thrown. I think I've previously tested it though, and it worked out fine.
+
+~I have no idea how the attributes will work at this time. They might not vary in any way like one
+another.
+~The attributes exist, but they need a lot of work to match my present vision for them.
 */
 
 function entity(xCoord, yCoord, eden) {
@@ -31,6 +35,42 @@ function entity(xCoord, yCoord, eden) {
   this.turnOfDeath; // Still alive.
   this.deathLocality;
   this.slayer; // Not necessarily slain in battle. This property gives slayer's ID if it is slain.
+  
+  /*
+  So named cyclicalAttrs are named as such not for how they behave, but because they correspond
+  to the cyclicalConds of a cell. In the future, they may be renamed to better reflect both the
+  conditions and the attributes.
+  */
+  this.cyclicalAttrs = [
+    {condition: "nourishment", level: null, flux: null, surge: 1},
+    {condition: "water", level: null, flux: null, surge: 1},
+    {condition: "waste", level: null, flux: null, surge: 1}
+  ];
+  
+  /*
+  These attributes are the basics for the entity's ability to sense the external world.
+  They correspond to the sensoryConds for a cell.
+  */
+  this.sensoryAttrs = [
+    {condition: "sight", level: null, flux: null, surge: 1},
+    {condition: "hearing", level: null, flux: null, surge: 1},
+    {condition: "gustation", level: null, flux: null, surge: 1},
+    {condition: "olfaction", level: null, flux: null, surge: 1},
+    {condition: "touch", level: null, flux: null, surge: 1
+  ];
+  
+  /*
+  These attributes are named as such because they correspond to the enviroConds of the cell.
+  Likely, I'll have to rename them at some point to reflect both the conditions and the
+  attributes.
+  */
+  this.enviroAttrs = [
+    {condition: "radiationTolerance", level: null, flux: null, surge: 1},
+    {condition: "acidityOptimal", level: null, flux: null, surge: 1},
+    {condition: "airCompOptimal", level: null, flux: null, surge: 1},
+    {condition: "temperatureOptimal", level: null, flux: null, surge: 1},
+    {condition: "salinityOptimal", level: null, flux: null, surge: 1}
+  ];
   
   this.survivalProb = [[1,1,1],
                        [1,1,1],
