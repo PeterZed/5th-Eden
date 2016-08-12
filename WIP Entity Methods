@@ -1,22 +1,4 @@
 var entityMethods = {
-    
-    /*
-    Sets each attribute's properties.
-    level max initial = 100.00
-    flux max initial = 10.00
-    surge max initial = 1.00
-    jerk max initial = 0.10
-    hyperjerk max and initial = 0.01
-    */
-    attributesInitialization: function(entity) {
-        var attrs = entity.attributes;
-        
-        for (var i = 0; i < attrs.length; i++) {
-            attrs[i].level = Math.floor(Math.random() * 10001) / 100;
-            attrs[i].flux = Math.floor(Math.random() * 1001) / 100;
-        }
-    },
-    
     /*
     Sets each trait's properties.
     level max initial = 100.00
