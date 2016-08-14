@@ -3,6 +3,9 @@
 
 Initializes a cell's conditions' values.
 
+~Need to update the for loop to be a for...in loop since I changed the information from being stored
+in an array to being stored in an object.
+
 ~Still ongoing development until I work out how I want the conditions to act, but otherwise
 functions.
 
