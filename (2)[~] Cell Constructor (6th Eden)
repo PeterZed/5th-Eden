@@ -22,23 +22,41 @@ function cell(xCoord, yCoord, eden) {
                      [],
                      []];
   /*
-  Conditions that rise and fall in a cyclical pattern. They are first initialized at some value,
-  have either a positive or negative slope to their delta, rise or fall to an average extreme
-  value, then the slope reverses direction and they fall or rise to the other average extreme
-  value. They are stuck within a range, essentially, but there is some wiggle room as it does not
-  reach the exact same value every time.
+  Conditions that rise and fall in a sinusoidal pattern. They are of the form
+  y = a * sin(bx) + c, where a is the amplitude (or range), b is the period coefficient,
+  and c is the average value (i.e., the value at x = 0) over one cycle.
+  These values, and the x value, are initialized at the cell's creation; from them, the initial
+  value is calculated.
   */
   this.cyclicalConds = {
-    nourishment: {},
-    water: {},
-    waste: {}
+    nourishment: {
+      x: {level: null, flux: null, surge: 1},
+      range: {level: null, flux: null, surge: 1},
+      period: {level: null, flux: null, surge: 1},
+      average: {level: null, flux: null, surge: 1}
+    },
+    water: {
+      x: {level: null, flux: null, surge: 1},
+      range: {level: null, flux: null, surge: 1},
+      period: {level: null, flux: null, surge: 1},
+      average: {level: null, flux: null, surge: 1}
+    },
+    waste: {
+      x: {level: null, flux: null, surge: 1},
+      range: {level: null, flux: null, surge: 1},
+      period: {level: null, flux: null, surge: 1},
+      average: {level: null, flux: null, surge: 1}
+    }
   };
   
   /*
   These conds affect different different senses, once those are implemented. Until then they're
-  just for color. Light affects an entity's visual acuity. Noise affects an entity's auditory
+  just there. Light affects an entity's visual acuity. Noise affects an entity's auditory
   acuity. Wind affects an entity's olfaction, based on what direction and how strong the
   wind is blowing (i.e., its level).
+  
+  I haven't decided how I want them to function yet, if I want them to follow the sinusoidal
+  variation or not.
   */
   this.sensoryConds = {
     light: {},
@@ -51,13 +69,38 @@ function cell(xCoord, yCoord, eden) {
   correspond to some value in the real world, though their effects are vastly simpler compared
   to their real world counterparts.
   
-  Their fluctuation is related to neighboring cells' fluctuations.
+  Their fluctuation is related to neighboring cells' fluctuations?
   */
   this.enviroConds = {
-    radiation: {},
-    acidity: {},
-    airComp: {},
-    temperature: {},
-    salinity: {}
+    radiation: {
+      x: {level: null, flux: null, surge: 1},
+      range: {level: null, flux: null, surge: 1},
+      period: {level: null, flux: null, surge: 1},
+      average: {level: null, flux: null, surge: 1}
+    },
+    acidity: {
+      x: {level: null, flux: null, surge: 1},
+      range: {level: null, flux: null, surge: 1},
+      period: {level: null, flux: null, surge: 1},
+      average: {level: null, flux: null, surge: 1}
+    },
+    airComp: {
+      x: {level: null, flux: null, surge: 1},
+      range: {level: null, flux: null, surge: 1},
+      period: {level: null, flux: null, surge: 1},
+      average: {level: null, flux: null, surge: 1}
+    },
+    temperature: {
+      x: {level: null, flux: null, surge: 1},
+      range: {level: null, flux: null, surge: 1},
+      period: {level: null, flux: null, surge: 1},
+      average: {level: null, flux: null, surge: 1}
+    },
+    salinity: {
+      x: {level: null, flux: null, surge: 1},
+      range: {level: null, flux: null, surge: 1},
+      period: {level: null, flux: null, surge: 1},
+      average: {level: null, flux: null, surge: 1}
+    }
   };
 }
