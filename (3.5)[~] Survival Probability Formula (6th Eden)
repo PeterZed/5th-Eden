@@ -1,8 +1,0 @@
-/*
-0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-
-~ Not yet the final state for calculating the probability of survival.
-*/
-entity.prototype.survivalProbFormula = function(localX, localY) {
-  
-};

@@ -1,0 +1,25 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+The probability calculation is of the form y = A / (B + C*e^(-Dx)) + E.
+A and B adjust the value of the max asymptote. When B = 1, the max probability = A, even if it's
+over 1.0 in value. Thus, A should not be greater than 1.0, as there are better ways of increasing
+survival probabilities without surpassing 100% chance. When A = 1, the max probability = 1 / B. So,
+should not fall below 1 for the same reason A should not surpass it. Due to the nature of their
+effects, I think it's better to leave A and B equal to 1 so that I don't have to account for
+correcting probabilities greater than 1.0.
+C influences the y-intercept of the curve. The y-intercept = 1 / (1 + C), so at C = 1 it's 0.5 prob.
+Thus, C can be used to make survival more likely by setting C less than 1, or make it less likely
+by setting C greater than 1.
+D influences the slope of the curve. The steeper the slope, the fewer intermediate values exist.
+E raises and lowers the whole curve; thus, E should stay equal to 0 or else I'll have to account
+for correcting negative probabilities and probabilities greater than 1.0.
+*/
+entity.prototype.survivalProbFormula = function(cell) {
+  var x = (this.health * 0.1980688) - 9.90344;
+  var healthProb = 1 / (1 + Math.pow(Math.E, (x * -1));
+  
+  var
+  
+  return survivalProb;
+};
