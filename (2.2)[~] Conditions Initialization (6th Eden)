@@ -3,28 +3,18 @@
 
 Initializes a cell's conditions' values.
 
-~Need to update the for loop to be a for...in loop since I changed the information from being stored
-in an array to being stored in an object.
-
 ~Still ongoing development until I work out how I want the conditions to act, but otherwise
 functions.
-
-~The cyclicalConds are missing the formula for their rate of change based on present dynamism and
-slope of the rate of change.
 */
 cell.prototype.condsInit = function() {
-  for (var i = 0; i < this.cyclicalConds.length; i++) {
-    this.cyclicalConds[i].level = Math.floor(Math.random() * 10001) / 100;
-    this.cyclicalConds[i].flux = Math.floor(Math.random() * 1001) / 100;
+  for (var cond in this.cyclicalConds) {
+    for (var prop in this.cyclicalConds[cond]) {
+      this.cyclicalConds[cond][prop].level = Math.floor(Math.random() * 10001) / 100;
+      this.cyclicalConds[cond][prop].flux = Math.floor(Math.random() * 1001) / 100;
+    }
   }
   
-  for (var j = 0; j < this.sensoryConds.length; j++) {
-    this.sensoryConds[i].level = Math.floor(Math.random() * 10001) / 100;
-    this.sensoryConds[i].flux = Math.floor(Math.random() * 1001) / 100;
-  }
-
-  for (var k = 0; k < this.enviroConds.length; k++) {
-    this.enviroConds[i].level = Math.floor(Math.random() * 10001) / 100;
-    this.enviroConds[i].flux = Math.floor(Math.random() * 1001) / 100;
-  }
+  for (this.sensoryConds) {}
+  
+  for (this.enviroConds) {}
 };
