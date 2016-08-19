@@ -19,6 +19,7 @@ function entity(xCoord, yCoord, eden) {
   this.localCells = this.cell.localCells;
   
   this.health = 100;
+  this.injuries = 0;
   this.state = "Alive";
   this.turnOfGenesis = eden.turn;
   this.genesisLocality = "Cell #" + eden.garden[this.y][this.x].id + ", " +
