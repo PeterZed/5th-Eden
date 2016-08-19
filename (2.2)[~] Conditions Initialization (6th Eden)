@@ -3,7 +3,7 @@
 
 Initializes a cell's conditions' values.
 
-~Still ongoing development until I work out how I want the conditions to act, but otherwise
+?Still ongoing development until I work out how I want all of the conditions to act, but otherwise
 functions.
 */
 cell.prototype.condsInit = function() {
