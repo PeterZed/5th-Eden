@@ -2,11 +2,15 @@
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 Initializes all the needed values for each cell in the garden.
+Initializes the garden's metaDynamism values.
 
 ~ Needs to be generated so that the values are related to one another instead of completely random.
 Haven't figured that part out yet, but in the end each will not undergo .condsInit().
 */
 eden.prototype.gardenInit = function() {
+  this.metaDynamism = Math.floor(Math.random() * 10001) / 100;
+  this.metaDynamismFlux = Math.floor(Math.random() * 1001) / 100;
+
   for (var j = 0; j < this.y; j++) {
     for (var i = 0; i < this.x; i++) {
       this.garden[j][i].localCellsDetermination();
