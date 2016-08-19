@@ -11,6 +11,9 @@ cell.prototype.condsInit = function() {
     for (var prop in this.cyclicalConds[cond]) {
       this.cyclicalConds[cond][prop].level = Math.floor(Math.random() * 10001) / 100;
       this.cyclicalConds[cond][prop].flux = Math.floor(Math.random() * 1001) / 100;
+      
+      this.cyclicalConds[cond][prop].dynamism = Math.floor(Math.random() * 10001) / 100;
+      this.cyclicalConds[cond][prop].dynamismFlux = Math.floor(Math.random() * 1001) / 100;
     }
   }
   
