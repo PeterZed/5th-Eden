@@ -21,5 +21,5 @@ function eden(name, columns, rows) {
   adjust them as they see fit. For now, these are the default values. However, as I gain experience
   with the worlds, I'll tweak them until I feel the default values are good for players to start.
   */
-  this.survProbHealth = {a: 1, b: 1, c: 1, d: 1, e: 0, f: 0};
+  this.survivalProbHealth = {a: 1, b: 1, c: 1, d: 1, e: 0, f: 0};
 };
