@@ -22,6 +22,15 @@ function cell(xCoord, yCoord, eden) {
   this.localCells = [[],
                      [],
                      []];
+  
+  /*
+  The dynamism is the average number of turns expected to pass for the property to undergo
+  a single fluctuation. The dynamismFlux is the average value by which dynamism changes
+  when it undergoes a fluctuation. The dynamism of these two dynamism properties is a
+  global value, set in the cell's Eden. The dynamismSurge is the average value by which
+  the dynamismFlux changes when the cell undergoes fluctuation.
+  */
+  
   /*
   Conditions that rise and fall in a sinusoidal pattern. They are of the form
   y = a * sin(bx) + c, where a is the amplitude (or range), b is the period coefficient,
@@ -31,22 +40,34 @@ function cell(xCoord, yCoord, eden) {
   */
   this.cyclicalConds = {
     nourishment: {
-      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null}
+      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1}
     },
     water: {
-      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null}
+      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1}
     },
     waste: {
-      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null}
+      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1}
     }
   };
   
@@ -61,23 +82,35 @@ function cell(xCoord, yCoord, eden) {
   */
   this.sensoryConds = {
     light: {
-      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null}
+      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1}
     },
     noise: {
-      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null}
+      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1}
     },
     wind: {
-      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null}
-    }
+      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1}
+    },
   };
   
   /*
@@ -89,34 +122,54 @@ function cell(xCoord, yCoord, eden) {
   */
   this.enviroConds = {
     radiation: {
-      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null}
+      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1}
     },
     acidity: {
-      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null}
+      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1}
     },
     airComp: {
-      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null}
+      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1}
     },
     temperature: {
-      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null}
+      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1}
     },
     salinity: {
-      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
-      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null}
+      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1},
+      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+        dynamismSurge: 1}
     }
   };
 }
