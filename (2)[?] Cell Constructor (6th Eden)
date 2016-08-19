@@ -5,7 +5,7 @@ The purpose of the cell.prototype.eden property is so that, when needed, the cel
 own host Eden object. That is, it readily has access to the reference value for the Eden of which it
 is a part.
 
-~The sensory conditions will likely vary in a way that's different than the other conditions:
+?The sensory conditions will likely vary in a way that's different than the other conditions:
 Slower, perhaps; more predictable; smaller range of fluctuations.
 */
 function cell(xCoord, yCoord, eden) {
