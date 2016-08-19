@@ -17,7 +17,7 @@ function eden(name, columns, rows) {
   */
   this.metaDynamism = null;
   this.metaDynamismFlux = null;
-  this.metaDYnamismSurge = 1;
+  this.metaDynamismSurge = 1;
   
   this.living = new Map();
   this.aliveCount = 0;
