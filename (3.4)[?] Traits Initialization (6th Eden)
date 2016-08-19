@@ -5,7 +5,7 @@ Initializes an entity's traits' values.
 level min initial = 0.00, max initial = 100.00
 flux min initial = 0.00, max initial = 10.00
 
-~Still under development because I have yet to design any of the traits, or even name them.
+? Still under development because I have yet to design any of the traits, or even name them.
 */
 entity.prototype.traitsInit = function() {
   for (var i = 0; i < this.traits.length; i++) {
