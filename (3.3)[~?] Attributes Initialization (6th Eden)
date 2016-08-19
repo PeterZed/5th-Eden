@@ -5,11 +5,11 @@ Sets each attribute's properties.
 level min initial = 0.00, max initial = 100.00
 flux min initial = 0.00, max initial = 10.00
 
-~Still ongoing development until I work out how I want the attributes to act, but otherwise
+? Still ongoing development until I work out how I want the attributes to act, but otherwise
 functions.
+~ Attributes and traits need a value like how cells have dynamism, used for calculating the
+probability of a generational fluctuation for a given property.
 
-~The cyclicalAttrs are missing the formula for their rate of change based on present dynamism and
-slope of the rate of change.
 */
 entity.prototype.attrsInit = function() {
   for (var i = 0; i < this.cyclicalAttrs.length; i++) {
