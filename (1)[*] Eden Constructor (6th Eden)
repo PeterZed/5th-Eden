@@ -10,6 +10,15 @@ function eden(name, columns, rows) {
   this.cellCount = 0;
   this.garden = [];
   
+  /*
+  Meta dynamism is the average number of turns expected to pass before any given cell's dynamism
+  undergoes a fluctuation. It's also the average number of turns expected to pass before this
+  Eden's metaDynamism and metaDynamismFlux values undergo fluctuation.
+  */
+  this.metaDynamism = null;
+  this.metaDynamismFlux = null;
+  this.metaDYnamismSurge = 1;
+  
   this.living = new Map();
   this.aliveCount = 0;
   this.deadCount = 0;
