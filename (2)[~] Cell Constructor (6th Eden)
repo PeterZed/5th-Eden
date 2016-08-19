@@ -5,7 +5,8 @@ The purpose of the cell.prototype.eden property is so that, when needed, the cel
 own host Eden object. That is, it readily has access to the reference value for the Eden of which it
 is a part.
 
-~ The conditions are missing the dynamism aspect.
+~The sensory conditions will likely vary in a way that's different than the other conditions:
+Slower, perhaps; more predictable; smaller range of fluctuations.
 */
 function cell(xCoord, yCoord, eden) {
   this.id = eden.cellCount;
@@ -30,22 +31,22 @@ function cell(xCoord, yCoord, eden) {
   */
   this.cyclicalConds = {
     nourishment: {
-      x: {level: null, flux: null, surge: 1},
-      range: {level: null, flux: null, surge: 1},
-      period: {level: null, flux: null, surge: 1},
-      average: {level: null, flux: null, surge: 1}
+      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null}
     },
     water: {
-      x: {level: null, flux: null, surge: 1},
-      range: {level: null, flux: null, surge: 1},
-      period: {level: null, flux: null, surge: 1},
-      average: {level: null, flux: null, surge: 1}
+      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null}
     },
     waste: {
-      x: {level: null, flux: null, surge: 1},
-      range: {level: null, flux: null, surge: 1},
-      period: {level: null, flux: null, surge: 1},
-      average: {level: null, flux: null, surge: 1}
+      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null}
     }
   };
   
@@ -59,9 +60,24 @@ function cell(xCoord, yCoord, eden) {
   variation or not.
   */
   this.sensoryConds = {
-    light: {},
-    noise: {},
-    wind: {}
+    light: {
+      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null}
+    },
+    noise: {
+      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null}
+    },
+    wind: {
+      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null}
+    }
   };
   
   /*
@@ -73,34 +89,34 @@ function cell(xCoord, yCoord, eden) {
   */
   this.enviroConds = {
     radiation: {
-      x: {level: null, flux: null, surge: 1},
-      range: {level: null, flux: null, surge: 1},
-      period: {level: null, flux: null, surge: 1},
-      average: {level: null, flux: null, surge: 1}
+      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null}
     },
     acidity: {
-      x: {level: null, flux: null, surge: 1},
-      range: {level: null, flux: null, surge: 1},
-      period: {level: null, flux: null, surge: 1},
-      average: {level: null, flux: null, surge: 1}
+      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null}
     },
     airComp: {
-      x: {level: null, flux: null, surge: 1},
-      range: {level: null, flux: null, surge: 1},
-      period: {level: null, flux: null, surge: 1},
-      average: {level: null, flux: null, surge: 1}
+      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null}
     },
     temperature: {
-      x: {level: null, flux: null, surge: 1},
-      range: {level: null, flux: null, surge: 1},
-      period: {level: null, flux: null, surge: 1},
-      average: {level: null, flux: null, surge: 1}
+      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null}
     },
     salinity: {
-      x: {level: null, flux: null, surge: 1},
-      range: {level: null, flux: null, surge: 1},
-      period: {level: null, flux: null, surge: 1},
-      average: {level: null, flux: null, surge: 1}
+      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null},
+      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null}
     }
   };
 }
