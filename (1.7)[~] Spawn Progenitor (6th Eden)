@@ -3,7 +3,7 @@
 
 Spawns the progenitor for a lineage. Initializes its attributes and traits.
 
-~entity.attrsInit() and entity.traitsInit() are both in need of work as soon as I figure how to
+?entity.attrsInit() and entity.traitsInit() are both in need of work as soon as I figure how to
 work attributes and traits.
 */
 eden.prototype.spawnProgenitor = function(xCoord, yCoord) {
