@@ -18,7 +18,7 @@ F raises and lowers the whole curve; thus, F should stay equal to 0 or else I'll
 for correcting negative probabilities and probabilities greater than 1.0.
 */
 entity.prototype.survivalProbHealth = function() {
-  var x = (this.health * 0.1980688) - 9.90344;
+  var x = ((this.health - this.injuries) * 0.1980688) - 9.90344;
   var weights = this.eden.survivalProbHealth;
   var a = weights.a, b = weights.b, c = weights.c, d = weights.d, e = weights.e, f = weights.f; 
   var healthProb = a / (b + c * Math.pow(Math.E, ((d * x * -1) + e)) + f;
