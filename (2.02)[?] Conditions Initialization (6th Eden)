@@ -14,12 +14,12 @@ cell.prototype.condsInit = function() {
       
       this.cyclicalConds[cond][prop].dynamism = Math.floor(Math.random() * 10001) / 100;
       this.cyclicalConds[cond][prop].dynamismFlux = Math.floor(Math.random() * 1001) / 100;
-      
-      this.initialized = true;
     }
   }
   
   for (this.sensoryConds) {}
   
   for (this.enviroConds) {}
+  
+  this.initialized = true;
 };
