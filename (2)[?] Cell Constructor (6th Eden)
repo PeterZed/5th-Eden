@@ -13,6 +13,7 @@ function cell(xCoord, yCoord, eden) {
   this.eden = eden;
   this.x = xCoord;
   this.y = yCoord;
+  this.initialized = false;
   
   this.entities = new Map();
   
