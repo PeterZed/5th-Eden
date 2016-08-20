@@ -1,0 +1,11 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Called by cell.condsFluxCheck if the probability roll is successful.
+Causes the property to fluctuate from a Gaussian distribution centered around 0. For the level
+fluctuating, the property's flux value serves as the standard deviation. For the flux value,
+the surge value serves as the standard deviation.
+*/
+cell.prototype.condsFlux = function(value, stdDev) {
+
+}
