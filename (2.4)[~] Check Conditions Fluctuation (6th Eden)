@@ -1,0 +1,10 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Rolls for every relevant property of a cell to see if it may undergo a fluctuation this tick.
+If this slows down ticks by too much, I can always make dynamism a hard value for number of turns
+between fluctuations instead of an average value (which requires more probability rolls).
+*/
+cell.prototype.condsFluxCheck = function() {
+  
+};
