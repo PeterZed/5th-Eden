@@ -1,10 +1,13 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-Initializes a cell's conditions' values.
+Initializes a cell's conditions' values, independent of its neighbors'.
 
 ? Still ongoing development until I work out how I want all of the conditions to act, but otherwise
 functions.
+
+~ The initialization of sensoryConds and enviroConds are not yet determined, but I might do them
+the same as the cyclicalConds.
 */
 cell.prototype.condsIndInit = function() {
   for (var cond in this.cyclicalConds) {
