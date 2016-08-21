@@ -1,0 +1,20 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+*/
+cell.prototype.condLocalAvg = function() {
+  var numInit = 0;
+  var condsLocalSum = {};
+  var condsLocalAvg = {};
+  
+  for (j = 0; j < 3; j++) {
+    for (i = 0; i < 3; i++) {
+      if (this.localCells[j][i].initialized) {
+        numInit++;
+        condsLocalSum = this.localCells[j][i].condsLocalSum();
+      }
+    }
+  }
+  
+  condsLocalAvg = cell.condsLocalAvg(condsLocalSum, numInit);
+};
