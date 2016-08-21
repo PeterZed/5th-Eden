@@ -6,8 +6,15 @@ Establishes a cell's neighboring cells.
 Initializes all of the conditions for the cells of the garden.
 */
 eden.prototype.gardenInit = function() {
-  this.uniformity = Math.floor(Math.random() * 10001) / 100;
-  this.variability = Math.floor(Math.random() * 1001) / 100;
+  this.uniformityLevel = Math.floor(Math.random() * 10001) / 100;
+  this.uniformityFlux = Math.floor(Math.random() * 1001) / 100;
+  this.uniformityDynamism = Math.floor(Math.random() * 10001) / 100;
+  this.uniformityDynamismFlux = Math.floor(Math.random() * 1001) / 100;
+  
+  this.variabilityLevel = Math.floor(Math.random() * 10001) / 100;
+  this.variabilityFlux = Math.floor(Math.random() * 1001) / 100;
+  this.variabilityDynamism = Math.floor(Math.random() * 10001) / 100;
+  this.variabilityDynamismFlux = Math.floor(Math.random() * 1001) / 100;
 
   this.metaDynamism = Math.floor(Math.random() * 10001) / 100;
   this.metaDynamismFlux = Math.floor(Math.random() * 1001) / 100;
