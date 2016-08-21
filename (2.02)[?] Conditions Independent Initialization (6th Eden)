@@ -6,7 +6,7 @@ Initializes a cell's conditions' values.
 ? Still ongoing development until I work out how I want all of the conditions to act, but otherwise
 functions.
 */
-cell.prototype.condsInit = function() {
+cell.prototype.condsIndInit = function() {
   for (var cond in this.cyclicalConds) {
     for (var prop in this.cyclicalConds[cond]) {
       this.cyclicalConds[cond][prop].level = Math.floor(Math.random() * 10001) / 100;
