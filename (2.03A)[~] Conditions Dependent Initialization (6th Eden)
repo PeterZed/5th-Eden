@@ -1,7 +1,38 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
+This method is used for initializing all cells who have at least one neighbor whose conditions
+have been initialized before theirs have. That is, the initialization of these conditions depends
+on the cell's neighbors so as to maintain a statistically smooth transition from one cell to
+another for each condition.
+
+First, the initialized cells' conditions are summed together in cell.prototype.localCondsSum().
+They are added to the cell's default value - which is null for everything (effectively 0 for
+purposes of mathematical operations), except the surge values.
+
+Then, this sum is averaged, dividing by the number of local cells whose conditions have been
+initialized.
+
+~ Lastly, using this Eden's uniformity and variability values, the cell's conditions are
+initialized based on the present average, the uniformity of the Eden, and the variability of Eden.
+This is calculated with a Gaussian distribution, using uniformity for the average magnitude of
+difference and variability as the standard deviation for the distribution; the result is multiplied
+by either +1 or -1 (probability roll to determine).
 */
 cell.prototype.condsDepInit = function() {
+  var initCount = 0;
   
+  for (j = 0; j < 3; j++) {
+    for (i = 0; i < 3; i++) {
+      if (this.localCells[j][i].initialized) {
+        this.localCondsSum(i, j);
+        initCount++;
+      }
+    }
+  }
+  this.localCondsAvg(initCount);
+  
+  
+  
+  this.initialized = true;
 };
