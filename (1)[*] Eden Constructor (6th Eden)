@@ -19,6 +19,17 @@ function eden(name, columns, rows) {
   this.metaDynamismFlux = null;
   this.metaDynamismSurge = 1;
   
+  /*
+  Uniformity is the world's average expected difference from cell to cell for a given property.
+  */
+  this.uniformity = null;
+  
+  /*
+  Variability is the world's standard deviation for expected difference from cell to cell for a
+  given property.
+  */
+  this.variability = null;
+  
   this.living = new Map();
   this.aliveCount = 0;
   this.deadCount = 0;
