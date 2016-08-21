@@ -1,0 +1,44 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Divides the sum of the values for the cell's initialized neighbors' conditions by the number of
+neighbors that have been initialized. Does this for level, flux, dynamism, and dynamismFlux for
+each condition property. Rounds to the hundredths place.
+*/
+cell.prototype.localCondsAvg = function(initCount) {
+  for (var cond in this.cyclicalConds) {
+    for (var prop in this.cyclicalConds[cond]) {
+      var targetCond = this.cyclicalConds[cond][prop];
+      
+      targetCond.level = Math.round(targetCond.level / initCount * 100);
+      targetCond.flux = Math.round(targetCond.flux / initCount * 100);
+      
+      targetCond.dynamism = Math.round(targetCond.dynamism / initCount * 100);
+      targetCond.dynamismFlux = Math.round(targetCond.dynamismFlux / initCount * 100);
+    }
+  }
+  
+  for (var cond in this.sensoryConds) {
+    for (var prop in this.sensoryConds[cond]) {
+      var targetCond = this.sensoryConds[cond][prop];
+      
+      targetCond.level = Math.round(targetCond.level / initCount * 100);
+      targetCond.flux = Math.round(targetCond.flux / initCount * 100);
+      
+      targetCond.dynamism = Math.round(targetCond.dynamism / initCount * 100);
+      targetCond.dynamismFlux = Math.round(targetCond.dynamismFlux / initCount * 100);
+    }
+  }
+  
+  for (var cond in this.enviroConds) {
+    for (var prop in this.enviroConds[cond]) {
+      var targetCond = this.enviroConds[cond][prop];
+      
+      targetCond.level = Math.round(targetCond.level / initCount * 100);
+      targetCond.flux = Math.round(targetCond.flux / initCount * 100);
+      
+      targetCond.dynamism = Math.round(targetCond.dynamism / initCount * 100);
+      targetCond.dynamismFlux = Math.round(targetCond.dynamismFlux / initCount * 100);
+    }
+  }
+};
