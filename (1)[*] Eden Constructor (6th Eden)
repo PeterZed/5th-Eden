@@ -11,15 +11,6 @@ function eden(name, columns, rows) {
   this.garden = [];
   
   /*
-  Meta dynamism is the average number of turns expected to pass before any given cell's dynamism
-  undergoes a fluctuation. It's also the average number of turns expected to pass before this
-  Eden's metaDynamism and metaDynamismFlux values undergo fluctuation.
-  */
-  this.metaDynamism = null;
-  this.metaDynamismFlux = null;
-  this.metaDynamismSurge = 1;
-  
-  /*
   Uniformity is the world's average expected difference from cell to cell for a given property.
   */
   this.uniformity = null;
@@ -29,6 +20,15 @@ function eden(name, columns, rows) {
   given property.
   */
   this.variability = null;
+  
+  /*
+  Meta dynamism is the average number of turns expected to pass before any given cell's dynamism
+  undergoes a fluctuation. It's also the average number of turns expected to pass before this
+  Eden's metaDynamism and metaDynamismFlux values undergo fluctuation.
+  */
+  this.metaDynamism = null;
+  this.metaDynamismFlux = null;
+  this.metaDynamismSurge = 1;
   
   this.living = new Map();
   this.aliveCount = 0;
