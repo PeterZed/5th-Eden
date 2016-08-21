@@ -17,8 +17,6 @@ and that cell's condition is initiated based on this average. This is to ensure 
 All this averaging and smoothing is handled within the cell.prototype.condsDepInit method.
 */
 eden.prototype.gardenCondsInit = function() {
-  this.garden[0][0].condsIndInit();
-  
   for (j = 0; j < this.y; j++) {
     for (i = 0; i < this.x; i++) {
       if (i === 0 & j === 0) {
