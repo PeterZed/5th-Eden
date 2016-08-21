@@ -20,8 +20,12 @@ eden.prototype.gardenCondsInit = function() {
   this.garden[0][0].condsIndInit();
   
   for (j = 0; j < this.y; j++) {
-    for (i = 1; i < this.x; i++) {   // Because [0][0] is already initialized independently
-      this.garden[0][0].condsDepInit();
+    for (i = 0; i < this.x; i++) {
+      if (i === 0 & j === 0) {
+        this.garden[j][i].condsIndInit();
+      } else {
+        this.garden[j][i].condsDepInit();
+      }
     }
   }
 };
