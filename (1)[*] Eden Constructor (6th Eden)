@@ -13,7 +13,9 @@ function eden(name, columns, rows) {
   /*
   Uniformity is the world's average expected difference from cell to cell for a given property.
   */
-  this.uniformity = null;
+  this.uniformityLevel = null;
+  this.uniformityFlux = null;
+  this.uniformityLevel = null;
   
   /*
   Variability is the world's standard deviation for expected difference from cell to cell for a
