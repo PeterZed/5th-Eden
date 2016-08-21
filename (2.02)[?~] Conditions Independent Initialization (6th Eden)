@@ -12,17 +12,39 @@ the same as the cyclicalConds.
 cell.prototype.condsIndInit = function() {
   for (var cond in this.cyclicalConds) {
     for (var prop in this.cyclicalConds[cond]) {
-      this.cyclicalConds[cond][prop].level = Math.floor(Math.random() * 10001) / 100;
-      this.cyclicalConds[cond][prop].flux = Math.floor(Math.random() * 1001) / 100;
+      var targetCond = this.cyclicalConds[cond][prop];
+    
+      targetCond.level = Math.floor(Math.random() * 10001) / 100;
+      targetCond.flux = Math.floor(Math.random() * 1001) / 100;
       
-      this.cyclicalConds[cond][prop].dynamism = Math.floor(Math.random() * 10001) / 100;
-      this.cyclicalConds[cond][prop].dynamismFlux = Math.floor(Math.random() * 1001) / 100;
+      targetCond.dynamism = Math.floor(Math.random() * 10001) / 100;
+      targetCond.dynamismFlux = Math.floor(Math.random() * 1001) / 100;
     }
   }
   
-  for (this.sensoryConds) {}
+  for (var cond in this.sensoryConds) {
+    for (var prop in this.sensoryConds[cond]) {
+      var targetCond = this.sensoryConds[cond][prop];
+    
+      targetCond.level = Math.floor(Math.random() * 10001) / 100;
+      targetCond.flux = Math.floor(Math.random() * 1001) / 100;
+      
+      targetCond.dynamism = Math.floor(Math.random() * 10001) / 100;
+      targetCond.dynamismFlux = Math.floor(Math.random() * 1001) / 100;
+    }
+  }
   
-  for (this.enviroConds) {}
+  for (var cond in this.enviroConds) {
+    for (var prop in this.enviroConds[cond]) {
+      var targetCond = this.enviroConds[cond][prop];
+    
+      targetCond.level = Math.floor(Math.random() * 10001) / 100;
+      targetCond.flux = Math.floor(Math.random() * 1001) / 100;
+      
+      targetCond.dynamism = Math.floor(Math.random() * 10001) / 100;
+      targetCond.dynamismFlux = Math.floor(Math.random() * 1001) / 100;
+    }
+  }
   
   this.initialized = true;
 };
