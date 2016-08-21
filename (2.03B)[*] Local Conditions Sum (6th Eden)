@@ -16,4 +16,24 @@ cell.prototype.localCondsSum = function(xLocal, yLocal) {
       this.cyclicalConds[cond][prop].dynamismFlux += localCell[cond][prop].dynamismFlux;
     }
   }
+  
+  for (var cond in this.sensoryConds) {
+    for (var prop in this.sensoryConds[cond]) {
+      this.sensoryConds[cond][prop].level += localCell[cond][prop].level;
+      this.sensoryConds[cond][prop].flux += localCell[cond][prop].flux;
+      
+      this.sensoryConds[cond][prop].dynamism += localCell[cond][prop].dynamism;
+      this.sensoryConds[cond][prop].dynamismFlux += localCell[cond][prop].dynamismFlux;
+    }
+  }
+  
+  for (var cond in this.enviroConds) {
+    for (var prop in this.enviroConds[cond]) {
+      this.enviroConds[cond][prop].level += localCell[cond][prop].level;
+      this.enviroConds[cond][prop].flux += localCell[cond][prop].flux;
+      
+      this.enviroConds[cond][prop].dynamism += localCell[cond][prop].dynamism;
+      this.enviroConds[cond][prop].dynamismFlux += localCell[cond][prop].dynamismFlux;
+    }
+  }
 };
