@@ -15,13 +15,17 @@ function eden(name, columns, rows) {
   */
   this.uniformityLevel = null;
   this.uniformityFlux = null;
-  this.uniformityLevel = null;
+  this.uniformityDynamism = null;
+  this.uniformityDynamismFlux = null;
   
   /*
   Variability is the world's standard deviation for expected difference from cell to cell for a
   given property.
   */
-  this.variability = null;
+  this.variabilityLevel = null;
+  this.variabilityFlux = null;
+  this.variabilityDynamism = null;
+  this.variabilityDynamismFlux = null;
   
   /*
   Meta dynamism is the average number of turns expected to pass before any given cell's dynamism
