@@ -13,11 +13,12 @@ purposes of mathematical operations), except the surge values.
 Then, this sum is averaged, dividing by the number of local cells whose conditions have been
 initialized.
 
-~ Lastly, using this Eden's uniformity and variability values, the cell's conditions are
+Lastly, using this Eden's uniformity and variability values, the cell's conditions are
 initialized based on the present average, the uniformity of the Eden, and the variability of Eden.
 This is calculated with a Gaussian distribution, using uniformity for the average magnitude of
 difference and variability as the standard deviation for the distribution; the result is multiplied
-by either +1 or -1 (probability roll to determine).
+by either +1 or -1 (probability roll to determine). This is performed with the varyConds method
+of the cell class.
 */
 cell.prototype.condsDepInit = function() {
   var initCount = 0;
@@ -32,7 +33,6 @@ cell.prototype.condsDepInit = function() {
   }
   this.localCondsAvg(initCount);
   
-  
-  
+  this.varyConds();
   this.initialized = true;
 };
