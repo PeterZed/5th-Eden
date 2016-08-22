@@ -1,0 +1,51 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Varies a cell's conditions based on this Eden's uniformity and variability values - that is, how
+similar or dissimilar cells are from each other within the garden, and the spread of those values.
+
+Cycles through each condition and adjusts the level, flux, dynamism, and dynamismFlux by the mod
+values (as determined by the cell.prototype.condsMod function).
+
+? Unknown if sensory and enviro conds will function identically to cylical conds at this time.
+*/
+cell.prototype.varyConds = function() {
+  for (var cond in this.cyclicalConds) {
+    for (var prop in this.cyclicalConds[cond]) {
+      var targetCond = this.cyclicalConds[cond][prop];
+      
+      targetCond.level += this.condsMod(this.eden.uniformityLevel, this.varibilityLevel);
+      targetCond.flux += this.condsMod(this.eden.uniformityFlux, this.variabilityFlux;
+      
+      targetCond.dynamism += this.condsMod(this.eden.uniformityDynamism, this.variabilityDynamism);
+      targetCond.dynamismFlux += this.condsMod(this.eden.uniformityDynamismFlux,
+        this.variabilityDynamismFlux);
+    }
+  }
+  
+  for (var cond in this.sensoryConds) {
+    for (var prop in this.sensoryConds[cond]) {
+      var targetCond = this.sensoryConds[cond][prop];
+      
+      targetCond.level += this.condsMod(this.eden.uniformityLevel, this.varibilityLevel);
+      targetCond.flux += this.condsMod(this.eden.uniformityFlux, this.variabilityFlux;
+      
+      targetCond.dynamism += this.condsMod(this.eden.uniformityDynamism, this.variabilityDynamism);
+      targetCond.dynamismFlux += this.condsMod(this.eden.uniformityDynamismFlux,
+        this.variabilityDynamismFlux);
+    }
+  }
+  
+  for (var cond in this.enviroConds) {
+    for (var prop in this.enviroConds[cond]) {
+      var targetCond = this.enviroConds[cond][prop];
+      
+      targetCond.level += this.condsMod(this.eden.uniformityLevel, this.varibilityLevel);
+      targetCond.flux += this.condsMod(this.eden.uniformityFlux, this.variabilityFlux;
+      
+      targetCond.dynamism += this.condsMod(this.eden.uniformityDynamism, this.variabilityDynamism);
+      targetCond.dynamismFlux += this.condsMod(this.eden.uniformityDynamismFlux,
+        this.variabilityDynamismFlux);
+    }
+  }
+};
