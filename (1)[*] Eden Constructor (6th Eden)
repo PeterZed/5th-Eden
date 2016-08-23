@@ -49,6 +49,17 @@ function eden(name, columns, rows) {
   These values affect the survival probability formula for entities in this world. The player can
   adjust them as they see fit. For now, these are the default values. However, as I gain experience
   with the worlds, I'll tweak them until I feel the default values are good for players to start.
+  
+  These are for the survival probability formula due to the entity's health.
   */
   this.survivalProbHealth = {a: 1, b: 1, c: 1, d: 1, e: 0, f: 0};
+  
+  /*
+  These values affect the survival probability formula for entities in this world. The player can
+  adjust them as they see fit. For now, these are the default values. However, as I gain experience
+  with the worlds, I'll tweak them until I feel the default values are good for players to start.
+  
+  These are for the survival probability formula due to environmental variables.
+  */
+  this.survivalProbEnviro = {a: 1, b: 1, c: 1, d: 1, e: 0, f: 0};
 };
