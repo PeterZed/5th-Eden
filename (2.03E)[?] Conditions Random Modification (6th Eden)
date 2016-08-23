@@ -1,0 +1,29 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+First, converts from uniformity to so-called "disuniformity", for purposes of serving as a mean.
+Converts standard deviation to variance.
+
+Creates a distribution based on this mean and this variance, then draws a pseudo-random sample from
+it. Since uniformity is the average expected difference, and is no indication of sign,
+the direction of change is determined by pseudorandomly determining the sign of this sample.
+Then, it returns this sample as the mod value to the cell's present value for the given condition,
+which is the average of all of its presently initialized neighboring cells.
+
+? Not yet finished as I know that I won't keep uniformity and variability's max values at 100
+and 10, respectively, as there is simply too much room for variation - far too many worlds where
+survival simply will not happen to any significant amount.
+*/
+cell.prototype.condsMod = function(inversedMean, stdDev) {
+  var mean = 100 - inversedMean;
+  var variance = Math.pow(stdDev, 2);
+  
+  var distribution = gaussian(mean, variance);
+  var sample = distribution.ppf(Math.random());
+  
+  var negChance = 0.5;
+  var roll = Math.random();
+  roll < negChance ? sample *= -1 : sample *= +1;
+  
+  return sample;
+};
