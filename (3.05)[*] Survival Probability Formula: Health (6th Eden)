@@ -19,6 +19,7 @@ for correcting negative probabilities and probabilities greater than 1.0.
 */
 entity.prototype.survivalProbHealth = function() {
   var x = ((this.health - this.injuries - this.thirst - this.hunger) * 0.1980688) - 9.90344;
+  
   var weights = this.eden.survivalProbHealth;
   var a = weights.a, b = weights.b, c = weights.c, d = weights.d, e = weights.e, f = weights.f; 
   var healthProb = a / (b + c * Math.pow(Math.E, ((d * x * -1) + e)) + f;
