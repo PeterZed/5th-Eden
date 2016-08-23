@@ -1,0 +1,14 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Rolls against the probability argument to see if it may undergo a fluctuation this tick.
+*/
+cell.prototype.condsFluxCheck = function(prob) {
+  var roll = Math.random();
+  
+  if (roll roll <= prob) {
+    return true;
+  } else {
+    return false;
+  }
+};
