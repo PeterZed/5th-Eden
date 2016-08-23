@@ -25,13 +25,15 @@ for correcting negative probabilities and probabilities greater than 1.0.
 "feel" correct. So, this will be happening for a long time, and (hopefully) can be accomplished
 with player input.
 */
-entity.prototype.survivalProbEnviro = function() {
-  var radRatio = this.radiationTolerance - this.cell.radiation;
+entity.prototype.survivalProbEnviro = function(xLocal, yLocal) {
+  var localCell = this.cell.localCells[yLocal][xLocal];
+
+  var radRatio = this.radiationTolerance - localCell.conds.radiation.level;
   if (radRatio > 1) {radRatio = 1;}
   
   var optimalityRatios = 1
-  for (var cond in this.cell.enviroConds) {
-    optimalityRatios *= Math.abs(this.cell.enviroConds[cond].level / 100;
+  for (var cond in localCell.enviroConds) {
+    optimalityRatios *= Math.abs(localCell.enviroConds[cond].level / 100;
   }
   
   var condsRatio = radRatio * optimalityRatios; 
