@@ -25,11 +25,13 @@ function cell(xCoord, yCoord, eden) {
                      []];
   
   /*
-  The dynamism is the average number of turns expected to pass for the property to undergo
-  a single fluctuation. The dynamismFlux is the average value by which dynamism changes
-  when it undergoes a fluctuation. The dynamism of these two dynamism properties is a
-  global value, set in the cell's Eden. The dynamismSurge is the average value by which
-  the dynamismFlux changes when the cell undergoes fluctuation.
+  The dynamism is 100 - Dynamism average number of turns expected to pass for the property to
+  undergo a single fluctuation. I.e., at dynamism = 20, 80 turns are expected to tick past
+  before a fluctuation occurs. So, at dynamism = 20, the probability of a change in the
+  property is 1 / 80 = 0.0125. The dynamismFlux is the standard dev of the dynamism's change
+  when it undergoes a fluctuation, the average being 0. The dynamism of these two dynamism
+  properties is a global value, set in the cell's Eden. The dynamismSurge is the standard dev by
+  which the dynamismFlux changes when the cell undergoes fluctuation, the average being 0.
   */
   
   /*
