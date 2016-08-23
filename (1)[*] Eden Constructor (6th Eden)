@@ -28,9 +28,12 @@ function eden(name, columns, rows) {
   this.variabilityDynamismFlux = null;
   
   /*
-  Meta dynamism is the average number of turns expected to pass before any given cell's dynamism
-  undergoes a fluctuation. It's also the average number of turns expected to pass before this
-  Eden's metaDynamism and metaDynamismFlux values undergo fluctuation.
+  Meta dynamism is 100 - metaDynamism average number of turns expected to pass before any
+  given cell's dynamism undergoes a fluctuation. I.e., at metaDynamism = 20, 80 turns are expected
+  to tick past before a fluctuation occurs. So, at metaDynamism = 20, the probability of a change
+  in the metaDynamism or metaDynamism flux is 1 / 80 = 0.0125.
+  It's also related to the average number of turns expected to pass before this Eden's metaDynamism
+  or metaDynamismFlux values undergo fluctuation.
   */
   this.metaDynamism = null;
   this.metaDynamismFlux = null;
