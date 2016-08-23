@@ -20,6 +20,10 @@ entities' survival probabilities.
 
 F raises and lowers the whole curve; thus, F should stay equal to 0 or else I'll have to account
 for correcting negative probabilities and probabilities greater than 1.0.
+
+? These weights will change as I experiment and tweak them until the survival probabilities
+"feel" correct. So, this will be happening for a long time, and (hopefully) can be accomplished
+with player input.
 */
 entity.prototype.survivalProbHealth = function() {
   var x = ((this.health - this.injuries - this.thirst - this.hunger) * 0.1980688) - 9.90344;
