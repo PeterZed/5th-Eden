@@ -1,9 +1,10 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-
-Rolls against the probability argument to see if it may undergo a fluctuation this tick.
+First, converts the dynamism of the property to its probability of fluctuating. Then, rolls against
+the probability to see if it may undergo a fluctuation this tick.
 */
-cell.prototype.condsFluxCheck = function(prob) {
+cell.prototype.condsFluxCheck = function(dynamism) {
+  var prob = 1 / (100 - dynamism);
   var roll = Math.random();
   
   if (roll roll <= prob) {
