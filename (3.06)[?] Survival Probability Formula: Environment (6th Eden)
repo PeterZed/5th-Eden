@@ -1,0 +1,45 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+The probability calculation is of the form y = A / (B + C*e^(-Dx + E)) + F.
+A and B adjust the value of the max asymptote. When B = 1, the max probability = A, even if it's
+over 1.0 in value. Thus, A should not be greater than 1.0, as there are better ways of increasing
+survival probabilities without surpassing 100% chance. When A = 1, the max probability = 1 / B. So,
+should not fall below 1 for the same reason A should not surpass it. Due to the nature of their
+effects, I think it's better to leave A and B equal to 1 so that I don't have to account for
+correcting probabilities greater than 1.0.
+
+C influences the y-intercept of the curve. The y-intercept = 1 / (1 + C), so at C = 1 it's 0.5 prob.
+Thus, C can be used to make survival more likely by setting C less than 1, or make it less likely
+by setting C greater than 1.
+
+D influences the slope of the curve. The steeper the slope, the fewer intermediate values exist.
+
+E shifts the curve left when < 0 and right when > 0. Shifting the curve to the right improves
+entities' survival probabilities.
+
+F raises and lowers the whole curve; thus, F should stay equal to 0 or else I'll have to account
+for correcting negative probabilities and probabilities greater than 1.0.
+
+? These weights will change as I experiment and tweak them until the survival probabilities
+"feel" correct. So, this will be happening for a long time, and (hopefully) can be accomplished
+with player input.
+*/
+entity.prototype.survivalProbEnviro = function() {
+  var radRatio = this.radiationTolerance - this.cell.radiation;
+  if (radRatio > 1) {radRatio = 1;}
+  
+  var optimalityRatios = 1
+  for (var cond in this.cell.enviroConds) {
+    optimalityRatios *= Math.abs(this.cell.enviroConds[cond].level / 100;
+  }
+  
+  var condsRatio = radRatio * optimalityRatios; 
+  var x = (condsRatio * 19.80688) - 9.90344;
+  
+  var weights = this.eden.survivalProbEnviro;
+  var a = weights.a, b = weights.b, c = weights.c, d = weights.d, e = weights.e, f = weights.f; 
+  var enviroProb = a / (b + c * Math.pow(Math.E, ((d * x * -1) + e)) + f;
+  
+  return enviroProb;
+};
