@@ -20,15 +20,7 @@ var edenMethods = {
         divineMethods.information.detailAll();
     },
 
-    /*
-    Initializes the dynamism values of this Eden.
-    */
-    initializeDynamism: function() {
-        eden.dynamism.level = Math.floor(Math.random() * 10001) / 100;
-        eden.dynamism.flux = Math.floor(Math.random() * 1001) / 100;
-    }
-    
-    /*
+      /*
     SPONTANEOUS ENTITY EMERGENCE is run each turn. If the chaos value is below the threshold 0.88%,
     an entity spawns in a random cell in the garden, as if entropy came together at random to form
     it, like the 2nd Eden. If an entity emerged this turn, the code is run again - a second might
