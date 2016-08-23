@@ -1,0 +1,76 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Determines for every relevant property of a cell to see if it may undergo a fluctuation this tick.
+If this slows down ticks by too much, I can always make dynamism a hard value for number of turns
+between fluctuations instead of an average value (which requires more probability rolls).
+
+First, establishes var targetCond in order to shorten the line length throughout the rest of the
+method. Then, for each of a property's level, flux, dynamism, and dynamismFlux, it calls the
+cell.prototype.condsFluxCheck method to make a probability roll against the appropriate dynamism
+value to determine if the conditions will indeed fluctuate this tick. 
+
+If successful, it calls cell.prototype.condsFlux with 0 as the argument for the mean and the
+appropriate standard deviation value for the property in question. It then adds this fluctuation,
+whether positive or negative, to the cell's present value for the property, thus completing the
+fluctuation for that property.
+*/
+cell.prototype.condsFluxDet = function() {
+  for (var cond in this.cyclicalConds) {
+    for (var prop in this.cyclicalConds[cond]) {
+      var targetCond = this.cyclicalConds[cond][prop];
+      
+      if (this.condsFluxCheck(targetCond.dynamism)) {
+        targetCond.level += this.condsFlux(0, targetCond.flux);
+      }
+      if (this.condsFluxCheck(targetCond.dynamism)) {
+        targetCond.flux += this.condsFlux(0, targetCond.surge);
+      }
+      
+      if (this.condsFluxCheck(this.eden.metaDynamism)) {
+        targetCond.dynamism += this.condsFlux(0, targetCond.dynamismFlux);
+      }
+      if (this.condsFluxCheck(this.eden.metaDynamism)) {
+        targetCond.dynamismFlux += this.condsFlux(0, targetCond.dynamismSurge);
+      }
+    }
+  }
+  
+  for (var cond in this.sensoryConds) {
+    for (var prop in this.sensoryConds[cond]) {
+      var targetCond = this.sensoryConds[cond][prop];
+      
+      if (this.condsFluxCheck(targetCond.dynamism)) {
+        targetCond.level += this.condsFlux(0, targetCond.flux);
+      }
+      if (this.condsFluxCheck(targetCond.dynamism)) {
+        targetCond.flux += this.condsFlux(0, targetCond.surge);
+      }
+      
+      if (this.condsFluxCheck(this.eden.metaDynamism)) {
+        targetCond.dynamism += this.condsFlux(0, targetCond.dynamismFlux);
+      }
+      if (this.condsFluxCheck(this.eden.metaDynamism)) {
+        targetCond.dynamismFlux += this.condsFlux(0, targetCond.dynamismSurge);
+    }
+  }
+  
+  for (var cond in this.enviroConds) {
+    for (var prop in this.enviroConds[cond]) {
+      var targetCond = this.enviro[cond][prop];
+      
+      if (this.condsFluxCheck(targetCond.dynamism)) {
+        targetCond.level += this.condsFlux(0, targetCond.flux);
+      }
+      if (this.condsFluxCheck(targetCond.dynamism)) {
+        targetCond.flux += this.condsFlux(0, targetCond.surge);
+      }
+      
+      if (this.condsFluxCheck(this.eden.metaDynamism)) {
+        targetCond.dynamism += this.condsFlux(0, targetCond.dynamismFlux);
+      }
+      if (this.condsFluxCheck(this.eden.metaDynamism)) {
+        targetCond.dynamismFlux += this.condsFlux(0, targetCond.dynamismSurge);
+    }
+  }
+};
