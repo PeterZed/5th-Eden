@@ -8,15 +8,15 @@ Used by every entity production method to create a new entity - whether that's b
 progenitor, divinely creating a new progenitor, or an entity reproducing.
 */
 eden.prototype.spawnEntity = function(xCoord, yCoord) {
-  var targetCell = eden.garden[yCoord][xCoord];
-  var entity = new Entity(xCoord, yCoord, this);
+  var targetCell = this.garden[yCoord][xCoord];
+  var targetEntity = new Entity(xCoord, yCoord, this);
   
   info.entities.essenceCount++;
-  entity.generateName();
+  targetEntity.generateName();
   
-  targetCell.entities.set(entity.id, entity);
-  this.living.set(entity.id, entity);
+  targetCell.entities.set(targetEntity.id, targetEntity);
+  this.living.set(targetEntity.id, targetEntity);
   this.aliveCount++;
   
-  return entity;
+  return targetEntity;
 };
