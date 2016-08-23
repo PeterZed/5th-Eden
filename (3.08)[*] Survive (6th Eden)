@@ -1,0 +1,16 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Checks to see if the entity survives this tick. Makes a probability roll against the chances of its
+survival on its present cell.
+
+The "struggle is the probability roll to see if the entity lives or dies, using the deathChance
+as the probability of it dying. If struggle > deathChance, the entity beats the odds and lives
+another turn, growing older. Otherwise, it perishes and this.death() is invoked.
+*/
+entity.prototype.evalLocalSurvival = function(localX, localY) {
+  var struggle = Math.random();
+  var deathChance = 1 - this.survivalProb[1][1];
+  
+  struggle > deathChance ? entity.age++ : this.death("Perished");
+};
