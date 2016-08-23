@@ -1,23 +1,4 @@
-var entityMethods = {
-    /*
-    Maximum difference between each paired attribute and condition is 100.
-    Right now the survival odds calculation is simple. I hope to improve on it so in the future
-    it's based on more than just the sum of the differences between the conditions' levels and the
-    corresponding attributes'. Need to consider how to do it.
-    */
-    survivalOddsFormula: function(entity, localX, localY) {
-        var attrs = entity.attributes;
-        var conds = entity.localCells[localY][localX].conditions;
-        var sumDiffs = 0;
-        var survivalOdds;
-        
-        for (var i = 0; i < attrs.length; i++) {
-            sumDiffs += Math.abs(attrs[i].level - conds[i].level);
-        }
-        survivalOdds = 1 - sumDiffs / ( 100 * attrs.length);
-        entity.survivalOdds[localY][localX] = survivalOdds;
-    },
-    
+var entityMethods = 
     /*
     First checks to see if the cell is uninhabited. If true, it sets this entity's battle odds
     to 1 for that cell.
@@ -58,17 +39,6 @@ var entityMethods = {
             battleStrengthTotal += battleStrength;
         }
         battleOdds[localX] = battleStrength / battleStrengthTotal;
-    },
-    
-    /*
-    The probability of the entity both surviving and winning the battle for this turn.
-    Overall odds are kept in an array separate from the arrays for survivalOdds and battleOdds
-    because I want to preserve them: the player will have access to the overall probability of
-    survival for a cell as well as the two probabilities that go into calculating it.
-    */
-    overallOddsFormula: function(entity, localX, localY) {
-        var overallOdds = entity.survivalOdds[localY][localX] * entity.battleOdds[localY][localX];
-        entity.overallOdds[localY][localX] = overallOdds;
     },
 
     /*
@@ -122,43 +92,6 @@ var entityMethods = {
             entity.y = targetCell.y,
             targetCell.entities.set(entity.id, entity)
         );
-    },
-    
-    /*
-    The "struggle" is the probability roll to see if the entity lives or dies, using the
-    deathOdds as the probability of it dying. If struggle > deathOdds, the entity beats the odds
-    and lives another turn and grows older. Otherwise, it perishes and this.death(entity) is
-    invoked.
-    */
-    survival: function(entity) {
-        var struggle = Math.random();
-        var deathOdds = 1 - entity.survivalOdds[1][1];
-        
-        struggle > deathOdds ? entity.age++ : entityMethods.death(entity, "Perished");
-    },
-    
-    /*
-    Entity dies. Updates the entity's relevant death info, removes it from the cell it inhabited,
-    updates the relevant information in Eden pertaining to entities, and adds this entity's
-    reference to the appropriate places in the afterworld's records.
-    */
-    death: function(entity, cause) {
-        var homeCell = eden.garden[entity.y][entity.x];
-        
-        entity.state = cause;
-        entity.turnOfDeath = eden.turn;
-        entity.deathLocality = "Cell #" + eden.garden[entity.y][entity.x].id + ", " +
-            "Coordinates (" + entity.x + ", " + entity.y + ")";
-        
-        homeCell.entities.delete(entity.id);
-        eden.entities.living.delete(entity.id);
-        eden.entities.aliveCount--;
-        eden.entities.deathCount++;
-            
-        entity.locality = afterworld.name;
-        afterworld.bookOfLife.get(cause).set(entity.id, entity);
-        afterworld.denizens.set(entity.id, entity);
-        afterworld.denizensCount++;
     },
     
     /*
