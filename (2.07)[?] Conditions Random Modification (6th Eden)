@@ -19,11 +19,11 @@ cell.prototype.condsMod = function(inversedMean, stdDev) {
   var variance = Math.pow(stdDev, 2);
   
   var distribution = gaussian(mean, variance);
-  var sample = distribution.ppf(Math.random());
+  var mod = distribution.ppf(Math.random());
   
   var negChance = 0.5;
   var roll = Math.random();
-  roll < negChance ? sample *= -1 : sample *= +1;
+  roll < negChance ? mod *= -1 : mod *= +1;
   
-  return sample;
+  return mod;
 };
