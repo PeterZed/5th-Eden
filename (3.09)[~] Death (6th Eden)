@@ -1,1 +1,23 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
+This entity dies. Updates the entity's relevant death info, removes it from the cell it inhabited,
+updates the relevant information in Eden and the Multiverse Info pertaining to entities, and adds
+this entity's reference to the appropriate places in the afterworld's records.
+*/
+entity.prototype.death(manner) = function(cause) {
+  this.state = cause;
+  this.turnOfDeath = this.eden.turn;
+  
+  this.deathLocality = "Cell #" + this.cell.id + ", Coordinates (" + this.cell.x + ", " +
+    this.cell.y + ")";
+  
+  this.cell.entities.delete(this.id);
+  this.eden.aliveCount--;
+  this.eden.deadCount++;
+  
+  this.locality = afterworld.name;
+  afterworld.bookOfLife.get(cause).set(entity.id, entity);
+  afterworld.denizens.set(entity.id, entity);
+  afterworld.denizensCount++;
+};
