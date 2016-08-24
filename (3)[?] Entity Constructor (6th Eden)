@@ -13,8 +13,7 @@ function entity(xCoord, yCoord, eden) {
   
   this.eden = eden;
   this.locality = eden.name;
-  this.cell = eden.garden[this.y][this.x];
-  this.localCells = this.cell.localCells;
+  this.cell = eden.garden[yCoord][xCoord];
   this.x = this.cell.x;
   this.y = this.cell.y;
   
