@@ -60,41 +60,6 @@ var entityMethods =
     },
     
     /*
-    First, calculates the bestMovementChoices. Then, selects a choice at random from it.
-    It's exceedingly rare that two cells will have the exact same odds, so most likely
-    bestMovementChoices will only ever have one element.
-    
-    In calculating the choice, bestChoices.length - 1 is used to account for the 0th index, which
-    holds the current bestOdds. Likewise, adding 1 at the end of the choice calculation accounts
-    for the bestOdds index.
-    
-    If the choice is not the homeCell, the entity moves. Deletes the entity's reference from
-    the cell.entities of the cell it was on. Then changes entity.x and entity.y, and adds its
-    reference to its new home cell's cell.entities.
-    
-    Movement effectively occurs simultaneously for every entity because the survival odds- from
-    which the movement evaluations are derived- are calculated prior to the movement phase.
-    */
-    move: function(entity) {
-        var homeCell = eden.garden[entity.y][entity.x];
-        var bestChoices;
-        var choice;
-        var targetCell;
-        
-        entityMethods.multiIteration(entity, entityMethods.evaluateMovementChoices, 3, 3);
-        bestChoices = entity.bestMovementChoices;
-        choice = Math.floor(Math.random() * (bestChoices.length - 1)) + 1;
-        targetCell = bestChoices[choice];
-        
-        targetCell === homeCell ? null : (
-            homeCell.entities.delete(entity.id),
-            entity.x = targetCell.x,
-            entity.y = targetCell.y,
-            targetCell.entities.set(entity.id, entity)
-        );
-    },
-    
-    /*
     Entity evaluates reproducing this turn. If the deathOdds on this cell lie exceed the
     riskThreshold, reproduction will be deemed too risky.
     
