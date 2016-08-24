@@ -1,0 +1,19 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+First, calls the method to choose which cell to move to. This choice is made by evaluating the
+different options. If the olc cell and the new cell are the same, the method is ended within the
+if statement's execution. If not, the entities Map within the oldCell and newCell are updated to
+reflect the movement. The entity is removed from the oldCell's list - for something cannot
+exist within two places at once, but it can exist in no place in the "physical" realm. Then,
+it is added to the newCell's list.
+*/
+entity.prototype.movement = function() {
+  var oldCell = this.cell;
+  var newCell = this.movementChoice();
+  
+  if (oldCell === newCell) {return;}
+  
+  oldCell.entities.delete(this.id);
+  newCell.entities.set(this.id, this);
+};
