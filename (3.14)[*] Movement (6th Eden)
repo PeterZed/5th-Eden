@@ -7,6 +7,9 @@ if statement's execution. If not, the entities Map within the oldCell and newCel
 reflect the movement. The entity is removed from the oldCell's list - for something cannot
 exist within two places at once, but it can exist in no place in the "physical" realm. Then,
 it is added to the newCell's list.
+
+Movement effectively occurs simultaneously for every entity because the survival formula- from
+which the movement evaluations are derived- are calculated prior to the movement phase.
 */
 entity.prototype.movement = function() {
   var oldCell = this.cell;
