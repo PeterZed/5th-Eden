@@ -11,7 +11,7 @@ it is added to the newCell's list.
 Movement effectively occurs simultaneously for every entity because the survival formula- from
 which the movement evaluations are derived- are calculated prior to the movement phase.
 */
-entity.prototype.movement = function() {
+Entity.prototype.movement = function() {
   var oldCell = this.cell;
   var newCell = this.movementChoice();
   
