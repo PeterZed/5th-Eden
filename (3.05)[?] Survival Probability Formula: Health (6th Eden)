@@ -25,7 +25,7 @@ for correcting negative probabilities and probabilities greater than 1.0.
 "feel" correct. So, this will be happening for a long time, and (hopefully) can be accomplished
 with player input.
 */
-entity.prototype.survivalProbHealth = function() {
+Entity.prototype.survivalProbHealth = function() {
   var x = ((this.health - this.injuries - this.thirst - this.hunger) * 0.1980688) - 9.90344;
   
   var weights = this.eden.survivalProbHealth;
