@@ -9,14 +9,14 @@ cells' conds are partly dependent upon one or more surrounding rows' cells:
 
 For those cells whose conditions' determination are dependent upon what their initialized
 neighbors' are, the average value of their neighbors' for the relevant property is calculated
-and that cell's condition is initiated based on this average. This is to ensure the average
+and that cell's condition is initialized based on this average. This is to ensure the average
 "smoothness" in the transition is equal from that cell to any of those already initialized cells.
 
 All this averaging and smoothing is handled within the Cell.prototype.condsDepInit method.
 */
 Eden.prototype.gardenCondsInit = function() {
-  for (j = 0; j < this.y; j++) {
-    for (i = 0; i < this.x; i++) {
+  for (j = 0; j < this.yAxis; j++) {
+    for (i = 0; i < this.xAxis; i++) {
       if (i === 0 & j === 0) {
         this.garden[j][i].condsIndInit();
       } else {
