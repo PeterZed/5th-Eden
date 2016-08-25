@@ -115,45 +115,7 @@ var entityMethods =
     the entities, because the higher the flux value is, the more erratic the level is from turn
     to turn, and thus the more difficult it is to adapt to their surroundings.
     */
-    
-    /*
-    The distribution calculations come from Gaussian Distribution, which I downloaded.
-        
-    parentAttributes.slice wouldn't work over jQuery.extend because .slice is only a shallow copy.
-    That is, since attributes is an array of objects .slice copies the references of the
-    original objects. It works fine for primitive data types, however, because they are immutable
-    and so both can point to the same primitives all they want without affecting each other.
-    
-    If I'm correct, this should work fine  and garbage collection will clear var dummy after the
-    function is complete, thus leaving child.attributes as the only thing holding the reference
-    to the dummy attributes array. Then the next time the function is run it'll just create a new
-    dummy array reference.
-    */
-    inheritAttributes: function(child, parentAttributes) {
-        var attrs = parentAttributes;
-        var dummy = [{attribute: "lightOptimal"}, {{attribute: "radiationTolerance"},
-        {attribute: "temperatureOptimal"}, {{attribute: "pressureOptimal"},
-        {attribute: "airCompositionOptimal"}, {attribute: "chemicalEnvironmentOptimal"},
-        {attribute: "aridityOptimal"}, {attribute: "acidityOptimal"},
-        {attribute: "salinityOptimal"}, {attribute: "nutrientsOptimal"},
-        {attribute: "wasteTolerance"}];
-        var distribution;
-        
-        for (var i = 0; i < attrs.length; i++) {
-            
-            distribution = gaussian(attrs[i].level, attrs[i].flux);  
-            dummy[i].level = Math.floor(distribution.ppf(Math.random()) * 100) / 100;
-            
-            distribution = gaussian(attrs[i].flux, attrs[i].surge);
-            dummy[i].flux = Math.floor(distribution.ppf(Math.random()) * 100) / 100;
-                
-            dummy[i].surge = 1;
-            
-            edenMethods.checkLimits(dummy[i]);
-        }
-        child.attributes = dummy;
-    },
-    
+
     /*
     The distribution calculations come from Gaussian Distribution, which I downloaded.
     */
