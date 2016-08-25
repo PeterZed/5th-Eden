@@ -5,8 +5,8 @@ Spawns a new entity, generates its name. Updates the relevant info.entities
 properties, adds the entity to the info's list of living entities, adds the entity to its Eden's
 list of living entities, and adds the entity to the appropriate cell.
     
-Used by every entity production method to create a new entity - whether that's by making a new
-progenitor, divinely creating a new progenitor, or an entity reproducing.
+Used by every entity production method to create a new entity - whether that's by a new progenitor
+spontaneously emerging, divinely creating a new progenitor, or an entity reproducing.
 */
 Eden.prototype.spawnEntity = function(xCoord, yCoord) {
   var targetCell = this.garden[yCoord][xCoord];
