@@ -10,7 +10,7 @@ in the probability roll for the conditions.
 functions. The initialization of sensoryConds and enviroConds are not yet determined, but I might do them
 the same as the cyclicalConds.
 */
-cell.prototype.condsIndInit = function() {
+Cell.prototype.condsIndInit = function() {
   for (var cond in this.cyclicalConds) {
     for (var prop in this.cyclicalConds[cond]) {
       var targetCond = this.cyclicalConds[cond][prop];
