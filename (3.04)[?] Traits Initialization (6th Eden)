@@ -7,7 +7,7 @@ flux min initial = 0.00, max initial = 10.00
 
 ? Still under development because I have yet to design any of the traits, or even name them.
 */
-entity.prototype.traitsInit = function() {
+Entity.prototype.traitsInit = function() {
   for (var i = 0; i < this.traits.length; i++) {
     this.traits[i].level = Math.floor(Math.random() * 10001) / 100;
     this.traits[i].flux = Math.floor(Math.random() * 1001) / 100;
