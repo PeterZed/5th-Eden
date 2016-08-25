@@ -5,7 +5,7 @@ Initializes the garden's metaDynamism values.
 Establishes a cell's neighboring cells.
 Initializes all of the conditions for the cells of the garden.
 */
-eden.prototype.gardenInit = function() {
+Eden.prototype.gardenInit = function() {
   this.uniformityLevel = Math.floor(Math.random() * 10001) / 100;
   this.uniformityFlux = Math.floor(Math.random() * 1001) / 100;
   this.uniformityDynamism = Math.floor(Math.random() * 10001) / 100;
