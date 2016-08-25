@@ -3,9 +3,6 @@
 
 Initializes a cell's conditions' values, independent of its neighbors'.
 
-Dynamism is limited to 99 because any higher and it would result in a probability greater than 1.0
-in the probability roll for the conditions.
-
 ? Still ongoing development until I work out how I want all of the conditions to act, but otherwise
 functions. The initialization of sensoryConds and enviroConds are not yet determined, but I might do them
 the same as the cyclicalConds.
