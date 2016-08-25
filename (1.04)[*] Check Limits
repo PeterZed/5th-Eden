@@ -14,8 +14,8 @@ Eden.prototype.checkLimits = function(property) {
   property.flux >= 0 && property.flux <= 10 ? null :
     (property.flux < 0 ? property.flux = 0 : property.flux = 10);
   
-  property.dynamism >= 0 && property.dynamism <= 00 ? null :
-    (property.dynamism < 0 ? property.dynamism = 0 : property.dynamism = 99);
+  property.dynamism >= 0 && property.dynamism <= 100 ? null :
+    (property.dynamism < 0 ? property.dynamism = 0 : property.dynamism = 100);
   property.dynamismFlux >= 0 && property.dynamismFlux <= 10 ? null :
     (property.dynamismFlux < 0 ? property.dynamismFlux = 0 : property.dynamismFlux = 10);
   
