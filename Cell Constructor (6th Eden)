@@ -1,0 +1,11 @@
+function Cell(xCoord, yCoord) {
+    this.id = eden.cellCount;
+    this.x = xCoord;
+    this.y = yCoord;
+    
+    /*
+    Lists references to this cell and its eight adjacent neighbors. Used when displaying the
+    minimap in the sidebar for the currently selected cell or entity.
+    */
+    this.localCells = [];
+}
