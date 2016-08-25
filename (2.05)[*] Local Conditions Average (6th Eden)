@@ -10,11 +10,13 @@ Cell.prototype.localCondsAvg = function(initCount) {
     for (var prop in this.needsConds[cond]) {
       var targetCond = this.needsConds[cond][prop];
       
-      targetCond.level = this.hundredthsRounding(targetCond.level / initCount)
-      targetCond.flux = this.hundredthsRounding(targetCond.flux / initCount)
+      targetCond.level = targetCond.level / initCount;
+      targetCond.flux = targetCond.flux / initCount;
       
-      targetCond.dynamism = this.hundredthsRounding(Math.round(targetCond.dynamism / initCount);
-      targetCond.dynamismFlux = this.hundredthsRounding(targetCond.dynamismFlux / initCount);
+      targetCond.dynamism = targetCond.dynamism / initCount;
+      targetCond.dynamismFlux = targetCond.dynamismFlux / initCount;
+      
+      this.eden.hundredthsRounding(targetCond);
     }
   }
   
@@ -22,11 +24,13 @@ Cell.prototype.localCondsAvg = function(initCount) {
     for (var prop in this.sensoryConds[cond]) {
       var targetCond = this.sensoryConds[cond][prop];
       
-      targetCond.level = this.hundredthsRounding(targetCond.level / initCount)
-      targetCond.flux = this.hundredthsRounding(targetCond.flux / initCount)
+      targetCond.level = targetCond.level / initCount;
+      targetCond.flux = targetCond.flux / initCount;
       
-      targetCond.dynamism = this.hundredthsRounding(Math.round(targetCond.dynamism / initCount);
-      targetCond.dynamismFlux = this.hundredthsRounding(targetCond.dynamismFlux / initCount);
+      targetCond.dynamism = targetCond.dynamism / initCount;
+      targetCond.dynamismFlux = targetCond.dynamismFlux / initCount;
+      
+      this.eden.hundredthsRounding(targetCond);
     }
   }
   
@@ -34,11 +38,13 @@ Cell.prototype.localCondsAvg = function(initCount) {
     for (var prop in this.enviroConds[cond]) {
       var targetCond = this.enviroConds[cond][prop];
       
-      targetCond.level = this.hundredthsRounding(targetCond.level / initCount)
-      targetCond.flux = this.hundredthsRounding(targetCond.flux / initCount)
+      targetCond.level = targetCond.level / initCount;
+      targetCond.flux = targetCond.flux / initCount;
       
-      targetCond.dynamism = this.hundredthsRounding(Math.round(targetCond.dynamism / initCount);
-      targetCond.dynamismFlux = this.hundredthsRounding(targetCond.dynamismFlux / initCount);
+      targetCond.dynamism = targetCond.dynamism / initCount;
+      targetCond.dynamismFlux = targetCond.dynamismFlux / initCount;
+      
+      this.eden.hundredthsRounding(targetCond);
     }
   }
 };
