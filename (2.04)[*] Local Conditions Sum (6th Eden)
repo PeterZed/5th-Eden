@@ -7,9 +7,9 @@ dynamismFlux to the current cells' values, thus summing the localCells' values.
 Cell.prototype.localCondsSum = function(xLocal, yLocal) {
    var localCell = this.localCells[yLocal][xLocal];
    
-   for (var cond in this.cyclicalConds) {
-    for (var prop in this.cyclicalConds[cond]) {
-      var targetCond = this.cyclicalConds[cond][prop];
+   for (var cond in this.needsConds) {
+    for (var prop in this.needsConds[cond]) {
+      var targetCond = this.needsConds[cond][prop];
     
       targetCond.level += localCell[cond][prop].level;
       targetCond.flux += localCell[cond][prop].flux;
