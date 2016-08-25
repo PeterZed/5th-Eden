@@ -1,0 +1,21 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Checks each tick to see if an entity coalesces from the chaos of the æther.
+
+Makes a roll against the probability to check if it occurs this turn. If so, it calls the method
+populate() with 1 as the argument to spawn a new progenitor at random in the garden.
+Then, runs through the loop again to see if any subsequent emergences occur, until the roll fails.
+*/
+Eden.prototype.spontaneousEmergence = function() {
+  do {
+    var emergence = false;
+    var roll = Math.random();
+    var prob = this.entities.spontaneousEmergenceProb / 100;
+    
+    if (roll <= prob) {
+      this.populate(1);
+      emergence = true;
+    }
+  } while (emergence)
+};
