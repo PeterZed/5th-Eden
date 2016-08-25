@@ -14,7 +14,9 @@ Eden.prototype.spawnEntity = function(xCoord, yCoord) {
   
   info.entities.essenceCount++;
   info.entities.living.set(targetEntity.id, targetEntity);
+  
   this.entities.living.set(targetEntity.id, targetEntity);
+  this.aliveCount++;
   
   targetCell.entities.set(targetEntity.id, targetEntity);
   
