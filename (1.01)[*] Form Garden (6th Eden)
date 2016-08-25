@@ -10,6 +10,8 @@ Eden.prototype.formGarden = function() {
     */
     for (var i = 0; i < this.xAxis; i++) {
       this.garden[j][i] = new Cell(i, j, this);
+      info.cells.count++;
+      this.cellCount++;
     }
   }
 };
