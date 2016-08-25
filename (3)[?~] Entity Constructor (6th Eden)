@@ -9,7 +9,6 @@ function Entity(xCoord, yCoord, eden) {
   this.id = info.entities.essenceCount + info.entities.lostSouls;
   this.name = "";
   
-  this.ancestryList = []; // The entity's ancestors, in order. Contains their ID numbers only.
   this.ancestry = new Map();
   this.lineage = new Map();  // All its direct descendants, from oldest to youngest.
   
@@ -21,9 +20,9 @@ function Entity(xCoord, yCoord, eden) {
   this.homeworld = this.eden.id;  // As players have the ability to move an entity from one world.
   
   this.state = "Alive";
-  this.turnOfGenesis = eden.turn;
-  this.genesisLocality = "Cell #" + eden.garden[this.y][this.x].id + ", " +
-    "Coordinates (" + this.x + ", " + this.y + ")"; // Because 'location' is a reserved keyword
+  this.turnOfGenesis = this.eden.turn;
+  this.genesisLocality = "Cell #" + this.eden.garden[this.y][this.x].id + ", " +
+    "Coordinates (" + this.x + ", " + this.y + ") in Eden #" + this.eden.id; // Because 'location' is a reserved keyword
   this.age = 0; // Number of ticks survived thus far.
   this.victories = 0; // Number of other entities this entity has slain in battle.
   
