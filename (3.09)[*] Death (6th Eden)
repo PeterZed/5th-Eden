@@ -5,7 +5,7 @@ This entity dies. Updates the entity's relevant death info, removes it from the 
 updates the relevant information in Eden and the Multiverse Info pertaining to entities, and adds
 this entity's reference to the appropriate places in the afterworld's records.
 */
-entity.prototype.death(manner) = function(cause) {
+Entity.prototype.death(manner) = function(cause) {
   this.state = cause;
   this.turnOfDeath = this.eden.turn;
   
