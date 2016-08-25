@@ -5,7 +5,7 @@
 another. The attributes exist, but they need a lot of work to match my present vision for them.
 */
 
-function entity(xCoord, yCoord, eden) {
+function Entity(xCoord, yCoord, eden) {
   this.id = info.entities.essenceCount + info.entities.lostSouls
   this.name = "";
   this.ancestryList = []; // The entity's ancestors, in order. Contains their ID numbers only.
