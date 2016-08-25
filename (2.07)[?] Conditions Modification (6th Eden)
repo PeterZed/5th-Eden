@@ -12,7 +12,7 @@ which is the average of all of its presently initialized neighboring cells.
 
 ? Not yet finished as I know that I won't keep uniformity and variability's max values at 100
 and 10, respectively, as there is simply too much room for variation - far too many worlds where
-survival simply will not happen to any significant amount.
+life simply will struggle too much.
 */
 Cell.prototype.condsMod = function(inversedMean, stdDev) {
   var mean = 100 - inversedMean;
