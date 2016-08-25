@@ -4,6 +4,10 @@
 Initializes the garden's metaDynamism, uniformity, and variability values.
 Establishes each cell's neighboring cells.
 Initializes all of the conditions for the cells of the garden.
+
+Initializes the probability of the spontaneous emergence of an entity in the garden each tick.
+The calculation is * 10000 + 1 instead of simply * 10001 to enforce that 0.00 is not a possibility,
+while 100.00 remaining a possibile outcome to the calculation.
 */
 Eden.prototype.gardenInit = function() {
   this.uniformity.level = Math.floor(Math.random() * 10001) / 100;
@@ -18,6 +22,8 @@ Eden.prototype.gardenInit = function() {
 
   this.metaDynamism.level = Math.floor(Math.random() * 10001) / 100;
   this.metaDynamism.flux = Math.floor(Math.random() * 1001) / 100;
+  
+  this.entities.spontaneousEmergenceProb = Math.floor(Math.random() * 10000 + 1) / 100;
 
   for (var j = 0; j < this.yAxis; j++) {
     for (var i = 0; i < this.xAxis; i++) {
