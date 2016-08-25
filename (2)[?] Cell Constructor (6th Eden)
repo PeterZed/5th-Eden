@@ -6,7 +6,7 @@ own host Eden object. That is, it readily has access to the reference value for 
 is a part.
 
 ? The sensory conditions will likely vary in a way that's different than the other conditions:
-Slower, perhaps; more predictable; smaller range of fluctuations.
+Slower, perhaps; more predictable; smaller range of fluctuations - i.e., more constant.
 */
 function Cell(xCoord, yCoord, eden) {
   this.id = info.cells.count;
@@ -33,11 +33,12 @@ function Cell(xCoord, yCoord, eden) {
   */
   
   /*
-  Conditions related to an entity's needs: Hunger, thirst, excretion. They are of the form
-  y = a * sin(bx) + c, where a is the amplitude (or range), b is the period coefficient,
-  and c is the average value (i.e., the value at x = 0) over one cycle.
-  These values, and the x value, are initialized at the cell's creation; from them, the initial
-  value is calculated.
+  Conditions related to an entity's needs: Hunger to Nourishment, Thirst to Water,
+  Excretion to Waste. They are of the form:
+  y = a * sin(bx) + c
+  where a is the amplitude (or range), b is the period coefficient,   and c is the average
+  value (i.e., the value at x = 0) over one cycle. These values, and the x value, are
+  initialized at the cell's creation; from them, the initial value is calculated.
   */
   this.needsConds = {
     nourishment: {
