@@ -6,7 +6,7 @@ calling cell is located at [1][1] in the localCells array. The purpose of xMod a
 used in conjunction with the eden.coordsWrap() to determine the actual x and y values in the garden
 for the target cell.
 */
-cell.prototype.localCellsDetermination = function() {
+Cell.prototype.localCellsDetermination = function() {
   for (var j = 0; j < 3; j++) {
     this.localCells[j] = [];
     
