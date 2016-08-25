@@ -3,7 +3,7 @@
 First, converts the dynamism of the property to its probability of fluctuating. Then, rolls against
 the probability to see if it may undergo a fluctuation this tick.
 */
-cell.prototype.condsFluxCheck = function(dynamism) {
+Cell.prototype.condsFluxCheck = function(dynamism) {
   var prob = 1 / (100 - dynamism);
   var roll = Math.random();
   
