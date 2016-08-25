@@ -9,11 +9,13 @@ wraparound at the edges.
 Eden.prototype.coordsWrap = function(xWrap, yWrap) {
   var xCorrect = xWrapped;
   var yCorrect = yWrapped;
-        
-  xCorrect >= 0 && xCorrect < this.xAxis ? xCorrect = this.xAxis :
-    (xCorrect < 0 ? xCorrect += this.xAxis : xCorrect -= this.xAxis);
-  yCorrect >= 0 && yCorrect < this.yAxis ? yCorrect = this.yAxis :
-    (yCorrect < 0 ? yCorrect += this.yAxis : yCorrect -= this.yAxis);
+  
+  while (xCorrect < 0 || xCorrect >= this.xAxis) {
+    xCorrect < 0 ? xCorrect += this.xAxis : xCorrect -= this.xAxis;
+  }
+  while (yCorrect < 0 || yCorrect >= this.yAxis) {
+    yCorrect < 0 ? yCorrect += this.yAxis : yCorrect -= this.yAxis;
+  }
     
   return this.garden[yCorrect][xCorrect];
 };
