@@ -7,7 +7,7 @@ properties, and adds the entity to the appropriate cell.
 Used by every entity production method to create a new entity - whether that's by making a new
 progenitor, divinely creating a new progenitor, or an entity reproducing.
 */
-eden.prototype.spawnEntity = function(xCoord, yCoord) {
+Eden.prototype.spawnEntity = function(xCoord, yCoord) {
   var targetCell = this.garden[yCoord][xCoord];
   var targetEntity = new Entity(xCoord, yCoord, this);
   
