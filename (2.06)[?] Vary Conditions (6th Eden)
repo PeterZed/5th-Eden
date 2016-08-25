@@ -14,12 +14,13 @@ Cell.prototype.varyConds = function() {
     for (var prop in this.needsConds[cond]) {
       var targetCond = this.needsConds[cond][prop];
       
-      targetCond.level += this.condsMod(this.eden.uniformity.level, this.varibility.level);
-      targetCond.flux += this.condsMod(this.eden.uniformity.flux, this.variability.flux;
+      targetCond.level += this.condsMod(this.eden.uniformity.level, this.eden.varibility.level);
+      targetCond.flux += this.condsMod(this.eden.uniformity.flux, this.eden.variability.flux;
       
-      targetCond.dynamism += this.condsMod(this.eden.uniformity.dynamism, this.variability.dynamism);
+      targetCond.dynamism += this.condsMod(this.eden.uniformity.dynamism,
+        this.eden.variability.dynamism);
       targetCond.dynamismFlux += this.condsMod(this.eden.uniformity.dynamismFlux,
-        this.variability.dynamismFlux);
+        this.eden.variability.dynamismFlux);
     }
   }
   
@@ -27,12 +28,13 @@ Cell.prototype.varyConds = function() {
     for (var prop in this.sensoryConds[cond]) {
       var targetCond = this.sensoryConds[cond][prop];
       
-      targetCond.level += this.condsMod(this.eden.uniformity.level, this.varibility.level);
-      targetCond.flux += this.condsMod(this.eden.uniformity.flux, this.variability.flux;
+      targetCond.level += this.condsMod(this.eden.uniformity.level, this.eden.varibility.level);
+      targetCond.flux += this.condsMod(this.eden.uniformity.flux, this.eden.variability.flux;
       
-      targetCond.dynamism += this.condsMod(this.eden.uniformity.dynamism, this.variability.dynamism);
+      targetCond.dynamism += this.condsMod(this.eden.uniformity.dynamism,
+        this.eden.variability.dynamism);
       targetCond.dynamismFlux += this.condsMod(this.eden.uniformity.dynamismFlux,
-        this.variability.dynamismFlux);
+        this.eden.variability.dynamismFlux);
     }
   }
   
@@ -40,12 +42,13 @@ Cell.prototype.varyConds = function() {
     for (var prop in this.enviroConds[cond]) {
       var targetCond = this.enviroConds[cond][prop];
       
-      targetCond.level += this.condsMod(this.eden.uniformity.level, this.varibility.level);
-      targetCond.flux += this.condsMod(this.eden.uniformity.flux, this.variability.flux;
+      targetCond.level += this.condsMod(this.eden.uniformity.level, this.eden.varibility.level);
+      targetCond.flux += this.condsMod(this.eden.uniformity.flux, this.eden.variability.flux;
       
-      targetCond.dynamism += this.condsMod(this.eden.uniformity.dynamism, this.variability.dynamism);
+      targetCond.dynamism += this.condsMod(this.eden.uniformity.dynamism,
+        this.eden.variability.dynamism);
       targetCond.dynamismFlux += this.condsMod(this.eden.uniformity.dynamismFlux,
-        this.variability.dynamismFlux);
+        this.eden.variability.dynamismFlux);
     }
   }
 };
