@@ -50,10 +50,21 @@ function Eden(name, columns, rows) {
     surge: 1
   };
   
+  /*
+  spontaneousEmergenceProb is the probability of an entity spontaneously emerging and spawning
+  in the garden each tick. The purpose of this is so that the probability of the garden dying
+  off completely and remaining empty will always be zero. Thus, there is always the chance,
+  however small, of stability and equilibrium establishing within the garden.
+  
+  living is a Map of all presently alive entities within this garden. aliveCount is the number of
+  presently living entities in the garden. deadCount is the number of entities that have perished
+  in this garden.
+  */
   this.entities = {
-    this.living: new Map(),
-    this.aliveCount: 0,
-    this.deadCount: 0
+    spontaneousEmergenceProb: null,
+    living: new Map(),
+    aliveCount: 0,
+    deadCount: 0
   };
   
   this.turn = 1;
