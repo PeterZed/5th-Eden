@@ -1,5 +1,8 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Forms the array of arrays of Cell objects, which ultimately serves as the game map - known as the
+"garden".
 */
 Eden.prototype.formGarden = function() {
   for (var j = 0; j < this.yAxis; j++) {
