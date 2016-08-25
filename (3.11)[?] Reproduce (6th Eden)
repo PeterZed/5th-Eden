@@ -6,7 +6,7 @@ stackoverflow.com/questions/122102/what-is-the-most-efficient-way-to-clone-an-ob
 says: var newObject = jQuery.extend(true, {}, oldObject); to do a deep copy using jQuery. I'll
 trust this, but test it out at a later time.
 */
-entity.prototype.reproduce = function() {
+Entity.prototype.reproduce = function() {
   var child = this.eden.spawnEntity(this.x, this.y);
   
   this.lineage.set (child.id, child);
