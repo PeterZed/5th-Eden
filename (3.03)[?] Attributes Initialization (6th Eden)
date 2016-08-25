@@ -9,39 +9,33 @@ flux min initial = 0.00, max initial = 10.00
 functions.
 */
 Entity.prototype.attrsInit = function() {
-  for (var attr in this.cyclicalAttrs) {
-    for (var prop in this.cyclicalAttrs[attr]) {
-      var targetAttr = this.cyclicalAttr[attr][prop];
+  for (var attr in this.survivalAttrs) {
+    var targetAttr = this.survivalAttrs[attr];
     
-      targetAttr.level = Math.floor(Math.random() * 10001) / 100;
-      targetAttr.flux = Math.floor(Math.random() * 1001) / 100;
+    targetAttr.level = Math.floor(Math.random() * 10001) / 100;
+    targetAttr.flux = Math.floor(Math.random() * 1001) / 100;
       
-      targetAttr.mutability = Math.floor(Math.random() * 10001) / 100;
-      targetAttr.mutabilityFlux = Math.floor(Math.random() * 1001) / 100;
-    }
+    targetAttr.mutability = Math.floor(Math.random() * 10001) / 100;
+    targetAttr.mutabilityFlux = Math.floor(Math.random() * 1001) / 100;
   }
   
   for (var attr in this.sensoryAttrs) {
-    for (var prop in this.sensoryAttrs[attr]) {
-      var targetAttr = this.sensoryAttr[attr][prop];
+    var targetAttr = this.sensoryAttrs[attr];
     
-      targetAttr.level = Math.floor(Math.random() * 10001) / 100;
-      targetAttr.flux = Math.floor(Math.random() * 1001) / 100;
+    targetAttr.level = Math.floor(Math.random() * 10001) / 100;
+    targetAttr.flux = Math.floor(Math.random() * 1001) / 100;
       
-      targetAttr.mutability = Math.floor(Math.random() * 10001) / 100;
-      targetAttr.mutabilityFlux = Math.floor(Math.random() * 1001) / 100;
-    }
+    targetAttr.mutability = Math.floor(Math.random() * 10001) / 100;
+    targetAttr.mutabilityFlux = Math.floor(Math.random() * 1001) / 100;
   }
   
   for (var attr in this.enviroAttrs) {
-    for (var prop in this.enviroAttrs[attr]) {
-      var targetAttr = this.enviroAttr[attr][prop];
+    var targetAttr = this.enviroAttrs[attr];
     
-      targetAttr.level = Math.floor(Math.random() * 10001) / 100;
-      targetAttr.flux = Math.floor(Math.random() * 1001) / 100;
+    targetAttr.level = Math.floor(Math.random() * 10001) / 100;
+    targetAttr.flux = Math.floor(Math.random() * 1001) / 100;
       
-      targetAttr.mutability = Math.floor(Math.random() * 10001) / 100;
-      targetAttr.mutabilityFlux = Math.floor(Math.random() * 1001) / 100;
-    }
+    targetAttr.mutability = Math.floor(Math.random() * 10001) / 100;
+    targetAttr.mutabilityFlux = Math.floor(Math.random() * 1001) / 100;
   }
 };
