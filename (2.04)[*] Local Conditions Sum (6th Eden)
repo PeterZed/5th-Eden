@@ -4,7 +4,7 @@
 This method adds the referenced local cell's values for each condition's level, flux, dynamism, and
 dynamismFlux to the current cells' values, thus summing the localCells' values.
 */
-cell.prototype.localCondsSum = function(xLocal, yLocal) {
+Cell.prototype.localCondsSum = function(xLocal, yLocal) {
    var localCell = this.localCells[yLocal][xLocal];
    
    for (var cond in this.cyclicalConds) {
