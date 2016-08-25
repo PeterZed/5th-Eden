@@ -6,18 +6,18 @@ Establishes a cell's neighboring cells.
 Initializes all of the conditions for the cells of the garden.
 */
 Eden.prototype.gardenInit = function() {
-  this.uniformityLevel = Math.floor(Math.random() * 10001) / 100;
-  this.uniformityFlux = Math.floor(Math.random() * 1001) / 100;
-  this.uniformityDynamism = Math.floor(Math.random() * 10001) / 100;
-  this.uniformityDynamismFlux = Math.floor(Math.random() * 1001) / 100;
+  this.uniformity.level = Math.floor(Math.random() * 10001) / 100;
+  this.uniformity.flux = Math.floor(Math.random() * 1001) / 100;
+  this.uniformity.dynamism = Math.floor(Math.random() * 10001) / 100;
+  this.uniformity.dynamismFlux = Math.floor(Math.random() * 1001) / 100;
   
-  this.variabilityLevel = Math.floor(Math.random() * 10001) / 100;
-  this.variabilityFlux = Math.floor(Math.random() * 1001) / 100;
-  this.variabilityDynamism = Math.floor(Math.random() * 10001) / 100;
-  this.variabilityDynamismFlux = Math.floor(Math.random() * 1001) / 100;
+  this.variability.level = Math.floor(Math.random() * 10001) / 100;
+  this.variability.flux = Math.floor(Math.random() * 1001) / 100;
+  this.variability.dynamism = Math.floor(Math.random() * 10001) / 100;
+  this.variability.dynamismFlux = Math.floor(Math.random() * 1001) / 100;
 
-  this.metaDynamism = Math.floor(Math.random() * 10001) / 100;
-  this.metaDynamismFlux = Math.floor(Math.random() * 1001) / 100;
+  this.metaDynamism.level = Math.floor(Math.random() * 10001) / 100;
+  this.metaDynamism.flux = Math.floor(Math.random() * 1001) / 100;
 
   for (var j = 0; j < this.y; j++) {
     for (var i = 0; i < this.x; i++) {
