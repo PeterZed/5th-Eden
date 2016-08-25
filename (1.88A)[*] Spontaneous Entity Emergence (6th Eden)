@@ -11,7 +11,7 @@ Eden.prototype.spontaneousEmergence = function() {
   do {
     var emergence = false;
     var roll = Math.random();
-    var prob = this.entities.spontaneousEmergenceProb / 100;
+    var prob = this.entities.spontaneousEmergenceProb;
     
     if (roll <= prob) {
       this.populate(1);
