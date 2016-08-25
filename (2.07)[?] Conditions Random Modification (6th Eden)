@@ -14,7 +14,7 @@ which is the average of all of its presently initialized neighboring cells.
 and 10, respectively, as there is simply too much room for variation - far too many worlds where
 survival simply will not happen to any significant amount.
 */
-cell.prototype.condsMod = function(inversedMean, stdDev) {
+Cell.prototype.condsMod = function(inversedMean, stdDev) {
   var mean = 100 - inversedMean;
   var variance = Math.pow(stdDev, 2);
   
