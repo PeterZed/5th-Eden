@@ -9,7 +9,7 @@ values (as determined by the cell.prototype.condsMod function).
 
 ? Unknown if sensory and enviro conds will function identically to cylical conds at this time.
 */
-cell.prototype.varyConds = function() {
+Cell.prototype.varyConds = function() {
   for (var cond in this.cyclicalConds) {
     for (var prop in this.cyclicalConds[cond]) {
       var targetCond = this.cyclicalConds[cond][prop];
