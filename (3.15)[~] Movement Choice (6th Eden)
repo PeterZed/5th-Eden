@@ -2,7 +2,7 @@
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 */
-entity.prototype.movementChoice = function() {
+Entity.prototype.movementChoice = function() {
 
   return choice;
 };
