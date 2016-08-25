@@ -1,8 +1,8 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-Initializes the garden's metaDynamism values.
-Establishes a cell's neighboring cells.
+Initializes the garden's metaDynamism, uniformity, and variability values.
+Establishes each cell's neighboring cells.
 Initializes all of the conditions for the cells of the garden.
 */
 Eden.prototype.gardenInit = function() {
@@ -19,8 +19,8 @@ Eden.prototype.gardenInit = function() {
   this.metaDynamism.level = Math.floor(Math.random() * 10001) / 100;
   this.metaDynamism.flux = Math.floor(Math.random() * 1001) / 100;
 
-  for (var j = 0; j < this.y; j++) {
-    for (var i = 0; i < this.x; i++) {
+  for (var j = 0; j < this.yAxis; j++) {
+    for (var i = 0; i < this.xAxis; i++) {
       this.garden[j][i].localCellsDetermination();
     }
   }
