@@ -11,7 +11,7 @@ functions.
 probability of a generational fluctuation for a given property.
 
 */
-entity.prototype.attrsInit = function() {
+Entity.prototype.attrsInit = function() {
   for (var i = 0; i < this.cyclicalAttrs.length; i++) {
     this.cyclicalAttrs[i].level = Math.floor(Math.random() * 10001) / 100;
     this.cyclicalAttrs[i].flux = Math.floor(Math.random() * 1001) / 100;
