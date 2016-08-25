@@ -13,9 +13,8 @@ Cell.prototype.localCellsDetermination = function() {
     for (var i = 0; i < 3; i++) {
       var xMod = this.x - 1 + i;
       var yMod = this.y - 1 + j;
-      var targetCell = this.eden.coordsWrap(xMod, yMod);
-                
-      this.localCells[j][i] = targetCell;
+      
+      this.localCells[j][i] = this.eden.coordsWrap(xMod, yMod);
     }
   }
 };
