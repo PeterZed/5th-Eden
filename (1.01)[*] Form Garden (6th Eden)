@@ -2,15 +2,14 @@
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 */
 Eden.prototype.formGarden = function() {
-  for (var j = 0; j < this.y; j++) {
-    this.garden[j] = [];
+  for (var j = 0; j < this.yAxis; j++) {
+    this.garden[j] = [];  // Creates a new row in the garden array
     
     /*
     Creates a new Cell instance at each index in the multidimensional array.
     */
-    for (var i = 0; i < this.x; i++) {
-      this.cellCount++;
-      this.garden[j][i] = new Cell(i,j,this);
+    for (var i = 0; i < this.xAxis; i++) {
+      this.garden[j][i] = new Cell(i, j, this);
     }
   }
 };
