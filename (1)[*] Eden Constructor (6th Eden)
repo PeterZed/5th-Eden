@@ -18,8 +18,9 @@ function Eden(name, columns, rows) {
   this.garden = [];
   
   /*
-  Uniformity is the world's average expected difference from cell to cell for a given property.
-  This is utilized when the world is first initialized.
+  Uniformity is related to the world's average expected difference from cell to cell for a
+  given property. This is utilized when the world is first initialized.
+  The average expected difference is 100 - this.uniformity.level, a so-called "disuniformity".
   */
   this.uniformity = {
     level: null,
