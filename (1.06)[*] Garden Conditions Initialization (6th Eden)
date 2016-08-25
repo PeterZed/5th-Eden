@@ -1,9 +1,7 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-First, determines the middle cell's coordinates for the rows and columns of the garden.
-
-Then, initializes cell (0,0) in the garden, which is the only cell determined independently of the
+Initializes cell (0,0) in the garden, which is the only cell determined independently of the
 conditions of all other cells:
 
 The top row's cells are the only row initialized independent of other rows. Every other row's
@@ -14,9 +12,9 @@ neighbors' are, the average value of their neighbors' for the relevant property 
 and that cell's condition is initiated based on this average. This is to ensure the average
 "smoothness" in the transition is equal from that cell to any of those already initialized cells.
 
-All this averaging and smoothing is handled within the cell.prototype.condsDepInit method.
+All this averaging and smoothing is handled within the Cell.prototype.condsDepInit method.
 */
-eden.prototype.gardenCondsInit = function() {
+Eden.prototype.gardenCondsInit = function() {
   for (j = 0; j < this.y; j++) {
     for (i = 0; i < this.x; i++) {
       if (i === 0 & j === 0) {
