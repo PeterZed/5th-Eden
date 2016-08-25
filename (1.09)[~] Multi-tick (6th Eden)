@@ -1,0 +1,10 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Advances the Eden's turn by num number of ticks, as specified by the user.
+*/
+Eden.prototype.multiTick = function(num) {
+  for (var i = 0; i < num; i++) {
+    this.tick();
+  }
+};
