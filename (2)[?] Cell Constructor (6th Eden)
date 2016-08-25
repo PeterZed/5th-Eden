@@ -9,7 +9,7 @@ is a part.
 Slower, perhaps; more predictable; smaller range of fluctuations.
 */
 function Cell(xCoord, yCoord, eden) {
-  this.id = eden.cellCount;
+  this.id = info.cells.count;
   this.eden = eden;
   this.x = xCoord;
   this.y = yCoord;
