@@ -36,7 +36,7 @@ function Entity(xCoord, yCoord, eden) {
   to the cyclicalConds of a cell. In the future, they may be renamed to better reflect both the
   conditions and the attributes.
   */
-  this.cyclicalAttrs = [
+  this.survivalAttrs = [
     {condition: "nourishment", level: null, flux: null, surge: 1},
     {condition: "water", level: null, flux: null, surge: 1},
     {condition: "waste", level: null, flux: null, surge: 1}
