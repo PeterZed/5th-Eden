@@ -1,5 +1,8 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+The Eden constructor serves to build objects that serve as the game world. In here, information
+that governs the mechanics of the world is found.
 */
 function Eden(name, columns, rows) {
   this.name = name;
@@ -8,10 +11,15 @@ function Eden(name, columns, rows) {
   this.xAxis = columns;
   this.yAxis = rows;
   this.cellCount = 0;
+  /*
+  The game map is referred to as the "garden". It is an array of arrays, the nested arrays being
+  rows of the garden and the outer indices being the columns.
+  */
   this.garden = [];
   
   /*
   Uniformity is the world's average expected difference from cell to cell for a given property.
+  This is utilized when the world is first initialized.
   */
   this.uniformity = {
     level: null,
@@ -22,7 +30,7 @@ function Eden(name, columns, rows) {
   
   /*
   Variability is the world's standard deviation for expected difference from cell to cell for a
-  given property.
+  given property. This is utilized whne the world is first initialized.
   */
   this.variability = {
     level: null,
@@ -33,7 +41,7 @@ function Eden(name, columns, rows) {
   
   /*
   Meta dynamism is 100 * probability of a fluctuation occurring in the given cell's dynamism.
-  It's also related to the average number of turns expected to pass before this Eden's metaDynamism
+  It's related to the average number of turns expected to pass before this Eden's metaDynamism
   or metaDynamismFlux values undergo fluctuation.
   */
   this.metaDynamism = {
