@@ -1,8 +1,8 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-This method adds the referenced local cell's values for each condition's level, flux, dynamism, and
-dynamismFlux to the current cell's values, thus summing the localCells' values.
+This method adds the referenced local cell's values for each condition property's level, flux,
+dynamism, and dynamismFlux to the current cell's values, thus summing the localCells' values.
 */
 Cell.prototype.localCondsSum = function(xLocal, yLocal) {
    var localCell = this.localCells[yLocal][xLocal];
