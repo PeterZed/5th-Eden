@@ -10,11 +10,11 @@ Cell.prototype.localCondsAvg = function(initCount) {
     for (var prop in this.needsConds[cond]) {
       var targetCond = this.needsConds[cond][prop];
       
-      targetCond.level = Math.round(targetCond.level / initCount * 100);
-      targetCond.flux = Math.round(targetCond.flux / initCount * 100);
+      targetCond.level = Math.round(targetCond.level / initCount * 100) / 100;
+      targetCond.flux = Math.round(targetCond.flux / initCount * 100) / 100;
       
-      targetCond.dynamism = Math.round(targetCond.dynamism / initCount * 100);
-      targetCond.dynamismFlux = Math.round(targetCond.dynamismFlux / initCount * 100);
+      targetCond.dynamism = Math.round(targetCond.dynamism / initCount * 100) / 100;
+      targetCond.dynamismFlux = Math.round(targetCond.dynamismFlux / initCount * 100) / 100;
     }
   }
   
@@ -22,11 +22,11 @@ Cell.prototype.localCondsAvg = function(initCount) {
     for (var prop in this.sensoryConds[cond]) {
       var targetCond = this.sensoryConds[cond][prop];
       
-      targetCond.level = Math.round(targetCond.level / initCount * 100);
-      targetCond.flux = Math.round(targetCond.flux / initCount * 100);
+      targetCond.level = Math.round(targetCond.level / initCount * 100) / 100;
+      targetCond.flux = Math.round(targetCond.flux / initCount * 100) / 100;
       
-      targetCond.dynamism = Math.round(targetCond.dynamism / initCount * 100);
-      targetCond.dynamismFlux = Math.round(targetCond.dynamismFlux / initCount * 100);
+      targetCond.dynamism = Math.round(targetCond.dynamism / initCount * 100) / 100;
+      targetCond.dynamismFlux = Math.round(targetCond.dynamismFlux / initCount * 100) / 100;
     }
   }
   
@@ -34,11 +34,11 @@ Cell.prototype.localCondsAvg = function(initCount) {
     for (var prop in this.enviroConds[cond]) {
       var targetCond = this.enviroConds[cond][prop];
       
-      targetCond.level = Math.round(targetCond.level / initCount * 100);
-      targetCond.flux = Math.round(targetCond.flux / initCount * 100);
+      targetCond.level = Math.round(targetCond.level / initCount * 100) / 100;
+      targetCond.flux = Math.round(targetCond.flux / initCount * 100) / 100;
       
-      targetCond.dynamism = Math.round(targetCond.dynamism / initCount * 100);
-      targetCond.dynamismFlux = Math.round(targetCond.dynamismFlux / initCount * 100);
+      targetCond.dynamism = Math.round(targetCond.dynamism / initCount * 100) / 100;
+      targetCond.dynamismFlux = Math.round(targetCond.dynamismFlux / initCount * 100) / 100;
     }
   }
 };
