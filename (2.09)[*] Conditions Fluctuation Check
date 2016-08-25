@@ -7,7 +7,7 @@ Cell.prototype.condsFluxCheck = function(dynamism) {
   var prob = 1 / (100 - dynamism);
   var roll = Math.random();
   
-  if (roll roll <= prob) {
+  if (roll <= prob) {
     return true;
   } else {
     return false;
