@@ -5,7 +5,7 @@ Divides the sum of the values for the cell's initialized neighbors' conditions b
 neighbors that have been initialized. Does this for level, flux, dynamism, and dynamismFlux for
 each condition property. Rounds to the hundredths place.
 */
-cell.prototype.localCondsAvg = function(initCount) {
+Cell.prototype.localCondsAvg = function(initCount) {
   for (var cond in this.cyclicalConds) {
     for (var prop in this.cyclicalConds[cond]) {
       var targetCond = this.cyclicalConds[cond][prop];
