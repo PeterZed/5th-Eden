@@ -9,7 +9,7 @@ inappropriate cell conditions).
 Then, assigns the probability for this local cell to the appropriate array indices for the
 survivalProb nested array that correspond to this target local cell.
 */
-entity.prototype.survivalProbCalc = function() {
+Entity.prototype.survivalProbCalc = function() {
   for (var j = 0; j < this.cell.localCells.length(); j++) {
     for (var i = 0; i < this.cell.localCells[0].length(); i++) {
       var survivalProb = this.survivalProbHealth() * this.survivalProbEnviro(i, j);
