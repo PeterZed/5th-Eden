@@ -1,0 +1,10 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Rounds the value in question to the nearest hundredth.
+*/
+Cell.prototype.hundredthsRounding = function(value) {
+  var rounded = Math.round(value * 100) / 100;
+  
+  return rounded;
+}
