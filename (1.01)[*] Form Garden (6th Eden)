@@ -1,7 +1,7 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 */
-eden.prototype.formGarden = function() {
+Eden.prototype.formGarden = function() {
   for (var j = 0; j < this.y; j++) {
     this.garden[j] = [];
     
