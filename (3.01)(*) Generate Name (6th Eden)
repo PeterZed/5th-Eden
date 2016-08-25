@@ -4,7 +4,7 @@
 Assigns random 16-character name to entity. Special characters and symbols have a 0.125
 probability of being assigned at each position in the name.
 */
-entity.prototype.generateName = function() {
+Entity.prototype.generateName = function() {
   var normal = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   var special = "ÇüéâäàåãçêëèïîìæÆôöòõûùüÿý¢£¥ƒáíóúñÑßµ€ŠŒšŽœžŸÀÁÂÃÄÅÈÉÊËÌÍÎÏ" +
                 "ÐÒÓÔÕÖÙÚÛÜÝÞþðØø" +
