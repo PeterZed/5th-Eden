@@ -33,7 +33,7 @@ function Cell(xCoord, yCoord, eden) {
   */
   
   /*
-  Conditions related to an entity's needs: Hunger to Nourishment, Thirst to Water,
+  Conditions related to an entity's physical needs: Hunger to Nourishment, Thirst to Water,
   Excretion to Waste. They are of the form:
   y = a * sin(bx) + c
   where a is the amplitude (or range), b is the period coefficient,   and c is the average
