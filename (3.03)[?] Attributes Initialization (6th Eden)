@@ -1,0 +1,47 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Sets each attribute's properties.
+level min initial = 0.00, max initial = 100.00
+flux min initial = 0.00, max initial = 10.00
+
+? Still ongoing development until I work out how I want the attributes to act, but otherwise
+functions.
+*/
+Entity.prototype.attrsInit = function() {
+  for (var attr in this.cyclicalAttrs) {
+    for (var prop in this.cyclicalAttrs[attr]) {
+      var targetAttr = this.cyclicalAttr[attr][prop];
+    
+      targetAttr.level = Math.floor(Math.random() * 10001) / 100;
+      targetAttr.flux = Math.floor(Math.random() * 1001) / 100;
+      
+      targetAttr.mutability = Math.floor(Math.random() * 10001) / 100;
+      targetAttr.mutabilityFlux = Math.floor(Math.random() * 1001) / 100;
+    }
+  }
+  
+  for (var attr in this.sensoryAttrs) {
+    for (var prop in this.sensoryAttrs[attr]) {
+      var targetAttr = this.sensoryAttr[attr][prop];
+    
+      targetAttr.level = Math.floor(Math.random() * 10001) / 100;
+      targetAttr.flux = Math.floor(Math.random() * 1001) / 100;
+      
+      targetAttr.mutability = Math.floor(Math.random() * 10001) / 100;
+      targetAttr.mutabilityFlux = Math.floor(Math.random() * 1001) / 100;
+    }
+  }
+  
+  for (var attr in this.enviroAttrs) {
+    for (var prop in this.enviroAttrs[attr]) {
+      var targetAttr = this.enviroAttr[attr][prop];
+    
+      targetAttr.level = Math.floor(Math.random() * 10001) / 100;
+      targetAttr.flux = Math.floor(Math.random() * 1001) / 100;
+      
+      targetAttr.mutability = Math.floor(Math.random() * 10001) / 100;
+      targetAttr.mutabilityFlux = Math.floor(Math.random() * 1001) / 100;
+    }
+  }
+};
