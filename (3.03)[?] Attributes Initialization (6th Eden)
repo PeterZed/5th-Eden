@@ -1,7 +1,7 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-Sets each attribute's properties.
+Sets each attribute's properties for the progenitor of a genetic line.
 level min initial = 0.00, max initial = 100.00
 flux min initial = 0.00, max initial = 10.00
 
