@@ -32,13 +32,11 @@ function Entity(xCoord, yCoord, eden) {
   this.slayer; // Not necessarily slain in battle. This property gives slayer's ID if it is slain.
   
   /*
-  So named cyclicalAttrs are named as such not for how they behave, but because they correspond
-  to the cyclicalConds of a cell. In the future, they may be renamed to better reflect both the
-  conditions and the attributes.
+  They correspond to an entity's physical needs.
   */
-  this.survivalAttrs = [
-    {condition: "nourishment", level: null, flux: null, surge: 1},
-    {condition: "water", level: null, flux: null, surge: 1},
+  this.needsAttrs = [
+    {condition: "hunger", level: null, flux: null, surge: 1},
+    {condition: "thirst", level: null, flux: null, surge: 1},
     {condition: "waste", level: null, flux: null, surge: 1}
   ];
   
