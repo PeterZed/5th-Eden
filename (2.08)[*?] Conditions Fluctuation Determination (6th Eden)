@@ -1,8 +1,8 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-Determines for every relevant property of a cell to see if it may undergo a fluctuation this tick.
-If this slows down ticks by too much, I can always make dynamism a hard value for number of turns
+Determines for every relevant property of a cell if it undergoes a fluctuation this tick.
+? If this slows down ticks by too much, I can always make dynamism a hard value for number of turns
 between fluctuations instead of an average value (which requires more probability rolls).
 
 First, establishes var targetCond in order to shorten the line length throughout the rest of the
@@ -10,10 +10,11 @@ method. Then, for each of a property's level, flux, dynamism, and dynamismFlux, 
 Cell.prototype.condsFluxCheck method to make a probability roll against the appropriate dynamism
 value to determine if the conditions will indeed fluctuate this tick. 
 
-If successful, it calls cell.prototype.condsFlux with 0 as the argument for the mean and the
+If successful, it calls Cell.prototype.condsFlux with 0 as the argument for the mean and the
 appropriate standard deviation value for the property in question. It then adds this fluctuation,
-whether positive or negative, to the cell's present value for the property, thus completing the
-fluctuation for that property.
+whether positive or negative, to the cell's present value for the property. After rounding to the
+hundredths and checking that it falls within the property's limit, the fluctuation for that
+property is completed.
 */
 Cell.prototype.condsFluxDet = function() {
   for (var cond in this.needsConds) {
@@ -34,6 +35,7 @@ Cell.prototype.condsFluxDet = function() {
         targetCond.dynamismFlux += this.condsFlux(0, targetCond.dynamismSurge);
       }
       
+      this.eden.hundredthsRounding(targetCond);
       this.eden.checkLimits(targetCond);
     }
   }
@@ -56,6 +58,7 @@ Cell.prototype.condsFluxDet = function() {
         targetCond.dynamismFlux += this.condsFlux(0, targetCond.dynamismSurge);
       }
       
+      this.eden.hundredthsRounding(targetCond);
       this.eden.checkLimits(targetCond);
     }
   }
@@ -78,6 +81,7 @@ Cell.prototype.condsFluxDet = function() {
         targetCond.dynamismFlux += this.condsFlux(0, targetCond.dynamismSurge);
     }
     
+    this.eden.hundredthsRounding(targetCond);
     this.eden.checkLimits(targetCond);
   }
 };
