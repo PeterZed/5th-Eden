@@ -12,8 +12,8 @@ Eden.prototype.formGarden = function() {
     Creates a new Cell instance at each index in the multidimensional array.
     */
     for (var i = 0; i < this.xAxis; i++) {
-      this.garden[j][i] = new Cell(i, j, this);
       info.cells.count++;
+      this.garden[j][i] = new Cell(i, j, this);
       this.cellCount++;
     }
   }
