@@ -27,7 +27,7 @@ Entity.prototype.attrs = {
     injuries: {level: 0},
     hunger: {level: 0},
     thirst: {level: 0},
-  };
+  },
   
   /*
   These attributes are the basics for the entity's ability to sense the external world.
@@ -39,7 +39,7 @@ Entity.prototype.attrs = {
     gustation: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
     olfaction: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
     touch: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null}
-  };
+  },
   
   /*
   These attributes are named as such because they correspond to the enviroConds of the cell.
@@ -52,5 +52,5 @@ Entity.prototype.attrs = {
     airCompOptimal: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
     temperatureOptimal: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
     salinityOptimal: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null}
-  };
+  }
 };
