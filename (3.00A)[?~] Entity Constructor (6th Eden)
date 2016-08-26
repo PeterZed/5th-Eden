@@ -1,8 +1,7 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-? I have no idea how the attributes will work at this time. They might not vary in any way like one
-another. The attributes exist, but they need a lot of work to match my present vision for them.
+These are all the descriptions of a given entity: Essentially, everything that it is.
 */
 
 function Entity(xCoord, yCoord, eden) {
@@ -25,8 +24,6 @@ function Entity(xCoord, yCoord, eden) {
     "Coordinates (" + this.x + ", " + this.y + ") in Eden #" + this.eden.id;
   this.age = 0; // Number of ticks survived thus far.
   
-  this.health = 100;
-  this.injuries = 0;
   this.victories = 0; // Number of other entities this entity has slain in battle
   
   this.turnOfDeath; // Still alive.
