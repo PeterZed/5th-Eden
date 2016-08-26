@@ -65,7 +65,12 @@ function Eden(columns, rows) {
     spontaneousEmergenceProb: null,
     living: new Map(),
     aliveCount: 0,
-    deadCount: 0
+    deadCount: 0,
+    
+    waste: {buildup: , flux: },
+    hunger: {buildup: , flux: },
+    thirst: {buildup: , flux: },
+    injuries: {heal: , flux: }
   };
   
   this.turn = 1;
