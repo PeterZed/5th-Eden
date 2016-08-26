@@ -1,8 +1,9 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-Varies a cell's conditions based on this Eden's uniformity and variability values - that is, how
-similar or dissimilar cells are from each other within the garden, and the spread of those values.
+Varies a cell's conditions from its neighbors' based on this Eden's uniformity and variability
+values - that is, how similar or dissimilar cells are from each other within the garden, and the
+spread of those values.
 
 Cycles through each condition and adjusts the level, flux, dynamism, and dynamismFlux by the mod
 values (as determined by the cell.prototype.condsMod function).
