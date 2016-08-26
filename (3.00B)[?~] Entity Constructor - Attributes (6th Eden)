@@ -21,17 +21,12 @@ Entity.prototype.attrs = {
   without water. These are, of course, assuming optimal situations. Eventually, I'll have it set
   up so that, in conditions with poor temperature and salinity for the entity, it will suffer
   dehydration faster. With more activity, it suffers starvation faster.
-  
-  For waste, it lacks a level property because it is not present within the entity. Rather, its
-  flux serves as the average amount by which its presence increases the waste level on a cell
-  each tick, and surge is the standard deviation to this calculation.
   */
   physicalState: {
     health: {level: 100},
     injuries: {level: 0},
-    hunger: {level: 0, flux: null, surge: 1},
-    thirst: {level: 0, flux: null, surge: 1},
-    waste: {flux: null, surge: 1}
+    hunger: {level: 0},
+    thirst: {level: 0},
   };
   
   /*
