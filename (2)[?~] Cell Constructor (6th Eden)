@@ -7,6 +7,9 @@ is a part.
 
 ? The sensory conditions will likely vary in a way that's different than the other conditions:
 Slower, perhaps; more predictable; smaller range of fluctuations - i.e., more constant.
+
+~ I haven't figured out how I want waste to fluctuate, just yet, besides being influenced by
+an entity's presence.
 */
 function Cell(xCoord, yCoord, eden) {
   this.id = info.cells.count;
@@ -33,8 +36,8 @@ function Cell(xCoord, yCoord, eden) {
   */
   
   /*
-  Conditions related to an entity's physical needs: Hunger to Nourishment, Thirst to Water,
-  Excretion to Waste. They are of the form:
+  Conditions related to an entity's physical state: Hunger to Nourishment, Thirst to Water,
+  Waste produced. Nourishment and water are of the form:
   y = a * sin(bx) + c
   where a is the amplitude (or range), b is the period coefficient,   and c is the average
   value (i.e., the value at x = 0) over one cycle. These values, and the x value, are
