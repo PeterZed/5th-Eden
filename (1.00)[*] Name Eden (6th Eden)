@@ -1,0 +1,8 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Takes the player's input to re-name this Eden.
+*/
+Eden.prototype.nameEden = function(name) {
+  this.name = name;
+};
