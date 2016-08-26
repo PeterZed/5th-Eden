@@ -174,4 +174,20 @@ function Cell(xCoord, yCoord, eden) {
         dynamismSurge: 1}
     }
   };
+  
+  
+  /*
+  See Eden constructor for more details.
+  
+  The reason that this is here to be referenced by methods instead of the methods simply directly
+  referencing this.eden.metaDynamism is to give the player the capability of changing a single
+  cell's metaDynamism to make it behave differently from other cells. Otherwise, they would all
+  refer to the same location, so changing one would change them all. But, by default, they all
+  have the same metaDynamism values.
+  */
+  this.metaDynamism = {
+    level: this.eden.metaDynamism.level,
+    flux: this.eden.metaDynamism.flux,
+    surge: this.eden.metaDynamism.surge
+  };
 }
