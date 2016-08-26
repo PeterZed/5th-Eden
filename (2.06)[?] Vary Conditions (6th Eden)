@@ -16,7 +16,7 @@ Cell.prototype.varyConds = function() {
       var targetCond = this.needsConds[cond][prop];
       
       targetCond.level += this.condsMod(this.eden.uniformity.level, this.eden.varibility.level);
-      targetCond.flux += this.condsMod(this.eden.uniformity.flux, this.eden.variability.flux;
+      targetCond.flux += this.condsMod(this.eden.uniformity.flux, this.eden.variability.flux);
       
       targetCond.dynamism += this.condsMod(this.eden.uniformity.dynamism,
         this.eden.variability.dynamism);
@@ -30,7 +30,7 @@ Cell.prototype.varyConds = function() {
       var targetCond = this.sensoryConds[cond][prop];
       
       targetCond.level += this.condsMod(this.eden.uniformity.level, this.eden.varibility.level);
-      targetCond.flux += this.condsMod(this.eden.uniformity.flux, this.eden.variability.flux;
+      targetCond.flux += this.condsMod(this.eden.uniformity.flux, this.eden.variability.flux);
       
       targetCond.dynamism += this.condsMod(this.eden.uniformity.dynamism,
         this.eden.variability.dynamism);
@@ -44,7 +44,7 @@ Cell.prototype.varyConds = function() {
       var targetCond = this.enviroConds[cond][prop];
       
       targetCond.level += this.condsMod(this.eden.uniformity.level, this.eden.varibility.level);
-      targetCond.flux += this.condsMod(this.eden.uniformity.flux, this.eden.variability.flux;
+      targetCond.flux += this.condsMod(this.eden.uniformity.flux, this.eden.variability.flux);
       
       targetCond.dynamism += this.condsMod(this.eden.uniformity.dynamism,
         this.eden.variability.dynamism);
