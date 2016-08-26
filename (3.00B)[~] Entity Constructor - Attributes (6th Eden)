@@ -1,11 +1,16 @@
 /*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
 These are all of the physical attributes of an entity.
+
+~ Energy, Fatigue, and Exhaustion are not implemented at all.
 */
 Entity.prototype.attrs = {
   /*
-  They correspond to an entity's physical needs. Instead of flux serving as the standard deviation,
-  it serves as the average about by which a need increases each tick. Surge is the standard
-  deviation for this calculation.
+  They correspond to an entity's physical state that relate to its survival: Hunger, Thirst, Waste,
+  Health, Injuries. Instead of flux serving as the standard deviation, it serves as the average
+  about by which a need increases each tick, like hunger, thirst, and waste. Surge is the standard
+  deviation for this calculation. For injuries, it is how much they are healed each tick.
   
   The flux values are all tentative, currently. I haven't a clue if they'll increase too rapidly or
   not, so it will take a lot of tweaking and experimenting. I've set it up so that, without
@@ -14,9 +19,11 @@ Entity.prototype.attrs = {
   8 ticks: There are documented cases of a person (in comfortable setting) surviving over a week
   without water. These are, of course, assuming optimal situations. Eventually, I'll have it set
   up so that, in conditions with poor temperature and salinity for the entity, it will suffer
-  dehydration faster.
+  dehydration faster. With more activity, it suffers starvation faster.
   */
-  this.needs = {
+  physicalState: {
+    health: {level: 100},
+    injuries: {level: 0},
     hunger: {level: 0, flux: null, surge: 1},
     thirst: {level: 0, flux: null, surge: 1},
     waste: {level: 0, flux: null, surge: 1}
@@ -26,7 +33,7 @@ Entity.prototype.attrs = {
   These attributes are the basics for the entity's ability to sense the external world.
   They correspond to the sensoryConds for a cell.
   */
-  this.sensory = {
+  sensory: {
     sight: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
     hearing: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
     gustation: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
@@ -39,7 +46,7 @@ Entity.prototype.attrs = {
   Likely, I'll have to rename them at some point to reflect both the conditions and the
   attributes.
   */
-  this.enviro = {
+  enviro: {
     radiationTolerance: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
     acidityOptimal: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
     airCompOptimal: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
