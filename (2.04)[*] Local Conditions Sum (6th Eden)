@@ -11,11 +11,11 @@ Cell.prototype.localCondsSum = function(xLocal, yLocal) {
     for (var prop in this.needsConds[cond]) {
       var targetCond = this.needsConds[cond][prop];
     
-      targetCond.level += localCell[cond][prop].level;
-      targetCond.flux += localCell[cond][prop].flux;
+      targetCond.level += localCell.needsConds[cond][prop].level;
+      targetCond.flux += localCell.needsConds[cond][prop].flux;
       
-      targetCond.dynamism += localCell[cond][prop].dynamism;
-      targetCond.dynamismFlux += localCell[cond][prop].dynamismFlux;
+      targetCond.dynamism += localCell.needsConds[cond][prop].dynamism;
+      targetCond.dynamismFlux += localCell.needsConds[cond][prop].dynamismFlux;
     }
   }
   
@@ -23,11 +23,11 @@ Cell.prototype.localCondsSum = function(xLocal, yLocal) {
     for (var prop in this.sensoryConds[cond]) {
       var targetCond = this.sensoryConds[cond][prop];
     
-      targetCond.level += localCell[cond][prop].level;
-      targetCond.flux += localCell[cond][prop].flux;
+      targetCond.level += localCell.sensoryConds[cond][prop].level;
+      targetCond.flux += localCell.sensoryConds[cond][prop].flux;
       
-      targetCond.dynamism += localCell[cond][prop].dynamism;
-      targetCond.dynamismFlux += localCell[cond][prop].dynamismFlux;
+      targetCond.dynamism += localCell.sensoryConds[cond][prop].dynamism;
+      targetCond.dynamismFlux += localCell.sensoryConds[cond][prop].dynamismFlux;
     }
   }
   
@@ -35,11 +35,11 @@ Cell.prototype.localCondsSum = function(xLocal, yLocal) {
     for (var prop in this.enviroConds[cond]) {
       var targetCond = this.enviroConds[cond][prop];
     
-      targetCond.level += localCell[cond][prop].level;
-      targetCond.flux += localCell[cond][prop].flux;
+      targetCond.level += localCell.enviroConds[cond][prop].level;
+      targetCond.flux += localCell.enviroConds[cond][prop].flux;
       
-      targetCond.dynamism += localCell[cond][prop].dynamism;
-      targetCond.dynamismFlux += localCell[cond][prop].dynamismFlux;
+      targetCond.dynamism += localCell.enviroConds[cond][prop].dynamism;
+      targetCond.dynamismFlux += localCell.enviroConds[cond][prop].dynamismFlux;
     }
   }
 };
