@@ -12,8 +12,8 @@ var info = {
     count: 0
   },
   entities: {
-    essenceCount: 33 // All entities that have ever existed across worlds and timelines.
-    lostSouls: 255 // The buffer zone: Some entities existed prior to deciding to store them all.
+    essenceCount: 33, // All entities that have ever existed across worlds and timelines.
+    lostSouls: 255, // The buffer zone: Some entities existed prior to deciding to store them all.
     
     /*
     Contains references to all entities, using theirs and their worlds' id numbers as the map keys.
