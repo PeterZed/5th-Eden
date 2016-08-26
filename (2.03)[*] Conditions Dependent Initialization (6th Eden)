@@ -23,8 +23,8 @@ of the cell class.
 Cell.prototype.condsDepInit = function() {
   var initCount = 0;
   
-  for (j = 0; j < this.localCells.length(); j++) {
-    for (i = 0; i < this.localCells[0].length(); i++) {
+  for (j = 0; j < this.localCells.length; j++) {
+    for (i = 0; i < this.localCells[0].length; i++) {
       if (this.localCells[j][i].initialized) {
         this.localCondsSum(i, j);
         initCount++;
