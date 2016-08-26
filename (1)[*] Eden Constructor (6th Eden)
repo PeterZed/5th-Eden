@@ -67,10 +67,10 @@ function Eden(columns, rows) {
     aliveCount: 0,
     deadCount: 0,
     
-    waste: {buildup: , flux: },
-    hunger: {buildup: , flux: },
-    thirst: {buildup: , flux: },
-    injuries: {heal: , flux: }
+    waste: {buildup: null, flux: null},
+    hunger: {buildup: null, flux: null},
+    thirst: {buildup: null, flux: null},
+    injuries: {heal: null, flux: null}
   };
   
   this.turn = 1;
