@@ -83,5 +83,6 @@ Cell.prototype.condsFluxDet = function() {
     
     this.eden.hundredthsRounding(targetCond);
     this.eden.checkLimits(targetCond);
+    }
   }
 };
