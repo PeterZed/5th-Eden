@@ -28,10 +28,10 @@ Cell.prototype.condsFluxDet = function() {
         targetCond.flux += this.condsFlux(0, targetCond.surge);
       }
       
-      if (this.condsFluxCheck(this.eden.metaDynamism)) {
+      if (this.condsFluxCheck(this.metaDynamism.level)) {
         targetCond.dynamism += this.condsFlux(0, targetCond.dynamismFlux);
       }
-      if (this.condsFluxCheck(this.eden.metaDynamism)) {
+      if (this.condsFluxCheck(this.metaDynamism.level)) {
         targetCond.dynamismFlux += this.condsFlux(0, targetCond.dynamismSurge);
       }
       
@@ -51,10 +51,10 @@ Cell.prototype.condsFluxDet = function() {
         targetCond.flux += this.condsFlux(0, targetCond.surge);
       }
       
-      if (this.condsFluxCheck(this.eden.metaDynamism)) {
+      if (this.condsFluxCheck(this.metaDynamism.level)) {
         targetCond.dynamism += this.condsFlux(0, targetCond.dynamismFlux);
       }
-      if (this.condsFluxCheck(this.eden.metaDynamism)) {
+      if (this.condsFluxCheck(this.metaDynamism.level)) {
         targetCond.dynamismFlux += this.condsFlux(0, targetCond.dynamismSurge);
       }
       
@@ -74,10 +74,10 @@ Cell.prototype.condsFluxDet = function() {
         targetCond.flux += this.condsFlux(0, targetCond.surge);
       }
       
-      if (this.condsFluxCheck(this.eden.metaDynamism)) {
+      if (this.condsFluxCheck(this.metaDynamism.level)) {
         targetCond.dynamism += this.condsFlux(0, targetCond.dynamismFlux);
       }
-      if (this.condsFluxCheck(this.eden.metaDynamism)) {
+      if (this.condsFluxCheck(this.metaDynamism.level)) {
         targetCond.dynamismFlux += this.condsFlux(0, targetCond.dynamismSurge);
     }
     
