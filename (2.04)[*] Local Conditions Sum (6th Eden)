@@ -5,9 +5,9 @@ This method adds the referenced local cell's values for each condition property'
 dynamism, and dynamismFlux to the current cell's values, thus summing the localCells' values.
 */
 Cell.prototype.localCondsSum = function(xLocal, yLocal) {
-   var localCell = this.localCells[yLocal][xLocal];
+  var localCell = this.localCells[yLocal][xLocal];
    
-   for (var cond in this.needsConds) {
+  for (var cond in this.needsConds) {
     for (var prop in this.needsConds[cond]) {
       var targetCond = this.needsConds[cond][prop];
     
