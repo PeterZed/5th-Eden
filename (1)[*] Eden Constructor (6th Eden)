@@ -18,18 +18,6 @@ function Eden(columns, rows) {
   this.garden = [];
   
   /*
-  Uniformity is related to the world's average expected difference from cell to cell for a
-  given property. This is utilized when the world is first initialized.
-  The average expected difference is 100 - this.uniformity.level, a so-called "disuniformity".
-  */
-  this.uniformity = {
-    level: null,
-    flux: null,
-    dynamism: null,
-    dynamismFlux: null
-  };
-  
-  /*
   Variability is the world's standard deviation for expected difference from cell to cell for a
   given property. This is utilized whne the world is first initialized.
   */
