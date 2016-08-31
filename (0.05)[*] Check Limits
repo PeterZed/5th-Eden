@@ -10,7 +10,7 @@ The metaDynamism for the world does not have its own dynamism and dynamismFlux v
 when the comparisons for those are made in the code below, the result comes up false, and thus the
 if statement's contents are not executed.
 */
-Eden.prototype.checkLimits = function(property) {
+function checkLimits(property) {
   if (property.level < 0) {property.level = 0;}
   else if (property.level > 100) {property.level = 100;}
   
@@ -22,6 +22,4 @@ Eden.prototype.checkLimits = function(property) {
   
   if (property.dynamismFlux < 0) {property.dynamismFlux = 0;}
   else if (property.dynamismFlux > 10) {property.dynamismFlux = 10;}
-  
-  return property;
 };
