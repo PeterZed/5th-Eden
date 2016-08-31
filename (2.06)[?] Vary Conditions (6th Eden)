@@ -22,6 +22,9 @@ Cell.prototype.varyConds = function() {
         this.eden.variability.dynamism);
       targetCond.dynamismFlux += this.condsMod(this.eden.uniformity.dynamismFlux,
         this.eden.variability.dynamismFlux);
+        
+      this.eden.hundredthsRounding(targetCond);
+      this.eden.checkLimits(targetCond);
     }
   }
   
@@ -36,6 +39,9 @@ Cell.prototype.varyConds = function() {
         this.eden.variability.dynamism);
       targetCond.dynamismFlux += this.condsMod(this.eden.uniformity.dynamismFlux,
         this.eden.variability.dynamismFlux);
+        
+      this.eden.hundredthsRounding(targetCond);
+      this.eden.checkLimits(targetCond);
     }
   }
   
@@ -50,6 +56,9 @@ Cell.prototype.varyConds = function() {
         this.eden.variability.dynamism);
       targetCond.dynamismFlux += this.condsMod(this.eden.uniformity.dynamismFlux,
         this.eden.variability.dynamismFlux);
+        
+      this.eden.hundredthsRounding(targetCond);
+      this.eden.checkLimits(targetCond);
     }
   }
 };
