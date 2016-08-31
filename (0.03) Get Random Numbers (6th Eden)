@@ -1,0 +1,6 @@
+/*
+Returns a cryptographically secure pseudo random number between 0 and 1.
+*/
+function getRandom() {
+
+}
