@@ -10,18 +10,21 @@ The calculation is + 1 simply to enforce that 0.00 is not a possibility, with 1.
 a possibile outcome to the calculation.
 */
 Eden.prototype.gardenInit = function() {
-  this.uniformity.level = Math.floor(Math.random() * 10001) / 100;
-  this.uniformity.flux = Math.floor(Math.random() * 1001) / 100;
-  this.uniformity.dynamism = Math.floor(Math.random() * 10001) / 100;
-  this.uniformity.dynamismFlux = Math.floor(Math.random() * 1001) / 100;
+  this.uniformity.level = Math.floor(Math.random() * 101);
+  this.uniformity.flux = Math.floor(Math.random() * 11);
+  this.uniformity.dynamism = Math.floor(Math.random() * 101);
+  this.uniformity.dynamismFlux = Math.floor(Math.random() * 11);
+  this.hundredthsRounding(this.uniformity);
   
-  this.variability.level = Math.floor(Math.random() * 10001) / 100;
-  this.variability.flux = Math.floor(Math.random() * 1001) / 100;
-  this.variability.dynamism = Math.floor(Math.random() * 10001) / 100;
-  this.variability.dynamismFlux = Math.floor(Math.random() * 1001) / 100;
+  this.variability.level = Math.floor(Math.random() * 101);
+  this.variability.flux = Math.floor(Math.random() * 11);
+  this.variability.dynamism = Math.floor(Math.random() * 101);
+  this.variability.dynamismFlux = Math.floor(Math.random() * 11);
+  this.hundredthsRounding(this.variability);
 
-  this.metaDynamism.level = Math.floor(Math.random() * 10001) / 100;
-  this.metaDynamism.flux = Math.floor(Math.random() * 1001) / 100;
+  this.metaDynamism.level = Math.floor(Math.random() * 101);
+  this.metaDynamism.flux = Math.floor(Math.random() * 11);
+  this.hundredthsRounding(this.metaDynamism);
   
   this.entities.spontaneousEmergenceProb =
     Math.floor(Math.random() * 100000000 + 1) / 100000000;
