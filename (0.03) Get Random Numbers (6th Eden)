@@ -1,6 +1,27 @@
 /*
-Returns a cryptographically secure pseudo random number between 0 and 1.
-*/
-function getRandom() {
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
+Returns 'num' number of cryptographically secure pseudo random numbers between 0 and 'max'.
+https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues
+
+A CSPRNG was chosen over Math.random() to emulate the true randomness of real world physics at its
+core, in spite of being slightly slower and more cumbersome to work with efficiently. The Uint32
+Array was chosen over smaller Uint arrays because it better approximates a continuous scale rather
+than a discrete one.
+*/
+function getRandom(num) {
+  if (num === undefined) {
+    num = 1;  // Sets default value to num
+  }
+  if (max === undefined) {
+    max = 1;  // Sets default value to max
+  }
+
+  var randomNumbers = window.crypto.getRandomValues(new Uint32Array(num, max));
+  
+  for (var i = 0; i < randomNumbers.length; i++) {
+    randomNumbers[i] /= 4294967295 * max;  // Gives a random number between 0 and max, inclusive
+  }
+  
+  return randomNumbers;
 }
