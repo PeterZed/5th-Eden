@@ -23,4 +23,4 @@ var info = {
     alive: 0,
     dead: 0
   }
-}
+};
