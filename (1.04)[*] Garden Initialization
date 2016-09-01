@@ -1,9 +1,7 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-Initializes the garden's metaDynamism, uniformity, and variability values.
-Establishes each cell's neighboring cells.
-Initializes all of the conditions for the cells of the garden.
+Initializes the garden's metaDynamism and variability values.
 
 Initializes the probability of the spontaneous emergence of an entity in the garden each tick.
 The calculation is + 1 simply to enforce that 0.00 is not a possibility, with 1.00000000 remaining
@@ -22,12 +20,4 @@ Eden.prototype.gardenInit = function() {
   
   this.entities.spontaneousEmergenceProb =
     Math.floor(Math.random() * 100000000 + 1) / 100000000;
-
-  for (var j = 0; j < this.yAxis; j++) {
-    for (var i = 0; i < this.xAxis; i++) {
-      this.garden[j][i].localCellsDetermination();
-    }
-  }
-  
-  this.gardenCondsInit();
 };
