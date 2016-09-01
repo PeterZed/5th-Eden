@@ -1,12 +1,14 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-Returns first element of the randomPool array, and modifies the 
+var num = randomPool.splice(0,1) was chosen over randomPool = randomPool.slice(1) because testing
+showed it to be about thirty times faster with a for loop iterating through an array of size 10000.
 */
 function getRandom() {
-  var num = randomPool[0]
+  if (randomPool[0] === undefined) {  // If pool is empty, generates a new set of random numbers
+    genRandom();
+  }
   
-  randomPool = randomPool.slice(1);
-  
+  var num = randomPool.splice(0,1);
   return num;
 };
