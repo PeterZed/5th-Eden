@@ -5,6 +5,8 @@ Forms the array of arrays of Cell objects, which ultimately serves as the game m
 "garden".
 */
 Eden.prototype.formGarden = function() {
+  this.gardenInit();
+
   for (var j = 0; j < this.yAxis; j++) {
     this.garden[j] = [];  // Creates a new row in the garden array
     
