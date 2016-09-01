@@ -2,22 +2,18 @@
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 Initializes the garden's metaDynamism and variability values.
-
 Initializes the probability of the spontaneous emergence of an entity in the garden each tick.
-The calculation is + 1 simply to enforce that 0.00 is not a possibility, with 1.00000000 remaining
-a possibile outcome to the calculation.
 */
 Eden.prototype.gardenInit = function() {
-  this.variability.level = Math.floor(Math.random() * 101);
-  this.variability.flux = Math.floor(Math.random() * 11);
-  this.variability.dynamism = Math.floor(Math.random() * 101);
-  this.variability.dynamismFlux = Math.floor(Math.random() * 11);
+  this.variability.level = getRandom() * 100;
+  this.variability.flux = getRandom() * 10;
+  this.variability.dynamism = getRandom() * 100;
+  this.variability.dynamismFlux = getRandom() * 10;
   this.hundredthsRounding(this.variability);
 
-  this.metaDynamism.level = Math.floor(Math.random() * 101);
-  this.metaDynamism.flux = Math.floor(Math.random() * 11);
+  this.metaDynamism.level = getRandom * 100;
+  this.metaDynamism.flux = getRandom * 10;
   this.hundredthsRounding(this.metaDynamism);
   
-  this.entities.spontaneousEmergenceProb =
-    Math.floor(Math.random() * 100000000 + 1) / 100000000;
+  this.entities.spontaneousEmergenceProb = getRandom();
 };
