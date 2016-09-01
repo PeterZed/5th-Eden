@@ -4,6 +4,12 @@
 Generates a new list of 16384 cryptographically secure pseudo random numbers from 0 to 1.
 https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues
 
+In order to convert to a random number between 0 and 1, it was necessary to use two arrays:
+The global randomPool, and the local randomNumbers. The randomNumbers array is an unsigned integer
+array, so it stores any decimal values as integers. Thus, the quotient becomes 0 if assigned to
+the randomNumbers Uint32Array, but remains a number between 0 and 1, inclusive, for the
+randomPool array.
+
 A CSPRNG was chosen over Math.random() to emulate the true randomness of real world physics at its
 core, in spite of being slightly slower and more cumbersome to work with efficiently. The Uint32
 Array was chosen over smaller Uint arrays because it better approximates a continuous scale rather
@@ -12,9 +18,9 @@ overall number of numbers available is lower because there's a limit to the numb
 entropy available to 'getRandomValues'.
 */
 function genRandom() {
-  randomPool = window.crypto.getRandomValues(new Uint32Array(16384));
+  var randomNumbers = window.crypto.getRandomValues(new Uint32Array(16384));
   
   for (var i = 0; i < 16384; i++) {
-    randomPool[i] /= 4294967295;  // Gives a random number between 0 and 1, inclusive
+    randomPool[i] = randomNumbers[i] / 4294967295;  // Assigns random numbers between 0 to 1
   }
 }
