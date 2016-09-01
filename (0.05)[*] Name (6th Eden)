@@ -3,6 +3,6 @@
 
 Takes the player's input to re-name this Eden.
 */
-Eden.prototype.nameEden = function(name) {
-  this.name = name;
+function name(obj, newName) {
+  obj.name = newName;
 };
