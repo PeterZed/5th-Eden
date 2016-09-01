@@ -2,7 +2,5 @@
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 The pool used for all probability calculations. New numbers are generated as needed.
-new Uint32Array() was selected over [] or new Array() to reflect what is created when new sets of
-random numbers are generated.
 */
-var randomPool = new Uint32Array();
+var randomPool = [];
