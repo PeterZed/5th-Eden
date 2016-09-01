@@ -12,9 +12,9 @@ overall number of numbers available is lower because there's a limit to the numb
 entropy available to 'getRandomValues'.
 */
 function genRandom() {
-  randomNumbers = window.crypto.getRandomValues(new Uint32Array(16384));
+  randomPool = window.crypto.getRandomValues(new Uint32Array(16384));
   
   for (var i = 0; i < randomNumbers.length; i++) {
-    randomNumbers[i] /= 4294967295;  // Gives a random number between 0 and 1, inclusive
+    randomPool[i] /= 4294967295;  // Gives a random number between 0 and 1, inclusive
   }
 }
