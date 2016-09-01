@@ -19,4 +19,6 @@ Eden.prototype.formGarden = function() {
       this.cellCount++;
     }
   }
+  
+  this.gardenCellsInit();
 };
