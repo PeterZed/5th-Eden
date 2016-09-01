@@ -14,7 +14,7 @@ entropy available to 'getRandomValues'.
 function genRandom() {
   randomPool = window.crypto.getRandomValues(new Uint32Array(16384));
   
-  for (var i = 0; i < randomNumbers.length; i++) {
+  for (var i = 0; i < randomPool.length; i++) {
     randomPool[i] /= 4294967295;  // Gives a random number between 0 and 1, inclusive
   }
 }
