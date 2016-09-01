@@ -3,11 +3,13 @@
 
 Populate randomly distributes "num" number of progenitors across the garden. The new entity is
 spawned in a randomly determined cell.
+
+It is 'Axis - 1' because it's an array index being generated.
 */
 Eden.prototype.populate = function(num) {
   for (var i = 0; i < num; i++) {
-    var xCoord = Math.floor(Math.random() * this.xAxis);
-    var yCoord = Math.floor(Math.random() * this.yAxis);
+    var xCoord = Math.round(getRandom() * (this.xAxis - 1));
+    var yCoord = Math.round(getRandom() * (this.yAxis - 1));
             
     this.spawnProgenitor(xCoord, yCoord);
   }
