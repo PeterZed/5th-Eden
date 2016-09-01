@@ -10,13 +10,15 @@ Slower, perhaps; more predictable; smaller range of fluctuations - i.e., more co
 
 ~ I haven't figured out how I want waste to fluctuate, just yet, besides being influenced by
 an entity's presence.
+
+? Not sure if dynamism = prob * 100 is how I want to do it yet.
 */
 function Cell(xCoord, yCoord, eden) {
   this.id = info.cells.count;
   this.eden = eden;
   this.x = xCoord;
   this.y = yCoord;
-  this.name = "(" + this.x + ", " + this.y + ")";
+  this.name = "Cell #" + this.id;
   this.initialized = false;
   
   this.entities = new Map();
