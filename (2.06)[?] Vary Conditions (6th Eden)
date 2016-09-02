@@ -25,7 +25,7 @@ Cell.prototype.varyConds = function(meanDiffs) {
         targetCond.dynamismFlux += this.condsMod(meanDiffsVal.dynamismFlux,
           this.eden.variability.dynamismFlux);
         
-        this.eden.hundredthsRounding(targetCond);
+        hundredthsRounding(targetCond);
         this.eden.checkLimits(targetCond);
       }
     }
