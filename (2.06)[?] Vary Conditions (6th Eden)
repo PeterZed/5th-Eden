@@ -15,14 +15,14 @@ Cell.prototype.varyConds = function(meanDiffs) {
     for (var cond in this.conds[set]) {
       for (var prop in this.conds[set][cond]) {
         var targetCond = this.conds[set][cond][prop];
-        var meanDiffs = meanDiffs.conds[set][cond][prop];
+        var meanDiffsVal = meanDiffs.conds[set][cond][prop];
       
-        targetCond.level += this.condsMod(meanDiffs.level, this.eden.variability.level);
-        targetCond.flux += this.condsMod(meanDiffs.flux, this.eden.variability.flux);
+        targetCond.level += this.condsMod(meanDiffsVal.level, this.eden.variability.level);
+        targetCond.flux += this.condsMod(meanDiffsVal.flux, this.eden.variability.flux);
       
-        targetCond.dynamism += this.condsMod(meanDiffs.dynamism,
+        targetCond.dynamism += this.condsMod(meanDiffsVal.dynamism,
           this.eden.variability.dynamism);
-        targetCond.dynamismFlux += this.condsMod(meanDiffs.dynamismFlux,
+        targetCond.dynamismFlux += this.condsMod(meanDiffsVal.dynamismFlux,
           this.eden.variability.dynamismFlux);
         
         this.eden.hundredthsRounding(targetCond);
