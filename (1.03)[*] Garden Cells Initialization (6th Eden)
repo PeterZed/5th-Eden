@@ -24,8 +24,8 @@ Eden.prototype.gardenCellsInit = function() {
       if (i === 0 & j === 0) {
         this.garden[j][i].condsIndInit();
       } else {
-        var meanDiffs = this.meanDiffsCheck(i, j);
-        this.garden[j][i].condsDepInit(meanDiffs);
+        var meanDiffsTotal = this.meanDiffsCheck(i, j);
+        this.garden[j][i].condsDepInit(meanDiffsTotal);
       }
     }
   }
