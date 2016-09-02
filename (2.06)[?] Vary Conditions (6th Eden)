@@ -11,12 +11,6 @@ values (as determined by the cell.prototype.condsMod function).
 ? Unknown if sensory and enviro conds will function identically to cylical conds at this time.
 */
 Cell.prototype.varyConds = function(meanDiffs) {
-
-  var meanDiffs = meanDiffs;
-  /* Seems unnecessary, but for whatever reason the for loop below can't access
-  meanDiffs.conds.physicalState, saying that the property doesn't exist, if the argument is
-  referenced directly. So, this is my compromise. */
-
   for (var set in this.conds) {
     for (var cond in this.conds[set]) {
       for (var prop in this.conds[set][cond]) {
