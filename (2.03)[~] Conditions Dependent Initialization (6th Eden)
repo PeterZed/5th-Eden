@@ -20,7 +20,7 @@ difference and variability as the standard deviation for the distribution; the r
 by either +1 or -1 (probability roll to determine). This is performed with the varyConds method
 of the cell class.
 */
-Cell.prototype.condsDepInit = function() {
+Cell.prototype.condsDepInit = function(meanDiffs) {
   var initCount = 0;
   
   for (var j = 0; j < this.localCells.length; j++) {
@@ -33,6 +33,6 @@ Cell.prototype.condsDepInit = function() {
   }
   this.localCondsAvg(initCount);
   
-  this.varyConds();
+  this.varyConds(meanDiffs);
   this.initialized = true;
 };
