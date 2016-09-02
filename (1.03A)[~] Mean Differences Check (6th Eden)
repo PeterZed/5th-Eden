@@ -7,16 +7,16 @@ Eden.prototype.meanDiffsCheck = function(xCoord, yCoord) {
     return meanDiffsTotal;
   }
   else if (xCoord >= xMedian && yCoord < yMedian) {
-    meanDiffsTotal += meanDiffsCalc(this.garden[yCoord][0], this.garden[yCoord][xMedian - 1]);
+    meanDiffsTotal += this.meanDiffsCalc(this.garden[yCoord][0], this.garden[yCoord][xMedian - 1]);
     return meanDiffsTotal;
   }
   else if (xCoord < xMedian && yCoord >= yMedian) {
-    meanDiffsTotal += meanDiffsCalc(this.garden[0][xCoord], this.garden[yMedian - 1][xCoord]);
+    meanDiffsTotal += this.meanDiffsCalc(this.garden[0][xCoord], this.garden[yMedian - 1][xCoord]);
     return meanDiffsTotal;
   }
   else if (xCoord >= xMedian && yCoord >= yMedian) {  // Must sum both axes' mean diffs to return to baseline for both simultaneously
-    meanDiffsTotal += meanDiffsCalc(this.garden[yCoord][0], this.garden[yCoord][xMedian - 1]);
-    meanDiffsTotal += meanDiffsCalc(this.garden[0][xCoord], this.garden[yMedian - 1][xCoord]);
+    meanDiffsTotal += this.meanDiffsCalc(this.garden[yCoord][0], this.garden[yCoord][xMedian - 1]);
+    meanDiffsTotal += this.meanDiffsCalc(this.garden[0][xCoord], this.garden[yMedian - 1][xCoord]);
     return meanDiffsTotal;
   }
 };
