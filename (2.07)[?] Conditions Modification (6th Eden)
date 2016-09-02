@@ -14,16 +14,11 @@ which is the average of all of its presently initialized neighboring cells.
 and 10, respectively, as there is simply too much room for variation - far too many worlds where
 life simply will struggle too much.
 */
-Cell.prototype.condsMod = function(inversedMean, stdDev) {
-  var mean = 100 - inversedMean;
+Cell.prototype.condsMod = function(mean, stdDev) {
   var variance = Math.pow(stdDev, 2);
   
   var distribution = gaussian(mean, variance);
-  var mod = distribution.ppf(Math.random());
-  
-  var negChance = 0.5;
-  var roll = Math.random();
-  roll < negChance ? mod *= -1 : mod *= +1;
-  
+  var mod = distribution.ppf(getRandom());
+
   return mod;
 };
