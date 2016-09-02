@@ -7,16 +7,16 @@ Eden.prototype.meanDiffsCalc = function(baselineCell, medianCell) {
         var targetCond = meanDiffs.conds[set][cond][prop];
     
         targetCond.level += baselineCell.conds[set][cond][prop].level;
-        targetCond.level -= medianCell.conds[set][cond[prop].level;
+        targetCond.level -= medianCell.conds[set][cond][prop].level;
         
         targetCond.flux += baselineCell.conds[set][cond][prop].flux;
-        targetCond.flux -= medianCell.conds[set][cond[prop].flux;
+        targetCond.flux -= medianCell.conds[set][cond][prop].flux;
       
         targetCond.dynamism += baselineCell.conds[set][cond][prop].dynamism;
-        targetCond.dynamism -= medianCell.conds[set][cond[prop].dynamism;
+        targetCond.dynamism -= medianCell.conds[set][cond][prop].dynamism;
         
         targetCond.dynamismFlux += baselineCell.conds[set][cond][prop].dynamismFlux;
-        targetCond.dynamismFlux -= medianCell.conds[set][cond[prop].dynamismFlux;
+        targetCond.dynamismFlux -= medianCell.conds[set][cond][prop].dynamismFlux;
       }
     }
   }
