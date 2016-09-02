@@ -1,0 +1,22 @@
+Eden.prototype.meanDiffsCheck = function(xCoord, yCoord) {
+  var xMedian = Math.ceil(this.xAxis / 2);
+  var yMedian = Math.ceil(this.yAxis / 2);
+  var meanDiffs = defaultDiffs;
+  
+  if (xCoord < xMedian && yCoord < yMedian) {
+    return meanDiffs;
+  }
+  else if (xCoord >= xMedian && yCoord < yMedian) {
+    meanDiffs += meanDiffsCalc(this.garden[yCoord][0], this.garden[yCoord][xMedian - 1]);
+    return meanDiffs;
+  }
+  else if (xCoord < xMedian && yCoord >= yMedian) {
+    meanDiffs += meanDiffsCalc(this.garden[0][xCoord], this.garden[yMedian - 1][xCoord]);
+    return meanDiffs;
+  }
+  else if (xCoord >= xMedian && yCoord >= yMedian) {  // Must sum both axes' mean diffs to return to baseline for both simultaneously
+    meanDiffs += meanDiffsCalc(this.garden[yCoord][0], this.garden[yCoord][xMedian - 1]);
+    meanDiffs += meanDiffsCalc(this.garden[0][xCoord], this.garden[yMedian - 1][xCoord]);
+    return meanDiffs;
+  }
+};
