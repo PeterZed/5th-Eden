@@ -9,11 +9,11 @@ Eden.prototype.gardenInit = function() {
   this.variability.flux = getRandom() * 10;
   this.variability.dynamism = getRandom() * 100;
   this.variability.dynamismFlux = getRandom() * 10;
-  this.hundredthsRounding(this.variability);
+  hundredthsRounding(this.variability);
 
   this.metaDynamism.level = getRandom * 100;
   this.metaDynamism.flux = getRandom * 10;
-  this.hundredthsRounding(this.metaDynamism);
+  hundredthsRounding(this.metaDynamism);
   
   this.entities.spontaneousEmergenceProb = getRandom();
 };
