@@ -8,45 +8,19 @@ functions. The initialization of sensoryConds and enviroConds are not yet determ
 the same as the cyclicalConds.
 */
 Cell.prototype.condsIndInit = function() {
-  for (var cond in this.needsConds) {
-    for (var prop in this.needsConds[cond]) {
-      var targetCond = this.needsConds[cond][prop];
+  for (var set in this.conds) {
+    for (var cond in this.conds[set]) {
+      for (var prop in this.conds[set][cond]) {
+        var targetCond = this.conds[set][cond][prop];
     
-      targetCond.level = getRandom() * 100;
-      targetCond.flux = getRandom() * 10;
+        targetCond.level = getRandom() * 100;
+        targetCond.flux = getRandom() * 10;
       
-      targetCond.dynamism = getRandom() * 100;
-      targetCond.dynamismFlux = getRandom() * 10;
+        targetCond.dynamism = getRandom() * 100;
+        targetCond.dynamismFlux = getRandom() * 10;
       
-      hundredthsRounding(targetCond);
-    }
-  }
-  
-  for (var cond in this.sensoryConds) {
-    for (var prop in this.sensoryConds[cond]) {
-      var targetCond = this.sensoryConds[cond][prop];
-    
-      targetCond.level = getRandom() * 100;
-      targetCond.flux = getRandom() * 10;
-      
-      targetCond.dynamism = getRandom() * 100;
-      targetCond.dynamismFlux = getRandom() * 10;
-    
-      hundredthsRounding(targetCond);
-    }
-  }
-  
-  for (var cond in this.enviroConds) {
-    for (var prop in this.enviroConds[cond]) {
-      var targetCond = this.enviroConds[cond][prop];
-    
-      targetCond.level = getRandom() * 100;
-      targetCond.flux = getRandom() * 10;
-      
-      targetCond.dynamism = getRandom() * 100;
-      targetCond.dynamismFlux = getRandom() * 10;
-      
-      hundredthsRounding(targetCond);
+        hundredthsRounding(targetCond);
+      }
     }
   }
   
