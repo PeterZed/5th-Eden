@@ -1,76 +1,78 @@
 var defaultDiffs = {   // The defaults for a cell's variation from the average of its neighbors
-  physicalState: {
-    nourishment: {
-      x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      period: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      average: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0}
+  conds: {
+    physicalState: {
+      nourishment: {
+        x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        period: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        average: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0}
+      },
+      water: {
+        x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        period: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        average: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0}
+      },
+      waste: {
+        x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        period: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        average: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0}
+      }
     },
-    water: {
-      x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      period: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      average: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0}
-    },
-    waste: {
-      x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      period: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      average: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0}
-    }
-  },
   
-  sensoryConds: {
-    light: {
-      x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      period: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      average: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0}
+    sensoryConds: {
+      light: {
+        x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        period: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        average: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0}
+      },
+      noise: {
+        x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        period: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        average: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0}
+      },
+      wind: {
+        x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        period: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        average: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0}
+      },
     },
-    noise: {
-      x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      period: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      average: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0}
-    },
-    wind: {
-      x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      period: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      average: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0}
-    },
-  },
   
-  enviroConds: {
-    radiation: {
-      x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      period: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      average: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0}
-    },
-    acidity: {
-      x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      period: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      average: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0}
-    },
-    airComp: {
-      x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      period: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      average: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0}
-    },
-    temperature: {
-      x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      period: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      average: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0}
-    },
-    salinity: {
-      x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      period: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
-      average: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0}
+    enviroConds: {
+      radiation: {
+        x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        period: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        average: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0}
+      },
+      acidity: {
+        x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        period: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        average: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0}
+      },
+     airComp: {
+        x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        period: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        average: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0}
+      },
+      temperature: {
+        x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        period: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        average: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0}
+      },
+      salinity: {
+        x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        period: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
+        average: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0}
+      }
     }
   }
 };
