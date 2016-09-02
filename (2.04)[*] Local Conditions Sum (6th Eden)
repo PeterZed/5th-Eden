@@ -6,40 +6,18 @@ dynamism, and dynamismFlux to the current cell's values, thus summing the localC
 */
 Cell.prototype.localCondsSum = function(xLocal, yLocal) {
   var localCell = this.localCells[yLocal][xLocal];
-   
-  for (var cond in this.needsConds) {
-    for (var prop in this.needsConds[cond]) {
-      var targetCond = this.needsConds[cond][prop];
-    
-      targetCond.level += localCell.needsConds[cond][prop].level;
-      targetCond.flux += localCell.needsConds[cond][prop].flux;
-      
-      targetCond.dynamism += localCell.needsConds[cond][prop].dynamism;
-      targetCond.dynamismFlux += localCell.needsConds[cond][prop].dynamismFlux;
-    }
-  }
   
-  for (var cond in this.sensoryConds) {
-    for (var prop in this.sensoryConds[cond]) {
-      var targetCond = this.sensoryConds[cond][prop];
+  for (var set in this.conds) {
+    for (var cond in this.conds[set]) {
+      for (var prop in this.conds[set][cond]) {
+        var targetCond = this.conds[set][cond][prop];
     
-      targetCond.level += localCell.sensoryConds[cond][prop].level;
-      targetCond.flux += localCell.sensoryConds[cond][prop].flux;
+        targetCond.level += localCell.conds[set][cond][prop].level;
+        targetCond.flux += localCell.conds[set][cond][prop].flux;
       
-      targetCond.dynamism += localCell.sensoryConds[cond][prop].dynamism;
-      targetCond.dynamismFlux += localCell.sensoryConds[cond][prop].dynamismFlux;
-    }
-  }
-  
-  for (var cond in this.enviroConds) {
-    for (var prop in this.enviroConds[cond]) {
-      var targetCond = this.enviroConds[cond][prop];
-    
-      targetCond.level += localCell.enviroConds[cond][prop].level;
-      targetCond.flux += localCell.enviroConds[cond][prop].flux;
-      
-      targetCond.dynamism += localCell.enviroConds[cond][prop].dynamism;
-      targetCond.dynamismFlux += localCell.enviroConds[cond][prop].dynamismFlux;
+        targetCond.dynamism += localCell.conds[set][cond][prop].dynamism;
+        targetCond.dynamismFlux += localCell.conds[set][cond][prop].dynamismFlux;
+      }
     }
   }
 };
