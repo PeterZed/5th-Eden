@@ -10,17 +10,18 @@ values (as determined by the cell.prototype.condsMod function).
 
 ? Unknown if sensory and enviro conds will function identically to cylical conds at this time.
 */
-Cell.prototype.varyConds = function() {
+Cell.prototype.varyConds = function(meanDiffs) {
   for (var cond in this.needsConds) {
     for (var prop in this.needsConds[cond]) {
       var targetCond = this.needsConds[cond][prop];
+      var meanDiffs = meanDiffs.needsConds[cond][prop];
       
-      targetCond.level += this.condsMod(this.eden.uniformity.level, this.eden.variability.level);
-      targetCond.flux += this.condsMod(this.eden.uniformity.flux, this.eden.variability.flux);
+      targetCond.level += this.condsMod(meanDiffs.level, this.eden.variability.level);
+      targetCond.flux += this.condsMod(meanDiffs.flux, this.eden.variability.flux);
       
-      targetCond.dynamism += this.condsMod(this.eden.uniformity.dynamism,
+      targetCond.dynamism += this.condsMod(meanDiffs.dynamism,
         this.eden.variability.dynamism);
-      targetCond.dynamismFlux += this.condsMod(this.eden.uniformity.dynamismFlux,
+      targetCond.dynamismFlux += this.condsMod(meanDiffs.dynamismFlux,
         this.eden.variability.dynamismFlux);
         
       this.eden.hundredthsRounding(targetCond);
@@ -30,14 +31,15 @@ Cell.prototype.varyConds = function() {
   
   for (var cond in this.sensoryConds) {
     for (var prop in this.sensoryConds[cond]) {
-      var targetCond = this.sensoryConds[cond][prop];
+      var targetCond = this.needsConds[cond][prop];
+      var meanDiffs = meanDiffs.needsConds[cond][prop];
       
-      targetCond.level += this.condsMod(this.eden.uniformity.level, this.eden.variability.level);
-      targetCond.flux += this.condsMod(this.eden.uniformity.flux, this.eden.variability.flux);
+      targetCond.level += this.condsMod(meanDiffs.level, this.eden.variability.level);
+      targetCond.flux += this.condsMod(meanDiffs.flux, this.eden.variability.flux);
       
-      targetCond.dynamism += this.condsMod(this.eden.uniformity.dynamism,
+      targetCond.dynamism += this.condsMod(meanDiffs.dynamism,
         this.eden.variability.dynamism);
-      targetCond.dynamismFlux += this.condsMod(this.eden.uniformity.dynamismFlux,
+      targetCond.dynamismFlux += this.condsMod(meanDiffs.dynamismFlux,
         this.eden.variability.dynamismFlux);
         
       this.eden.hundredthsRounding(targetCond);
@@ -47,14 +49,15 @@ Cell.prototype.varyConds = function() {
   
   for (var cond in this.enviroConds) {
     for (var prop in this.enviroConds[cond]) {
-      var targetCond = this.enviroConds[cond][prop];
+      var targetCond = this.needsConds[cond][prop];
+      var meanDiffs = meanDiffs.needsConds[cond][prop];
       
-      targetCond.level += this.condsMod(this.eden.uniformity.level, this.eden.variability.level);
-      targetCond.flux += this.condsMod(this.eden.uniformity.flux, this.eden.variability.flux);
+      targetCond.level += this.condsMod(meanDiffs.level, this.eden.variability.level);
+      targetCond.flux += this.condsMod(meanDiffs.flux, this.eden.variability.flux);
       
-      targetCond.dynamism += this.condsMod(this.eden.uniformity.dynamism,
+      targetCond.dynamism += this.condsMod(meanDiffs.dynamism,
         this.eden.variability.dynamism);
-      targetCond.dynamismFlux += this.condsMod(this.eden.uniformity.dynamismFlux,
+      targetCond.dynamismFlux += this.condsMod(meanDiffs.dynamismFlux,
         this.eden.variability.dynamismFlux);
         
       this.eden.hundredthsRounding(targetCond);
