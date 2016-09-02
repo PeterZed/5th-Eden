@@ -17,7 +17,7 @@ Cell.prototype.localCondsAvg = function(initCount) {
         targetCond.dynamism = targetCond.dynamism / initCount;
         targetCond.dynamismFlux = targetCond.dynamismFlux / initCount;
       
-        this.eden.hundredthsRounding(targetCond);
+        hundredthsRounding(targetCond);
       }
     }
   }
