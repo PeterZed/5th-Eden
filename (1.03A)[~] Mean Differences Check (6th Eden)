@@ -1,22 +1,22 @@
 Eden.prototype.meanDiffsCheck = function(xCoord, yCoord) {
   var xMedian = Math.ceil(this.xAxis / 2);
   var yMedian = Math.ceil(this.yAxis / 2);
-  var meanDiffs = defaultDiffs;
+  var meanDiffsTotal =  jQuery.extend(true, {}, defaultDiffs);
   
   if (xCoord < xMedian && yCoord < yMedian) {
-    return meanDiffs;
+    return meanDiffsTotal;
   }
   else if (xCoord >= xMedian && yCoord < yMedian) {
-    meanDiffs += meanDiffsCalc(this.garden[yCoord][0], this.garden[yCoord][xMedian - 1]);
-    return meanDiffs;
+    meanDiffsTotal += meanDiffsCalc(this.garden[yCoord][0], this.garden[yCoord][xMedian - 1]);
+    return meanDiffsTotal;
   }
   else if (xCoord < xMedian && yCoord >= yMedian) {
-    meanDiffs += meanDiffsCalc(this.garden[0][xCoord], this.garden[yMedian - 1][xCoord]);
-    return meanDiffs;
+    meanDiffsTotal += meanDiffsCalc(this.garden[0][xCoord], this.garden[yMedian - 1][xCoord]);
+    return meanDiffsTotal;
   }
   else if (xCoord >= xMedian && yCoord >= yMedian) {  // Must sum both axes' mean diffs to return to baseline for both simultaneously
-    meanDiffs += meanDiffsCalc(this.garden[yCoord][0], this.garden[yCoord][xMedian - 1]);
-    meanDiffs += meanDiffsCalc(this.garden[0][xCoord], this.garden[yMedian - 1][xCoord]);
-    return meanDiffs;
+    meanDiffsTotal += meanDiffsCalc(this.garden[yCoord][0], this.garden[yCoord][xMedian - 1]);
+    meanDiffsTotal += meanDiffsCalc(this.garden[0][xCoord], this.garden[yMedian - 1][xCoord]);
+    return meanDiffsTotal;
   }
 };
