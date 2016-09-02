@@ -1,4 +1,4 @@
-var cellDiffs = {   // The defaults for a cell's variation from the average of its neighbors
+var defaultDiffs = {   // The defaults for a cell's variation from the average of its neighbors
   physicalState: {
     nourishment: {
       x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
