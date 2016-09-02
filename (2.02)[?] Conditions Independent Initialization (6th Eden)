@@ -17,6 +17,8 @@ Cell.prototype.condsIndInit = function() {
       
       targetCond.dynamism = getRandom() * 100;
       targetCond.dynamismFlux = getRandom() * 10;
+      
+      hundredthsRounding(targetCond);
     }
   }
   
@@ -29,6 +31,8 @@ Cell.prototype.condsIndInit = function() {
       
       targetCond.dynamism = getRandom() * 100;
       targetCond.dynamismFlux = getRandom() * 10;
+    
+      hundredthsRounding(targetCond);
     }
   }
   
@@ -41,6 +45,8 @@ Cell.prototype.condsIndInit = function() {
       
       targetCond.dynamism = getRandom() * 100;
       targetCond.dynamismFlux = getRandom() * 10;
+      
+      hundredthsRounding(targetCond);
     }
   }
   
