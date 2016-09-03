@@ -6,7 +6,7 @@ Eden.prototype.meanDiffsSum = function(meanDiffsX, meanDiffsY) {
       for (var prop in meanDiffsX.conds[set][cond]) {
         var targetCondSum = meanDiffsSum.conds[set][cond][prop];
         var targetCondX = meanDiffsX.conds[set][cond][prop];
-        var targetCondY = meanDiffsY.cond[set][cond][prop];
+        var targetCondY = meanDiffsY.conds[set][cond][prop];
     
         targetCondSum.level = targetCondX.level + targetCondY.level;
         targetCondSum.flux = targetCondX.flux + targetCondY.flux;
