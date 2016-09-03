@@ -1,0 +1,21 @@
+Eden.prototype.meanDiffsSum = function(meanDiffsX, meanDiffsY) {
+  var meanDiffsSum = jQuery.extend(true, {}, defaultDiffs);
+  
+  for (var set in meanDiffsX.conds) {
+    for (var cond in meanDiffsX.conds[set]) {
+      for (var prop in meanDiffsX.conds[set][cond]) {
+        var targetCondSum = meanDiffsSum.conds[set][cond][prop];
+        var targetCondX = meanDiffsX.conds[set][cond][prop];
+        var targetCondY = meanDiffsY.cond[set][cond][prop];
+    
+        targetCondSum.level = targetCondX.level + targetCondY.level;
+        targetCondSum.flux = targetCondX.flux + targetCondY.flux;
+      
+        targetCondSum.dynamism = targetCondX.dynamism + targetCondY.dynamism;
+        targetCondSum.dynamismFlux = targetCondX.dynamismFlux + targetCondY.dynamismFlux;
+      }
+    }
+  }
+  
+  return meanDiffsSum;
+};
