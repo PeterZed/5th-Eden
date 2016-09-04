@@ -5,10 +5,10 @@ Initializes the garden's metaDynamism and variability values.
 Initializes the probability of the spontaneous emergence of an entity in the garden each tick.
 */
 Eden.prototype.gardenInit = function() {
-  this.variability.level = getRandom() * 100;
-  this.variability.flux = getRandom() * 10;
-  this.variability.dynamism = getRandom() * 100;
-  this.variability.dynamismFlux = getRandom() * 10;
+  this.variability.level = getRandom();
+  this.variability.flux = getRandom();
+  this.variability.dynamism = getRandom();
+  this.variability.dynamismFlux = getRandom();
   hundredthsRounding(this.variability);
 
   this.metaDynamism.level = getRandom() * 100;
