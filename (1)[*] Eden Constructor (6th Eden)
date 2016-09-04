@@ -6,7 +6,7 @@ that governs the mechanics of the world is found.
 */
 function Eden(columns, rows) {
   this.name = "8th Eden";
-  this.id = info.edens.count;
+  this.id = info.edens.count + 1;
   
   this.xAxis = columns;
   this.yAxis = rows;
