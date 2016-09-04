@@ -11,8 +11,8 @@ Eden.prototype.gardenInit = function() {
   this.variability.dynamismFlux = getRandom() * 10;
   hundredthsRounding(this.variability);
 
-  this.metaDynamism.level = getRandom * 100;
-  this.metaDynamism.flux = getRandom * 10;
+  this.metaDynamism.level = getRandom() * 100;
+  this.metaDynamism.flux = getRandom() * 10;
   hundredthsRounding(this.metaDynamism);
   
   this.entities.spontaneousEmergenceProb = getRandom();
