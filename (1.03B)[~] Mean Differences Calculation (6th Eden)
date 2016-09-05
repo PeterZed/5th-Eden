@@ -3,9 +3,9 @@ Eden.prototype.meanDiffsCalc = function(baselineCell, medianCell) {
   var remainingCells;
   
   if (baselineCell.x - medianCell.x !== 0) {
-    remainingCells = this.x - medianCell.x;
+    remainingCells = this.xAxis - medianCell.x;
   } else {
-    remainingCells = this.y - medianCell.y;
+    remainingCells = this.yAxis - medianCell.y;
   }
   
   for (var set in meanDiffs.conds) {
