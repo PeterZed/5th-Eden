@@ -10,10 +10,10 @@ Eden.prototype.coordsWrap = function(xWrapped, yWrapped) {
   var xCorrect;
   var yCorrect;
   
-  while (xWrapped < 0 || xWrapped >= this.xAxis) {
+  if (xWrapped < 0 || xWrapped >= this.xAxis) {
     xWrapped < 0 ? xCorrect = xWrapped + this.xAxis : xCorrect = xWrapped - this.xAxis;
   }
-  while (yWrapped < 0 || yWrapped >= this.yAxis) {
+  if (yWrapped < 0 || yWrapped >= this.yAxis) {
     yWrapped < 0 ? yCorrect = yWrapped + this.yAxis : yCorrect = yWrapped - this.yAxis;
   }
     
