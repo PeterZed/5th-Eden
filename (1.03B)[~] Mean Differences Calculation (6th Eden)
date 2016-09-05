@@ -1,22 +1,33 @@
 Eden.prototype.meanDiffsCalc = function(baselineCell, medianCell) {
   var meanDiffs =  jQuery.extend(true, {}, defaultDiffs);
+  var remainingCells;
+  
+  if (baselineCell.x - medianCell.x !== 0) {
+    remainingCells = this.x - medianCell.x;
+  } else {
+    remainingCells = this.y - medianCell.y;
+  }
   
   for (var set in meanDiffs.conds) {
     for (var cond in meanDiffs.conds[set]) {
       for (var prop in meanDiffs.conds[set][cond]) {
         var targetCond = meanDiffs.conds[set][cond][prop];
     
-        targetCond.level += baselineCell.conds[set][cond][prop].level;
-        targetCond.level -= medianCell.conds[set][cond][prop].level;
+        targetCond.level += baselineCell.conds[set][cond][prop].level -
+          medianCell.conds[set][cond][prop].level;
+        targetCond.level /= remainingCells;   // Calculates the average change needed per cell remaining to return to baseline
         
-        targetCond.flux += baselineCell.conds[set][cond][prop].flux;
-        targetCond.flux -= medianCell.conds[set][cond][prop].flux;
+        targetCond.flux += baselineCell.conds[set][cond][prop].flux -
+          medianCell.conds[set][cond][prop].flux;
+        targetCond.flux /= remainingCells;
       
-        targetCond.dynamism += baselineCell.conds[set][cond][prop].dynamism;
-        targetCond.dynamism -= medianCell.conds[set][cond][prop].dynamism;
+        targetCond.dynamism += baselineCell.conds[set][cond][prop].dynamism -
+          medianCell.conds[set][cond][prop].dynamism;
+        targetCond.dynamism /= remainingCells;
         
-        targetCond.dynamismFlux += baselineCell.conds[set][cond][prop].dynamismFlux;
-        targetCond.dynamismFlux -= medianCell.conds[set][cond][prop].dynamismFlux;
+        targetCond.dynamismFlux += baselineCell.conds[set][cond][prop].dynamismFlux -
+          medianCell.conds[set][cond][prop].dynamismFlux;
+        targetCond.dynamismFlux /= remainingCells;
       }
     }
   }
