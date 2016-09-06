@@ -1,6 +1,9 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+*/
 Eden.prototype.meanDiffsCalc = function(baselineCell, medianCell) {
-  var meanDiffs =  jQuery.extend(true, {}, defaultDiffs);
-  var remainingCells;
+  var meanDiffs =  jQuery.extend(true, {}, defaultDiffs); // Deep clones defaultDiffs
+  var remainingCells = 0; // Number of cells remaining in the row/column, depending on quadrant
   
   if (baselineCell.x - medianCell.x !== 0) {
     remainingCells = this.xAxis - medianCell.x;
@@ -8,14 +11,15 @@ Eden.prototype.meanDiffsCalc = function(baselineCell, medianCell) {
     remainingCells = this.yAxis - medianCell.y;
   }
   
-  for (var set in meanDiffs.conds) {
-    for (var cond in meanDiffs.conds[set]) {
-      for (var prop in meanDiffs.conds[set][cond]) {
-        var targetCond = meanDiffs.conds[set][cond][prop];
+  for (var set in meanDiffs.conds) {  // Cycles conds.physicalState, .sensory, and .enviro
+    for (var cond in meanDiffs.conds[set]) {  // Cycles each condition in each condition set
+      for (var prop in meanDiffs.conds[set][cond]) {  // Cycles each property of each condition
+        var targetCond = meanDiffs.conds[set][cond][prop];  // Just to shorten property's reference
     
         targetCond.level += baselineCell.conds[set][cond][prop].level -
           medianCell.conds[set][cond][prop].level;
-        targetCond.level /= remainingCells;   // Calculates the average change needed per cell remaining to return to baseline
+        // Calculates the mean change needed per remaining cell in order to return to baseline vals
+        targetCond.level /= remainingCells;
         
         targetCond.flux += baselineCell.conds[set][cond][prop].flux -
           medianCell.conds[set][cond][prop].flux;
