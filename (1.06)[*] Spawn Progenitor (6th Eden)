@@ -1,8 +1,7 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-Spawns the progenitor for a lineage, calling this.spawnEntity to do the work of creating a new
-Entity instance. Initializes its attributes and traits.
+Spawns the progenitor to create a new lineage.
 */
 Eden.prototype.spawnProgenitor = function(xCoord, yCoord) {
   var progenitor = this.spawnEntity(xCoord, yCoord);
