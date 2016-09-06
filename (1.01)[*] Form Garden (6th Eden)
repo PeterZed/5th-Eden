@@ -1,24 +1,22 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-
-Forms the array of arrays of Cell objects, which ultimately serves as the game map - known as the
-"garden".
 */
 Eden.prototype.formGarden = function() {
-  this.gardenInit();
+  this.gardenInit();  // Initializes this garden's global values - variability, metaDynamism, etc.
 
   for (var j = 0; j < this.yAxis; j++) {
-    this.garden[j] = [];  // Creates a new row in the garden array
+    this.garden[j] = [];  // Creates a new row in the garden array, which serves as the game map
     
     /*
     Creates a new Cell instance at each index in the multidimensional array.
     */
     for (var i = 0; i < this.xAxis; i++) {
-      info.cells.count++;
+      info.cells.count++;   // Keeps track of how many cells exist so each one gets a unique ID
       this.garden[j][i] = new Cell(i, j, this);
+      // No purpose yet, but number of cells in this world kept track of in case I want it later
       this.cellCount++;
     }
   }
   
-  this.gardenCellsInit();
+  this.gardenCellsInit(); // Initializes all the properties for every cell
 };
