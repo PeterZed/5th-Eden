@@ -9,7 +9,7 @@ except by what would occur due to statistical fluctuations.
 Eden.prototype.meanDiffsCheck = function(xCoord, yCoord) {
   var xMedian = Math.ceil(this.xAxis / 2);  // x-index of the cell at the halfway point for xAxis
   var yMedian = Math.ceil(this.yAxis / 2);  // y-index of the cell at the halfway point for yAxis
-  var meanDiffsTotal =  jQuery.extend(true, {}, defaultDiffs);
+  var meanDiffsTotal =  jQuery.extend(true, {}, defaultDiffs);  // Deep clones defaultDiffs
   
   if (xCoord < xMedian && yCoord < yMedian) { // Executes if cell is in garden's TL quadrant
     return meanDiffsTotal;
