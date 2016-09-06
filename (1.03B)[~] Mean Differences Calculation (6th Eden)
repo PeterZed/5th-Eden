@@ -1,5 +1,9 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Calculates the mean difference between each cell remaining in the row/column (depending on quadrant)
+for every condition value in order to return to the baseline cell's values - on average, because
+there is still variation.
 */
 Eden.prototype.meanDiffsCalc = function(baselineCell, medianCell) {
   var meanDiffs =  jQuery.extend(true, {}, defaultDiffs); // Deep clones defaultDiffs
@@ -18,7 +22,7 @@ Eden.prototype.meanDiffsCalc = function(baselineCell, medianCell) {
     
         targetCond.level += baselineCell.conds[set][cond][prop].level -
           medianCell.conds[set][cond][prop].level;
-        // Calculates the mean change needed per remaining cell in order to return to baseline vals
+        // Calculates the mean change needed per remaining cell
         targetCond.level /= remainingCells;
         
         targetCond.flux += baselineCell.conds[set][cond][prop].flux -
