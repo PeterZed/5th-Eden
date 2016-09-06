@@ -2,13 +2,12 @@
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 For conditions, attributes, traits, and the world's metaDynamism, checks to see if any of the
-properties are below 0, or above the appropriate maximum: Level = 100, Flux = 10, Surge = 1.
-
-For dynamism, dynamism = 100, dynamismFlux = 10, dynamismSurge = 1.
+properties are below 0, or above the appropriate maximum: level = 100, Flux = 10, dynamism = 100,
+dynamismFlux = 10.
 
 The metaDynamism for the world does not have its own dynamism and dynamismFlux values. As such,
 when the comparisons for those are made in the code below, the result comes up false, and thus the
-if statement's contents are not executed.
+if statements' contents are not executed.
 */
 function checkLimits(property) {
   if (property.level < 0) {property.level = 0;}
