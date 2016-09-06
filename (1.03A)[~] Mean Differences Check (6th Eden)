@@ -7,25 +7,26 @@ I.e., There are no jumps or spikes or dips or kinks in the conds values from one
 except by what would occur due to statistical fluctuations.
 */        
 Eden.prototype.meanDiffsCheck = function(xCoord, yCoord) {
-  var xMedian = Math.ceil(this.xAxis / 2);
-  var yMedian = Math.ceil(this.yAxis / 2);
+  var xMedian = Math.ceil(this.xAxis / 2);  // x-index of the cell at the halfway point for xAxis
+  var yMedian = Math.ceil(this.yAxis / 2);  // y-index of the cell at the halfway point for yAxis
   var meanDiffsTotal =  jQuery.extend(true, {}, defaultDiffs);
   
-  if (xCoord < xMedian && yCoord < yMedian) {
+  if (xCoord < xMedian && yCoord < yMedian) { // Executes if cell is in garden's TL quadrant
     return meanDiffsTotal;
   }
-  else if (xCoord >= xMedian && yCoord < yMedian) {
+  else if (xCoord >= xMedian && yCoord < yMedian) { // Executes if cell is in garden's TR quadrant 
     meanDiffsTotal = this.meanDiffsCalc(this.garden[yCoord][0], this.garden[yCoord][xMedian - 1]);
     return meanDiffsTotal;
   }
-  else if (xCoord < xMedian && yCoord >= yMedian) {
+  else if (xCoord < xMedian && yCoord >= yMedian) { // Executes if cell is in garden's BL quadrant
     meanDiffsTotal = this.meanDiffsCalc(this.garden[0][xCoord], this.garden[yMedian - 1][xCoord]);
     return meanDiffsTotal;
   }
-  else if (xCoord >= xMedian && yCoord >= yMedian) {  // Must sum both axes' mean diffs to return to baseline for both simultaneously
+  else if (xCoord >= xMedian && yCoord >= yMedian) {  // Executes if cell in garden's BR quadrant
     var meanDiffsX = this.meanDiffsCalc(this.garden[yCoord][0], this.garden[yCoord][xMedian - 1]);
     var meanDiffsY = this.meanDiffsCalc(this.garden[0][xCoord], this.garden[yMedian - 1][xCoord]);
     
+    // Must sum both axes' mean diffs to return to baseline for both simultaneously
     meanDiffsTotal = this.meanDiffsSum(meanDiffsX, meanDiffsY);
     return meanDiffsTotal;
   }
