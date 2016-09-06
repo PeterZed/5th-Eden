@@ -1,8 +1,9 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-Initializes the garden's metaDynamism and variability values.
-Initializes the probability of the spontaneous emergence of an entity in the garden each tick.
+Initializes the garden's global values, the values that affect all cells' initialization and
+functioning: metaDynamism, variability values; the probability of the spontaneous genesis of a new
+progenitor in the garden each tick.
 */
 Eden.prototype.gardenInit = function() {
   this.variability.level = getRandom();
