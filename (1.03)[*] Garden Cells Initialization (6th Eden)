@@ -1,14 +1,5 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-
-Determines local cells for all cells.
-
-Initializes cell (0,0) in the garden, which is the only cell determined independently of the
-conditions of all other cells:
-
-The top row's cells are the only row initialized independent of other rows. Every other row's
-cells' conds are partly dependent upon one or more surrounding rows' cells:
-
 For those cells whose conditions' determination are dependent upon what their initialized
 neighbors' are, the average value of their neighbors' for the relevant property is calculated
 and that cell's condition is initialized based on this average. This is to ensure the average
@@ -19,12 +10,18 @@ All this averaging and smoothing is handled within the Cell.prototype.condsDepIn
 Eden.prototype.gardenCellsInit = function() {
   for (var j = 0; j < this.yAxis; j++) {
     for (var i = 0; i < this.xAxis; i++) {
-      this.garden[j][i].localCellsDetermination();
+      this.garden[j][i].localCellsDetermination();  // Determines its neighboring cells
     
+      // Initializes cell (0,0), the only one determined independently of all other cells
       if (i === 0 & j === 0) {
         this.garden[j][i].condsIndInit();
       } else {
+        /*
+        Calculates the mean by which the cell conds will vary from the average of its neighboring
+        cells' conds values.
+        */
         var meanDiffsTotal = this.meanDiffsCheck(i, j);
+        // Initializes the cell conds as dependent on any neighbors' conds already initialized
         this.garden[j][i].condsDepInit(meanDiffsTotal);
       }
     }
