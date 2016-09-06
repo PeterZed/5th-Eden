@@ -1,3 +1,11 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+This is to make equal the average 'smoothness' the difference in conds values in the transition
+from any one cell to its neighbors equal throughout the garden, statistically speaking.
+I.e., There are no jumps or spikes or dips or kinks in the conds values from one cell to another
+except by what would occur due to statistical fluctuations.
+*/        
 Eden.prototype.meanDiffsCheck = function(xCoord, yCoord) {
   var xMedian = Math.ceil(this.xAxis / 2);
   var yMedian = Math.ceil(this.yAxis / 2);
