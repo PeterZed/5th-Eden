@@ -1,19 +1,18 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-Some x and y coordinates are sent in as arguments.
 Corrects the x and y coordinates as necessary if their values fall outside the scope of the garden.
 Then returns the reference to the proper cell, essentially making the boundary for the garden
-wraparound at the edges.
+wrap around at the edges.
 */
 Eden.prototype.coordsWrap = function(xWrapped, yWrapped) {
   var xCorrect = xWrapped;
   var yCorrect = yWrapped;
   
-  while (xCorrect < 0 || xCorrect >= this.xAxis) {
+  while (xCorrect < 0 || xCorrect >= this.xAxis) { // If outside the xAxis scope
     xCorrect < 0 ? xCorrect += this.xAxis : xCorrect -= this.xAxis;
   }
-  while (yCorrect < 0 || yCorrect >= this.yAxis) {
+  while (yCorrect < 0 || yCorrect >= this.yAxis) { // If outside the yAxis scope
     yCorrect < 0 ? yCorrect += this.yAxis : yCorrect -= this.yAxis;
   }
     
