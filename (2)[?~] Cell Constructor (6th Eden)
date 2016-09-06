@@ -88,7 +88,7 @@ function Cell(xCoord, yCoord, eden) {
     I haven't decided how I want them to function yet, if I want them to follow the sinusoidal
     variation or not.
     */
-    sensoryConds: {
+    sensory: {
       light: {
         x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
           dynamismSurge: 1},
@@ -128,7 +128,7 @@ function Cell(xCoord, yCoord, eden) {
   
     Their fluctuation is related to neighboring cells' fluctuations?
     */
-    enviroConds: {
+    enviro: {
       radiation: {
         x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
           dynamismSurge: 1},
