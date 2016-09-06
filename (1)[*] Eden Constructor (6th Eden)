@@ -4,8 +4,8 @@
 The Eden constructor serves to build objects that serve as the game world. In here, information
 that governs the mechanics of the world is found.
 */
-function Eden(columns, rows) {
-  this.name = "8th Eden";
+function Eden(columns, rows, name) {
+  this.name = name || "8th Eden";   // Takes 'name' argument, but if absent uses default
   this.id = info.edens.count + 1;
   
   this.xAxis = columns;
@@ -19,7 +19,7 @@ function Eden(columns, rows) {
   
   /*
   Variability is the world's standard deviation for expected difference from cell to cell for a
-  given property. This is utilized whne the world is first initialized.
+  given property. This is utilized with Eden.prototype.gardenInit()
   */
   this.variability = {
     level: null,
@@ -39,36 +39,37 @@ function Eden(columns, rows) {
     surge: 1
   };
   
-  /*
-  spontaneousEmergenceProb is the probability of an entity spontaneously emerging and spawning
-  in the garden each tick. The purpose of this is so that the probability of the garden dying
-  off completely and remaining empty will always be zero. Thus, there is always the chance,
-  however small, of stability and equilibrium establishing within the garden.
-  
-  living is a Map of all presently alive entities within this garden. aliveCount is the number of
-  presently living entities in the garden. deadCount is the number of entities that have perished
-  in this garden.
-  */
   this.entities = {
+    /*
+    The probability of a new progenitor spontaneously spawning in the garden each tick. The purpose
+    of this is so that the probability of the garden dying off completely and remaining empty will
+    always be zero. Thus, there is always the chance, however small, of stability and equilibrium
+    establishing within the garden.
+    */
     spontaneousEmergenceProb: null,
-    living: new Map(),
-    aliveCount: 0,
-    deadCount: 0,
+    living: new Map(),  // A Map of all entities presently alive within this garden 
+    aliveCount: 0,  // The number of presently living entities in the garden
+    deadCount: 0,   // The number of times an entity has perished in this garden
     
+    /*
+    The 'buildup' and 'heal' are the mean change each tick for each and any entity's corresponding
+    property. The 'flux' is the standard deviation.
+    */
     waste: {buildup: null, flux: null},
     hunger: {buildup: null, flux: null},
     thirst: {buildup: null, flux: null},
     injuries: {heal: null, flux: null}
   };
   
-  this.turn = 1;
+  this.turn = 1;  // Keeps track of time's passage
   
   /*
   These values affect the survival probability formula for entities in this world. The player can
   adjust them as they see fit. For now, these are the default values. However, as I gain experience
   with the worlds, I'll tweak them until I feel the default values are good for players to start.
   
-  These are for the survival probability formula due to the entity's health.
+  These are for the survival probability formula due to the entity's health. The general equation:
+  probability = A / (B + C*e^(-Dx + E)) + F.
   */
   this.survivalProbHealth = {a: 1, b: 1, c: 1, d: 1, e: 0, f: 0};
   
@@ -77,7 +78,9 @@ function Eden(columns, rows) {
   adjust them as they see fit. For now, these are the default values. However, as I gain experience
   with the worlds, I'll tweak them until I feel the default values are good for players to start.
   
-  These are for the survival probability formula due to environmental variables.
+  These are for the survival probability formula due to environmental variables. The general
+  equation:
+  probability = A / (B + C*e^(-Dx + E)) + F.
   */
   this.survivalProbEnviro = {a: 1, b: 1, c: 1, d: 1, e: 0, f: 0};
 };
