@@ -1,4 +1,7 @@
-var defaultDiffs = {   // The defaults for a cell's variation from the average of its neighbors
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+*/
+var defaultDiffs = {   // The defaults for cells' conds variation from the average of neighbors
   conds: {
     physicalState: {
       nourishment: {
