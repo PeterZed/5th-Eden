@@ -7,10 +7,10 @@ dynamism, and dynamismFlux to the current cell's values, thus summing the localC
 Cell.prototype.localCondsSum = function(xLocal, yLocal) {
   var localCell = this.localCells[yLocal][xLocal];
   
-  for (var set in this.conds) {
-    for (var cond in this.conds[set]) {
-      for (var prop in this.conds[set][cond]) {
-        var targetCond = this.conds[set][cond][prop];
+  for (var set in this.conds) { // Cycles each condition set: physicalState, sensory, enviro
+    for (var cond in this.conds[set]) { // Cycles each condition set's condition
+      for (var prop in this.conds[set][cond]) { // Cycles each property of each condition
+        var targetCond = this.conds[set][cond][prop]; // Just shortens the reference
     
         targetCond.level += localCell.conds[set][cond][prop].level;
         targetCond.flux += localCell.conds[set][cond][prop].flux;
