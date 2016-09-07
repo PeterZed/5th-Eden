@@ -13,7 +13,7 @@ Cell.prototype.condsDepInit = function() {
   Calculates the mean by which the cell conds will vary from the average of its neighboring
   cells' conds values.
   */
-  var meanDiffsTotal = this.meanDiffsCheck(this.x, this.y);
+  var meanDiffsTotal = this.eden.meanDiffsCheck(this.x, this.y);
   
   // Sums the initialized cells' conditions
   for (var j = 0; j < this.localCells.length; j++) {
