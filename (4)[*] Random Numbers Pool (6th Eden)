@@ -1,6 +1,4 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-
-The pool used for all probability calculations. New numbers are generated as needed.
 */
-var randomPool = [];
+var randomPool = []; // Pool used for all probability calculations. New numbers generated as needed
