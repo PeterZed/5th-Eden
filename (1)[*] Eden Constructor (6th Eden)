@@ -49,7 +49,7 @@ function Eden(columns, rows, name) {
     spontaneousEmergenceProb: null,
     living: new Map(),  // A Map of all entities presently alive within this garden 
     alive: 0,  // The number of presently living entities in the garden
-    dead: 0,   // The number of times an entity has perished in this garden
+    deaths: 0,   // The number of times an entity has perished in this garden
     
     /*
     The 'buildup' and 'heal' are the mean change each tick for each and any entity's corresponding
