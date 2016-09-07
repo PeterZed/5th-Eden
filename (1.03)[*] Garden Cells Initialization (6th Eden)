@@ -16,13 +16,8 @@ Eden.prototype.gardenCellsInit = function() {
       if (i === 0 & j === 0) {
         this.garden[j][i].condsIndInit();
       } else {
-        /*
-        Calculates the mean by which the cell conds will vary from the average of its neighboring
-        cells' conds values.
-        */
-        var meanDiffsTotal = this.meanDiffsCheck(i, j);
         // Initializes the cell conds as dependent on any neighbors' conds already initialized
-        this.garden[j][i].condsDepInit(meanDiffsTotal);
+        this.garden[j][i].condsDepInit();
       }
     }
   }
