@@ -1,7 +1,7 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-Assigns random 16-character name to entity.
+Assigns random 8-character name to entity.
 */
 Entity.prototype.generateName = function() {
   var normal = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -14,11 +14,13 @@ Entity.prototype.generateName = function() {
     var insertSpecial = getRandom();
     
     if (insertSpecial <= 0.125) {
-      var randomSpecial = Math.floor(getRandom() * special.length);
+      // At -1 because it's referencing an index
+      var randomSpecial = Math.floor(getRandom() * (special.length - 1));
       nameGen += special[randomSpecial];
     }
     else {
-      var randomNormal = Math.floor(getRandom() * normal.length);
+      // At -1 because it's referencing an index
+      var randomNormal = Math.floor(getRandom() * (normal.length - 1));
       nameGen += normal[randomNormal];
     }
   }
