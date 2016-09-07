@@ -21,4 +21,4 @@ function checkLimits(property) {
   
   if (property.dynamismFlux < 0) {property.dynamismFlux = 0;}
   else if (property.dynamismFlux > 10) {property.dynamismFlux = 10;}
-};
+}
