@@ -1,12 +1,12 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-First, converts the dynamism of the property to its probability of fluctuating. Then, rolls against
-the probability to see if it may undergo a fluctuation this tick.
+Makes probability roll against appropriate dynamism to determine if a condition's property's 
+value fluxes this tick.
 */
 Cell.prototype.condsFluxCheck = function(dynamism) {
-  var prob = dynamism / 100;
-  var roll = Math.random();
+  var prob = dynamism / 100; // Converts dynamism range of [0,100] to probability range [0,1]
+  var roll = getRandom();
   
   if (roll <= prob) {
     return true;
