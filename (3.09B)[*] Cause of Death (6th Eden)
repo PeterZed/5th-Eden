@@ -1,0 +1,56 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+*/
+Entity.prototype.causeOfDeath = function(cause) {
+  if (cause !== undefined) {
+    this.state = cause;
+  } else {
+    var deathProbHealth = 1 - this.survivalProbHealth();
+    var deathProbEnviro = 1 - this.survivalProbEnviro();
+    
+    // deathRatioHealth is the portion of the entity's death prob due to its health
+    var deathRatioHealth = deathProbHealth / (deathProbHealth + deathProbEnviro);
+    // deathRatioEnviro is the portion of the entity's death prob due to environment
+    var deathRatioEnviro = 1 - deathRatioHealth;
+    var deathRatioRoll = getRandom(); // The roll to determine if the cause is health or enviro
+    
+    if (deathRatioRoll <= deathRatioHealth) {
+      var targetAttr = this.attrs.physicalState;
+      /*
+      The sum in 'denominator' is the total quantity taken from the entity's health in calculating
+      its healthProb.
+      */
+      var denominator = targetAttr.injuries.level + targetAttr.thirst.level +
+        targetAttr.hunger.level
+      
+      /*
+      The ratios are the individual probabilities belonging to each potential cause of death of
+      health-related reasons: succumbing to injuries, dying of thirst, or dying of starvation.
+      */
+      var injuriesRatio = targetAttr.injuries.level / denominator;
+      var thirstRatio = targetAttr.thirst.level / denominator;
+      var hungerRatio = targetAttr.hunger.level / denominator;
+      var causeRoll = getRandom(); // The roll to check if the cause is injuries, thirst, or hunger
+      
+      if (causeRoll <= injuriesRatio) {
+        this.state = "Perished: Injuries";
+      } else if (causeRoll <= injuriesRatio + thirstRatio) {
+        this.state = "Perished: Thirst";
+      } else if (causeRoll <= injuriesRatio + thirstRatio + hungerRatio) {
+        this.state = "Perished: Hunger";
+      } else {
+        this.state = "Perished: Unspecified";
+      }
+      
+    } else if (deathRatioRoll <= deathRatioHealth + deathRatioEnviro {
+      /*
+      'Environment' is catch-all for any of the available conditions, rather than specifying.
+      This is because, in the off-chance that it should get unlucky, it won't confuse the
+      player for it to die of a condition that it's otherwise well-adapted to.
+      */
+      this.state = "Perished: Environment";
+    } else {
+      this.state = "Perished: Unspecified";
+    }
+  }
+}
