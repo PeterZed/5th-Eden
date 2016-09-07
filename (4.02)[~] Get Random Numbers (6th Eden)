@@ -11,4 +11,4 @@ function getRandom() {
   
   var num = randomPool.splice(0,1)[0];   // Takes index 0 val of size 1 array returned by .splice
   return num;
-};
+}
