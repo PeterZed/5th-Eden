@@ -6,7 +6,7 @@ spontaneously emerging, divinely creating a new progenitor, or an entity reprodu
 */
 Eden.prototype.spawnEntity = function(xCoord, yCoord) {
   var targetCell = this.garden[yCoord][xCoord]; // The home cell for the entity's birth
-  var targetEntity = new Entity(xCoord, yCoord, this);
+  var targetEntity = new Entity(xCoord, yCoord);
   
   info.entities.essenceCount++; // Used in generating the entity's unique ID number
   info.entities.living.set(targetEntity.id, targetEntity);
