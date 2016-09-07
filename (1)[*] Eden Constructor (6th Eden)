@@ -5,8 +5,8 @@ The Eden constructor serves to build objects that serve as the game world. In he
 that governs the mechanics of the world is found.
 */
 function Eden(columns, rows, name) {
-  this.name = name || "8th Eden";   // Takes 'name' argument, but if absent uses default
-  this.id = info.edens.count + 1;
+  this.name = name || "8th Eden"; // Takes 'name' argument, but if absent uses default
+  this.id = info.edens.count + 1; // At +1 because base value is 0 Edens in existence
   
   this.xAxis = columns;
   this.yAxis = rows;
