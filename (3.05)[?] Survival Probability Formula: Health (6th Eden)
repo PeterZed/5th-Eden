@@ -2,14 +2,12 @@
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 The probability calculation is of the form y = A / (B + C*e^(-Dx + E)) + F.
-A and B adjust the value of the max asymptote. When B = 1, the max probability = A, even if it's
-over 1.0 in value. Thus, A should not be greater than 1.0, as there are better ways of increasing
-survival probabilities without surpassing 100% chance. When A = 1, the max probability = 1 / B. So,
-should not fall below 1 for the same reason A should not surpass it. Due to the nature of their
-effects, I think it's better to leave A and B equal to 1 so that I don't have to account for
-correcting probabilities greater than 1.0.
+A and B adjust the value of the max asymptote. The max asymptote probability = A / B.
+B also adjusts the y-axis intersection point. For 1 / (1 + e^-x), at x = 0, y = 1 / (B + 1). Thus,
+by changing A and B together so long as A / B = 1, the probability at x = 0 can be raised or
+lowered to make survival easier or more difficult.
 
-C influences the y-intercept of the curve. The y-intercept = 1 / (1 + C), so at C = 1 it's 0.5 prob.
+C influences the y-intercept of the curve. The y-intercept = A / (B + C), so at C = 1 it's 0.5 prob.
 Thus, C can be used to make survival more likely by setting C less than 1, or make it less likely
 by setting C greater than 1.
 
@@ -26,9 +24,10 @@ for correcting negative probabilities and probabilities greater than 1.0.
 with player input.
 */
 Entity.prototype.survivalProbHealth = function() {
+  // The x value is dependent on the present health value modified by the relevant factors
   var x = ((this.health - this.injuries - this.thirst - this.hunger) * 0.1980688) - 9.90344;
   
-  var weights = this.eden.survivalProbHealth;
+  var weights = this.eden.survivalProbHealth; // The values for A, B, C, D, E, and F
   var a = weights.a, b = weights.b, c = weights.c, d = weights.d, e = weights.e, f = weights.f; 
   var healthProb = a / (b + c * Math.pow(Math.E, ((d * x * -1) + e)) + f;
   
