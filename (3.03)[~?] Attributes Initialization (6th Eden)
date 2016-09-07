@@ -1,0 +1,26 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Sets each attribute's properties for the progenitor of a genetic line.
+
+? Still ongoing development until I work out how I want the attributes to act, but otherwise
+functions.
+~ Haven't yet determined mutability, so that is also under way.
+*/
+Entity.prototype.attrsInit = function() {
+  for (var set in this.attrs) { // Cycles each attribute set: physicalState, sensory, enviro
+    for (var cond in this.attrs[set]) { // Cycles through each attribute of each attribute set
+      for (var prop in this.attrs[set][cond]) { // Cycles through each property of every attribute
+        var targetAttr = this.attrs[set][cond][prop]; // Just shortens the prop value's refernece
+        
+        targetAttrs.level = getRandom * 100;
+        targetAttrs.flux = getRandom * 10;
+        
+        targetAttrs.mutability = getRandom * 100;
+        targetAttrs.mutabilityFlux = getRandom * 10;
+        
+        hundredthsRounding(targetAttr);
+      }
+    }
+  }
+};
