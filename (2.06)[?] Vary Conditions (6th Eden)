@@ -11,8 +11,9 @@ Cell.prototype.varyConds = function(meanDiffs) {
     for (var cond in this.conds[set]) { // Cycles each condition of each condition set
       for (var prop in this.conds[set][cond]) { // Cycles every property of each condition
         var targetCond = this.conds[set][cond][prop]; // Just shortens the prop value's reference
-        var meanDiffsVal = meanDiffs.conds[set][cond][prop]; // THe mean difference for this prop
+        var meanDiffsVal = meanDiffs.conds[set][cond][prop]; // The mean difference for this prop
       
+        // Adjusted based on mean difference and standard deviation, using a Gaussian distribution
         targetCond.level += this.condsMod(meanDiffsVal.level, this.eden.variability.level);
         targetCond.flux += this.condsMod(meanDiffsVal.flux, this.eden.variability.flux);
       
@@ -22,6 +23,7 @@ Cell.prototype.varyConds = function(meanDiffs) {
           this.eden.variability.dynamismFlux);
         
         hundredthsRounding(targetCond);
+        // Checks if level, flux, dynamism, and dynamismFlux are within limits after the mod
         checkLimits(targetCond);
       }
     }
