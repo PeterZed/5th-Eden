@@ -24,8 +24,10 @@ for correcting negative probabilities and probabilities greater than 1.0.
 with player input.
 */
 Entity.prototype.survivalProbHealth = function() {
+  var targetAttr = this.attrs.physicalState;
   // The x value is dependent on the present health value modified by the relevant factors
-  var x = ((this.health - this.injuries - this.thirst - this.hunger) * 0.1980688) - 9.90344;
+  var x = ((targetAttr.health.level - targetAttr.injuries.level - targetAttr.thirst.level -
+    targetAttr.hunger.level) * 0.1980688) - 9.90344;
   
   var weights = this.eden.survivalProbHealth; // The values for A, B, C, D, E, and F
   var a = weights.a, b = weights.b, c = weights.c, d = weights.d, e = weights.e, f = weights.f; 
