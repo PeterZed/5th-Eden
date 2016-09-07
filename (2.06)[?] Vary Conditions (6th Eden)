@@ -1,21 +1,17 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-Varies a cell's conditions from its neighbors' based on this Eden's uniformity and variability
-values - that is, how similar or dissimilar cells are from each other within the garden, and the
-spread of those values.
+Varies a cell's condition values from the average of its neighbors' based on this Eden's variability
+values - that is, how similar or dissimilar cells are from each other within the garden.
 
-Cycles through each condition and adjusts the level, flux, dynamism, and dynamismFlux by the mod
-values (as determined by the cell.prototype.condsMod function).
-
-? Unknown if sensory and enviro conds will function identically to cylical conds at this time.
+? Unknown if sensory and enviro conds will function identically to physicalState conds at this time.
 */
 Cell.prototype.varyConds = function(meanDiffs) {
-  for (var set in this.conds) {
-    for (var cond in this.conds[set]) {
-      for (var prop in this.conds[set][cond]) {
-        var targetCond = this.conds[set][cond][prop];
-        var meanDiffsVal = meanDiffs.conds[set][cond][prop];
+  for (var set in this.conds) { // Cycles each condition set: physicalState, sensory, enviro
+    for (var cond in this.conds[set]) { // Cycles each condition of each condition set
+      for (var prop in this.conds[set][cond]) { // Cycles every property of each condition
+        var targetCond = this.conds[set][cond][prop]; // Just shortens the prop value's reference
+        var meanDiffsVal = meanDiffs.conds[set][cond][prop]; // THe mean difference for this prop
       
         targetCond.level += this.condsMod(meanDiffsVal.level, this.eden.variability.level);
         targetCond.flux += this.condsMod(meanDiffsVal.flux, this.eden.variability.flux);
