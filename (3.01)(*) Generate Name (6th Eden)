@@ -1,23 +1,24 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-Assigns random 16-character name to entity. Special characters and symbols have a 0.125
-probability of being assigned at each position in the name.
+Assigns random 16-character name to entity.
 */
 Entity.prototype.generateName = function() {
   var normal = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   var special = "ÇüéâäàåãçêëèïîìæÆôöòõûùüÿý¢£¥ƒáíóúñÑßµ€ŠŒšŽœžŸÀÁÂÃÄÅÈÉÊËÌÍÎÏ" +
                 "ÐÒÓÔÕÖÙÚÛÜÝÞþðØø" + "`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?";
   var nameGen = "";
-        
+  
+  // Special characters and symbols have a 1/8 probability at each position in the name
   for (var i = 0; i < 8; i++) {
-    var insertSpecial = Math.random();
+    var insertSpecial = getRandom();
+    
     if (insertSpecial <= 0.125) {
-      var randomSpecial = Math.floor(Math.random() * special.length);
+      var randomSpecial = Math.floor(getRandom() * special.length);
       nameGen += special[randomSpecial];
     }
     else {
-      var randomNormal = Math.floor(Math.random() * normal.length);
+      var randomNormal = Math.floor(getRandom() * normal.length);
       nameGen += normal[randomNormal];
     }
   }
