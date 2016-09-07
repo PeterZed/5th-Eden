@@ -1,7 +1,6 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-Generates a new list of 16384 cryptographically secure pseudo random numbers from 0 to 1.
 https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues
 
 In order to convert to a random number between 0 and 1, it was necessary to use two arrays:
@@ -10,14 +9,15 @@ array, so it stores any decimal values as integers. Thus, the quotient becomes 0
 the randomNumbers Uint32Array, but remains a number between 0 and 1, inclusive, for the
 randomPool array.
 
-A CSPRNG was chosen over Math.random() to emulate the true randomness of real world physics at its
-core, in spite of being slightly slower and more cumbersome to work with efficiently. The Uint32
-Array was chosen over smaller Uint arrays because it better approximates a continuous scale rather
-than a discrete one. However, given the number of bits needed to make each Uint32's numbers, the
-overall number of numbers available is lower because there's a limit to the number of bits of
-entropy available to 'getRandomValues'.
+A CSPRNG was chosen over Math.random() to better emulate the true unpredictability of real world
+physics at its core, in spite of being slightly slower and more cumbersome to work with efficiently
+than Math.random(). The Uint32 Array was chosen over smaller Uint arrays because it better
+approximates a continuous scale rather than a discrete one. However, given the number of bits
+needed to make each Uint32's numbers, the overall number of numbers available is lower because
+there's a limit to the number of bits of entropy available to 'crypto.getRandomValues' per use.
 */
 function genRandom() {
+  // Generates a new list of 16384 cryptographically secure pseudo random numbers from 0 to 1
   var randomNumbers = window.crypto.getRandomValues(new Uint32Array(16384));
   
   for (var i = 0; i < 16384; i++) {
