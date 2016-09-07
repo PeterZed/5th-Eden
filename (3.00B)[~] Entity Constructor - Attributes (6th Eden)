@@ -1,17 +1,12 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-These are all of the physical attributes of an entity.
-
-? I have yet to determine completely how much waste I wish each entity to produce each tick.
 ~ Energy, Fatigue, and Exhaustion are not implemented at all.
 */
 Entity.prototype.attrs = {
   /*
   They correspond to an entity's physical state that relate to its survival: Hunger, Thirst, Waste,
-  Health, Injuries. Instead of flux serving as the standard deviation, it serves as the average
-  about by which a need increases each tick, like hunger, thirst, and waste. Surge is the standard
-  deviation for this calculation. For injuries, it is how much they are healed each tick.
+  Health, Injuries. 
   
   The flux values are all tentative, currently. I haven't a clue if they'll increase too rapidly or
   not, so it will take a lot of tweaking and experimenting. I've set it up so that, without
@@ -20,7 +15,7 @@ Entity.prototype.attrs = {
   8 ticks: There are documented cases of a person (in comfortable setting) surviving over a week
   without water. These are, of course, assuming optimal situations. Eventually, I'll have it set
   up so that, in conditions with poor temperature and salinity for the entity, it will suffer
-  dehydration faster. With more activity, it suffers starvation faster.
+  dehydration faster. With more activity, it suffers starvation and thirst faster.
   */
   physicalState: {
     health: {level: 100},
@@ -31,7 +26,7 @@ Entity.prototype.attrs = {
   
   /*
   These attributes are the basics for the entity's ability to sense the external world.
-  They correspond to the sensoryConds for a cell.
+  They correspond to the sensory conditions for a cell.
   */
   sensory: {
     sight: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
@@ -42,15 +37,14 @@ Entity.prototype.attrs = {
   },
   
   /*
-  These attributes are named as such because they correspond to the enviroConds of the cell.
-  Likely, I'll have to rename them at some point to reflect both the conditions and the
-  attributes.
+  These attributes are named as such because they correspond to the environmental conditions
+  of the cell.
   */
   enviro: {
-    radiationTolerance: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
+    radTolerance: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
     acidityOptimal: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
     airCompOptimal: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
-    temperatureOptimal: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
+    tempOptimal: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
     salinityOptimal: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null}
   }
 };
