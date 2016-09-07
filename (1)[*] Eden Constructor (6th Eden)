@@ -83,4 +83,4 @@ function Eden(columns, rows, name) {
   probability = A / (B + C*e^(-Dx + E)) + F.
   */
   this.survivalProbEnviro = {a: 1, b: 1, c: 1, d: 1, e: 0, f: 0};
-};
+}
