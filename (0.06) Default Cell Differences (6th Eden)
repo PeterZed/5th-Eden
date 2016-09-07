@@ -24,7 +24,7 @@ var defaultDiffs = {   // The defaults for cells' conds variation from the avera
       }
     },
   
-    sensoryConds: {
+    sensory: {
       light: {
         x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
         range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
@@ -45,7 +45,7 @@ var defaultDiffs = {   // The defaults for cells' conds variation from the avera
       },
     },
   
-    enviroConds: {
+    enviro: {
       radiation: {
         x: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
         range: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0},
