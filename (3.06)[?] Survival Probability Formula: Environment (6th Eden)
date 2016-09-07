@@ -22,12 +22,16 @@ for correcting negative probabilities and probabilities greater than 1.0.
 ? These weights will change as I experiment and tweak them until the survival probabilities
 "feel" correct. So, this will be happening for a long time, and (hopefully) can be accomplished
 with player input.
+
+? Still not sure if I want enviroConds[cond].level or if they'll follow the sinusoidal that
+physicalState does. If the latter, instead of .level the condition's level will have to
+be calculated from its average, range, frequency, x, etc.
 */
 Entity.prototype.survivalProbEnviro = function(xLocal, yLocal) {
   var localCell = this.cell.localCells[yLocal][xLocal];
   // Entity's rad tolerance divided by the cell's radiation level
+  
   var radRatio = this.attrs.enviro.radTolerance.level / localCells.conds.enviro.radiation.level;
-
   if (radRatio > 1) {
     radRatio = 1; // Because tolerance that exceeds the rad yields no further survival benefits
   }
