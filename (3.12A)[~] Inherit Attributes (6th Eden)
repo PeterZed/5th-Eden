@@ -1,0 +1,22 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+~ Need to set up for sensory and enviro attributes
+*/
+Entity.prototype.inheritAttrs = function() {
+  /*
+  Sets the physical state attributes' mean increase and std dev values. By default, every entity
+  has the same, so the child's needs to be initialized independently of whatever the parent's
+  values are, lest it inadvertently inherits a change that the player made to the parent alone.
+  */
+  this.attrs.physicalState.injuries.heal = this.eden.entities.injuries.heal;
+  this.attrs.physicalState.injuries.flux = this.eden.entities.injuries.flux;
+  
+  this.attrs.physicalState.thirst.buildup = this.eden.entities.thirst.buildup;
+  this.attrs.physicalState.thirst.flux = this.eden.entities.thirst.flux
+  
+  this.attrs.physicalState.hunger.buildup = this.eden.entities.hunger.buildup;
+  this.attrs.physicalState.hunger.flux = this.eden.entities.hunger.flux;
+  
+  
+};
