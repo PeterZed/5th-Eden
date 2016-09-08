@@ -24,7 +24,7 @@ Cell.prototype.varyConds = function(meanDiffs) {
         
         hundredthsRounding(targetCond);
         // Checks if level, flux, dynamism, and dynamismFlux are within limits after the mod
-        checkLimits(targetCond);
+        checkLimitsWorld(targetCond);
       }
     }
   }
