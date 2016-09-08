@@ -1,7 +1,7 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-For conditions, attributes, traits, and the world's metaDynamism, checks to see if any of the
+For conditions and the world's metaDynamism, checks to see if any of the
 properties are below 0, or above the appropriate maximum: level = 100, Flux = 10, dynamism = 100,
 dynamismFlux = 10.
 
@@ -9,7 +9,7 @@ The metaDynamism for the world does not have its own dynamism and dynamismFlux v
 when the comparisons for those are made in the code below, the result comes up false, and thus the
 if statements' contents are not executed.
 */
-function checkLimits(property) {
+function checkLimitsWorld(property) {
   if (property.level < 0) {property.level = 0;}
   else if (property.level > 100) {property.level = 100;}
   
