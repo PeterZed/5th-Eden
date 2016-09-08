@@ -12,7 +12,10 @@ metaMutabilitySurge is the stdDev should metaMutabilityFlux undergo a change.
 Entity.prototype.attrs = {
   /*
   They correspond to an entity's physical state that relate to its survival: Hunger, Thirst, Waste,
-  Health, Injuries. 
+  Health, Injuries.  For hunger and thirst, buildup is how quickly the mean they build up each tick,
+  and flux is that calculation's stdDev. For injuries, heal is how quickly the level reduces each
+  tick, and flux is that calculation's stdDev. There is a world value for every entity, but an
+  individual entity's values for these can be set individually.
   
   The flux values are all tentative, currently. I haven't a clue if they'll increase too rapidly or
   not, so it will take a lot of tweaking and experimenting. I've set it up so that, without
@@ -25,9 +28,9 @@ Entity.prototype.attrs = {
   */
   physicalState: {
     health: {level: 100},
-    injuries: {level: 0},
-    hunger: {level: 0},
-    thirst: {level: 0},
+    injuries: {level: 0, heal: null, flux: null},
+    hunger: {level: 0, buildup: null, flux: null},
+    thirst: {level: 0, buildup: null, flux: null},
   },
   
   /*
