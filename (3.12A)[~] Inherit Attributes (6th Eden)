@@ -1,7 +1,8 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-~ Need to set up for sensory and enviro attributes
+~ Need to set up for sensory and enviro attributes: Mutation Check, Mutation Determination for every
+relevant value, a Check Limits for entities
 */
 Entity.prototype.inheritAttrs = function() {
   /*
