@@ -27,9 +27,9 @@ Cell.prototype.condsFluxDet = function() {
           targetCond.dynamismFlux += this.condsFlux(0, targetCond.dynamismSurge);
         }
       
-        this.eden.hundredthsRounding(targetCond);
+        hundredthsRounding(targetCond);
         // Checks if level, flux, dynamism, and dynamismFlux are within limits after the mod
-        this.eden.checkLimits(targetCond);
+        checkLimitsWorld(targetCond);
       }
     }
   }
