@@ -4,9 +4,10 @@
 Entity.prototype.reproduce = function() {
   var child = this.eden.spawnEntity(this.x, this.y);
   
+  // Updates this entity's lineage list of its descendants from oldest to newest
   this.lineage.set(child.id, child);
   child.ancestry = jQuery.extend(true, new Map(), this.ancestry); // Deep clone
-  child.ancestry.set (this.id, this);
+  child.ancestry.set(this.id, this); // Updates child's ancestor list of from oldest to most recent
   
   child.inheritAttributes(); // Receives attributes, which may mutate from parent to child
   child.inheritTraits(); // Receives personality traits, which may mutate from parent to child
