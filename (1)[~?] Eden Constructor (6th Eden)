@@ -3,6 +3,16 @@
 
 The Eden constructor serves to build objects that serve as the game world. In here, information
 that governs the mechanics of the world is found.
+
+? Undecided on injuries: perhaps it would be nice to have a dynamism chance of getting worse the
+higher the number of injuries. Actually, that is essentially succumbing to one's injuries, which is
+already part of the simulation in the form of the effect of injuries on survival probability due to
+health. Instead, perhaps make it a dynamism chance of healing based on the severity of the injuries.
+This way, serious injuries take longer to heal - but this doesn't quite properly emulate the real
+world, as people can stabilize and no longer be at risk and yet still take time to fully recover.
+For now, I'll leave it as a set mean by which injuries heal each tick.
+
+~ Have not yet decided how much waste will buildup each tick.
 */
 function Eden(columns, rows, name) {
   this.name = name || "8th Eden"; // Takes 'name' argument, but if absent uses default
@@ -53,12 +63,18 @@ function Eden(columns, rows, name) {
     
     /*
     The 'buildup' and 'heal' are the mean change each tick for each and any entity's corresponding
-    property. The 'flux' is the standard deviation.
+    property. The 'flux' is the standard deviation. Flux is 1/8 the value of hunger, thirst, and
+    injuries.
+    
+    It's designed so that an entity will die of starvation at 40 ticks without food, provided it
+    takes no actions to expend any other energy. It will die after 8 ticks without water, provided
+    the same thing again. Hunger and thirst essentially have permanent dynamism 100 as they will
+    always increase. Injuries too as they always heal some amount.
     */
     waste: {buildup: null, flux: null},
-    hunger: {buildup: null, flux: null},
-    thirst: {buildup: null, flux: null},
-    injuries: {heal: null, flux: null}
+    hunger: {buildup: 2.50, flux: 0.31},
+    thirst: {buildup: 12.50, flux: 1.56},
+    injuries: {heal: 8.00, flux: 1.00}
   };
   
   this.turn = 1;  // Keeps track of time's passage
