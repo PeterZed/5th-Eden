@@ -1,9 +1,5 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-
-The "struggle is the probability roll to see if the entity lives or dies, using the deathChance
-as the probability of it dying. If struggle > deathChance, the entity beats the odds and lives
-another turn, growing older. Otherwise, it perishes and this.death() is invoked.
 */
 Entity.prototype.survival = function() {
   var struggle = getRandom(); // Makes probability roll against chances of its death
