@@ -9,10 +9,10 @@ Entity.prototype.generateName = function() {
                 "ÐÒÓÔÕÖÙÚÛÜÝÞþðØø" + "`~!@#$%^&*()_+-=[]\\{}|;':\",./<>?";
   var nameGen = "";
   
-  // Special characters and symbols have a 1/8 probability at each position in the name
   for (var i = 0; i < 8; i++) {
     var insertSpecial = getRandom();
     
+    // Special characters and symbols have a 1/8 probability at each position in the name
     if (insertSpecial <= 0.125) {
       // At -1 because it's referencing an index
       var randomSpecial = Math.floor(getRandom() * (special.length - 1));
