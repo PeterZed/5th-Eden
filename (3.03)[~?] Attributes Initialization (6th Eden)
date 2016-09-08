@@ -13,11 +13,14 @@ Entity.prototype.attrsInit = function() {
       for (var prop in this.attrs[set][cond]) { // Cycles through each property of every attribute
         var targetAttr = this.attrs[set][cond][prop]; // Just shortens the prop value's refernece
         
-        targetAttrs.level = getRandom * 100;
-        targetAttrs.flux = getRandom * 10;
+        targetAttr.level = getRandom() * 100;
+        targetAttr.flux = getRandom() * 10;
         
-        targetAttrs.mutability = getRandom * 100;
-        targetAttrs.mutabilityFlux = getRandom * 10;
+        targetAttr.mutability = getRandom() * 100;
+        targetAttr.mutabilityFlux = getRandom() * 10;
+        
+        targetAttr.metaMutability = getRandom() * 100;
+        targetAttr.metaMutabilityFlux = getRandom() * 10;
         
         hundredthsRounding(targetAttr);
       }
