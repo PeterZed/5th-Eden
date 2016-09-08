@@ -3,9 +3,8 @@
 
 Sets each attribute's properties for the progenitor of a genetic line.
 
-? Still ongoing development until I work out how I want the attributes to act, but otherwise
+~? Still ongoing development until I work out how I want the attributes to act, but otherwise
 functions.
-~ Haven't yet determined mutability, so that is also under way.
 */
 Entity.prototype.attrsInit = function() {
   for (var set in this.attrs) { // Cycles each attribute set: physicalState, sensory, enviro
