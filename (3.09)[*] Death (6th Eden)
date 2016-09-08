@@ -1,9 +1,7 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-This entity dies. Updates the entity's relevant death info, removes it from the cell it inhabited,
-updates the relevant information in Eden and the Multiverse Info pertaining to entities, and adds
-this entity's reference to the appropriate places in the afterworld's records.
+This entity dies.
 */
 Entity.prototype.death = function(cause) {
   this.state = this.causeOfDeath(cause); // Passes along any specified cause of death
@@ -16,8 +14,10 @@ Entity.prototype.death = function(cause) {
   this.eden.alive--;
   this.eden.deaths++;
   
-  this.locality = afterworld.name;
-  afterworld.bookOfLife.get(cause).set(entity.id, entity);
+  this.locality = afterworld.name; // Moves the entity  to the afterworld
+  // The Book of Life organizes all entities by cause of death
+  afterworld.bookOfLife.get(cause).set(entity.id, entity); 
+  // The denizens list is a list of all entities in the afterworld, regardless of cause of death
   afterworld.denizens.set(entity.id, entity);
   afterworld.denizensCount++;
 };
