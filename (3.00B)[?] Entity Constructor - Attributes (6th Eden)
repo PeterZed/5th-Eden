@@ -7,9 +7,7 @@ metaMutabilityLevel is the probability * 100 of a property's mutability values u
 itself included. metaMutabilityFlux is the stdDev should metaMutability itself undergo a change;
 metaMutabilitySurge is the stdDev should metaMutabilityFlux undergo a change.
 
-~ Energy, Fatigue, and Exhaustion are not implemented at all.
-~ The mechanics for mutability are not yet decided. It may have a value individually for level,
-flux, etc., or it may just have one value per property that's used for all the values.
+? Energy, Fatigue, and Exhaustion are not implemented at all.
 */
 Entity.prototype.attrs = {
   /*
