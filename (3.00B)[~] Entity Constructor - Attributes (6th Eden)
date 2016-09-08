@@ -1,5 +1,11 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+mutability is the probability * 100 of a property's non-mutability values undergoing a change from
+parent to child when the entity reproduces. mutabilityFlux is the stdDev should mutability
+itself undergo a change; mutabilitySurge is the stdDev should mutabilityFlux undergo a change.
+metaMutabilityLevel is the probability * 100 of a property's mutability values undergoing a change,
+itself included. metaMutabilityFlux is the stdDev should metaMutability itself undergo a change;
+metaMutabilitySurge is the stdDev should metaMutabilityFlux undergo a change.
 
 ~ Energy, Fatigue, and Exhaustion are not implemented at all.
 ~ The mechanics for mutability are not yet decided. It may have a value individually for level,
@@ -31,11 +37,21 @@ Entity.prototype.attrs = {
   They correspond to the sensory conditions for a cell.
   */
   sensory: {
-    sight: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
-    hearing: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
-    gustation: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
-    olfaction: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
-    touch: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null}
+    sight: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null,
+      mutabilitySurge: 1, metaMutabilityLevel: null, metaMutabilityFlux: null,
+      metaMutabilitySurge: 1},
+    hearing: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null,
+      mutabilitySurge: 1, metaMutabilityLevel: null, metaMutabilityFlux: null,
+      metaMutabilitySurge: 1},
+    gustation: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null,
+      mutabilitySurge: 1, metaMutabilityLevel: null, metaMutabilityFlux: null,
+      metaMutabilitySurge: 1},
+    olfaction: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null,
+      mutabilitySurge: 1, metaMutabilityLevel: null, metaMutabilityFlux: null,
+      metaMutabilitySurge: 1},
+      touch: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null,
+      mutabilitySurge: 1, metaMutabilityLevel: null, metaMutabilityFlux: null,
+      metaMutabilitySurge: 1}
   },
   
   /*
@@ -43,10 +59,20 @@ Entity.prototype.attrs = {
   of the cell.
   */
   enviro: {
-    radTolerance: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
-    acidityOptimal: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
-    airCompOptimal: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
-    tempOptimal: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null},
-    salinityOptimal: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null}
+    radTolerance: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null,
+      mutabilitySurge: 1, metaMutabilityLevel: null, metaMutabilityFlux: null,
+      metaMutabilitySurge: 1},
+    acidityOptimal: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null,
+      mutabilitySurge: 1, metaMutabilityLevel: null, metaMutabilityFlux: null,
+      metaMutabilitySurge: 1},
+    airCompOptimal: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null,
+      mutabilitySurge: 1, metaMutabilityLevel: null, metaMutabilityFlux: null,
+      metaMutabilitySurge: 1},
+    tempOptimal: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null,
+      mutabilitySurge: 1, metaMutabilityLevel: null, metaMutabilityFlux: null,
+      metaMutabilitySurge: 1},
+    salinityOptimal: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null,
+      mutabilitySurge: 1, metaMutabilityLevel: null, metaMutabilityFlux: null,
+      metaMutabilitySurge: 1}
   }
 };
