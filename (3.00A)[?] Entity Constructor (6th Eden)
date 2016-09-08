@@ -34,7 +34,7 @@ function Entity(xCoord, yCoord) {
   this.murderer; // If it is slain in battle by an entity that it had not attacked or provoked
   
   // Its chances of surviving on the neighboring local cells
-  this.survivalProb = [[1,1,1],
-                       [1,1,1],
-                       [1,1,1]];
+  this.localSurvivalProb = [[1,1,1],
+                            [1,1,1],
+                            [1,1,1]];
 };
