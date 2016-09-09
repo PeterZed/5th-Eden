@@ -1,0 +1,16 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Makes probability roll against appropriate mutability to check if the relevant property mutates 
+in being passed down from parent to child.
+*/
+Entity.prototype.mutationCheck = function(mutability) {
+  var prob = mutability / 100; // Converts mutability range of [0,100] to probability range [0,1]
+  var roll = getRandom();
+  
+  if (roll <= prob) {
+    return true;
+  } else {
+    return false;
+  }
+};
