@@ -12,7 +12,7 @@ mutability values. So, those if statements come up false, and thus they do not g
 properties via the code inside (for example, property.dynamism without the if statement adds
 that value to an entity's attributes).
 */
-function checkLimitsWorld(property) {
+function checkLimits(property) {
   if (property.level < 0) {property.level = 0;} // Checks to see if below minimum
   else if (property.level > 100) {property.level = 100;} // Checks to see if above maximum
   
