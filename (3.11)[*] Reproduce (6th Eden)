@@ -8,6 +8,7 @@ Entity.prototype.reproduce = function() {
   this.lineage.set(child.id, child);
   child.ancestry = jQuery.extend(true, new Map(), this.ancestry); // Deep clone
   child.ancestry.set(this.id, this); // Updates child's ancestor list of from oldest to most recent
+  child.parent = this;
   
   child.inheritAttributes(); // Receives attributes, which may mutate from parent to child
   child.inheritTraits(); // Receives personality traits, which may mutate from parent to child
