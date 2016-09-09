@@ -15,22 +15,22 @@ Cell.prototype.condsFluxDet = function() {
   
         // Makes prob roll against appropriate dynamism to check if value fluxes this tick
         if (this.condsFluxCheck(targetCond.dynamism)) { // Makes probability roll
-          targetCond.level += this.condsFlux(0, targetCond.flux); // 
+          targetCond.level += this.condFlux(0, targetCond.flux); // 
         }
         if (this.condsFluxCheck(targetCond.dynamism)) {
-          targetCond.flux += this.condsFlux(0, targetCond.surge);
+          targetCond.flux += this.condFlux(0, targetCond.surge);
         }
       
         if (this.condsFluxCheck(this.metaDynamism.level)) {
-          targetCond.dynamism += this.condsFlux(0, targetCond.dynamismFlux);
+          targetCond.dynamism += this.condFlux(0, targetCond.dynamismFlux);
         }
         if (this.condsFluxCheck(this.metaDynamism.level)) {
-          targetCond.dynamismFlux += this.condsFlux(0, targetCond.dynamismSurge);
+          targetCond.dynamismFlux += this.condFlux(0, targetCond.dynamismSurge);
         }
       
         hundredthsRounding(targetCond);
         // Checks if level, flux, dynamism, and dynamismFlux are within limits after the mod
-        checkLimitsWorld(targetCond);
+        checkLimits(targetCond);
       }
     }
   }
