@@ -68,10 +68,13 @@ function Eden(columns, rows, name) {
     
     It's designed so that an entity will die of starvation at 40 ticks without food, provided it
     takes no actions to expend any other energy. It will die after 8 ticks without water, provided
-    the same thing again. Hunger and thirst essentially have permanent dynamism 100 as they will
-    always increase. Injuries too as they always heal some amount.
+    the same thing again. After 64 turns on the same cell, without having mitigated waste buildup
+    somehow, the entity will necessarily die as its probability approaches zero.
+    
+    Hunger and thirst essentially have permanent dynamism 100 as they will always increase.
+    Injuries too as they always heal some amount.
     */
-    waste: {buildup: null, flux: null},
+    waste: {buildup: 1.56, flux: 0.20},
     hunger: {buildup: 2.50, flux: 0.31},
     thirst: {buildup: 12.50, flux: 1.56},
     injuries: {heal: 8.00, flux: 1.00}
