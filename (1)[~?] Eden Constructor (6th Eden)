@@ -80,17 +80,20 @@ function Eden(columns, rows, name) {
   this.turn = 1;  // Keeps track of time's passage
   
   /*
-  These values affect the survival probability formula for entities in this world. The player can
+  These values affect the survival probability formula for entities in this world due to the health
+  of the entity and modifications to it based on hunger, thirst, and injuries. The player can
   adjust them as they see fit. For now, these are the default values. However, as I gain experience
   with the worlds, I'll tweak them until I feel the default values are good for players to start.
   
-  These are for the survival probability formula due to the entity's health. The general equation:
+  These are for the survival probability formula due to environmental variables. The general
+  equation:
   probability = A / (B + C*e^(-Dx + E)) + F.
   */
   this.survivalProbHealth = {a: 1, b: 1, c: 1, d: 1, e: 0, f: 0};
   
   /*
-  These values affect the survival probability formula for entities in this world. The player can
+  These values affect the survival probability formula for entities in this world due to the
+  difference between an entity's optimal conditions and the actual conditions. The player can
   adjust them as they see fit. For now, these are the default values. However, as I gain experience
   with the worlds, I'll tweak them until I feel the default values are good for players to start.
   
@@ -99,4 +102,15 @@ function Eden(columns, rows, name) {
   probability = A / (B + C*e^(-Dx + E)) + F.
   */
   this.survivalProbEnviro = {a: 1, b: 1, c: 1, d: 1, e: 0, f: 0};
+  
+  /*
+  These values affect the survival probability formula for entities in this world due to the waste
+  level on the presently inhabited cell. The player can adjust them as they see fit. For now, these
+  are the default values. However, as I gain experience with the worlds, I'll tweak them until I
+  feel the default values are good for players to start.
+  
+  These are for the survival probability formula due to the entity's health. The general equation:
+  probability = A / (B + C*e^(-Dx + E)) + F.
+  */
+  this.survivalProbWaste = {a: 1, b: 1, c: 1, d: 1, e: 0, f: 0};
 }
