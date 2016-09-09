@@ -1,0 +1,78 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Determines if value undergoes mutation, and if so modifies the value appropriately.
+*/
+Entity.prototype.mutationDet = function() {
+  /*
+  Sets the sensory attributes' values.
+  */
+  for (var cond in this.attrs.sensory) { // Cycles through each attribute of sensory attr set
+    for (var prop in this.attrs.sensory[cond]) { // Cycles through each property of every attribute
+      var targetAttr = this.attrs.sensory[cond][prop]; // Just shortens the prop value's reference
+        
+      if (this.mutationCheck(targetAttr.mutability)) { // Rolls against prob of mutability / 100
+        targetAttr.level += this.attrMutation(0, targetAttr.flux); // Mutation modifies the value
+      }
+      if (this.mutationCheck(targetAttr.mutability)) {
+        targetAttr.flux += this.attrMutation(0, targetAttr.surge);
+      }
+      
+      if (this.mutationCheck(targetAttr.metaMutabilityLevel)) { // Rolls against prob of mML / 100
+        targetAttr.mutability += this.attrMutation(0, targetAttr.mutabilityFlux); // Mods the value
+      }
+      if (this.mutationCheck(targetAttr.metaMutabilityLevel)) {
+        targetAttr.mutabilityFlux += this.attrMutation(0, targetAttr.mutabilitySurge);
+      }
+      
+      if (this.mutationCheck(targetAttr.metaMutabilityLevel)) { // Rolls against prob of mML / 100
+        targetAttr.metaMutabilityLevel += this.attrMutation(0,
+          targetAttr.metaMutabilityFlux); // Mods the value
+      }
+      if (this.mutationCheck(targetAttr.metaMutabilityLevel)) {
+        targetAttr.mutabilityFlux += this.attrMutation(0,
+          targetAttr.mutabilitySurge);
+      }
+      
+      hundredthsRounding(targetAttr);
+      // Checks if all values are within limits after the mod
+      checkLimits(targetAttr);
+    }
+  }
+  
+  /*
+  Sets the environmental attributes' values
+  */
+  for (var cond in this.attrs.enviro) { // Cycles through each attribute of sensory attr set
+    for (var prop in this.attrs.enviro[cond]) { // Cycles through each property of every attribute
+      var targetAttr = this.attrs.enviro[cond][prop]; // Just shortens the prop value's reference
+        
+      if (this.mutationCheck(targetAttr.mutability)) { // Rolls against prob of mutability / 100
+        targetAttr.level += this.attrMutation(0, targetAttr.flux); // Mutation modifies the value
+      }
+      if (this.mutationCheck(targetAttr.mutability)) {
+        targetAttr.flux += this.attrMutation(0, targetAttr.surge);
+      }
+      
+      if (this.mutationCheck(targetAttr.metaMutabilityLevel)) { // Rolls against prob of mML / 100
+        targetAttr.mutability += this.attrMutation(0, targetAttr.mutabilityFlux); // Mods the value
+      }
+      if (this.mutationCheck(targetAttr.metaMutabilityLevel)) {
+        targetAttr.mutabilityFlux += this.attrMutation(0, targetAttr.mutabilitySurge);
+      }
+      
+      if (this.mutationCheck(targetAttr.metaMutabilityLevel)) { // Rolls against prob of mML / 100
+        targetAttr.metaMutabilityLevel += this.attrMutation(0,
+          targetAttr.metaMutabilityFlux); // Mods the value
+      }
+      if (this.mutationCheck(targetAttr.metaMutabilityLevel)) {
+        targetAttr.mutabilityFlux += this.attrMutation(0,
+          targetAttr.mutabilitySurge);
+      }
+      
+      hundredthsRounding(targetAttr);
+      // Checks if all values are within limits after the mod
+      checkLimits(targetAttr);
+    }
+  }
+};
