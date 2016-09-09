@@ -16,6 +16,20 @@ Eden.prototype.spawnEntity = function(xCoord, yCoord) {
   
   targetCell.entities.set(targetEntity.id, targetEntity);
   
+  /*
+  By making it so the entity's .injuries = the world's .injuries instead of individually running
+  through for each value, this ensures that changes to the world's values will also affect the
+  entity, unless otherwise changed. Same for .thirst and .hunger.
+  
+  The .level values need to be reset, however, since they get wiped by this.
+  */
+  this.attrs.physicalState.injuries = this.eden.entities.injuries;
+  this.attrs.physicalState.injuries.level = 0; // Since wiped due to the above
+  this.attrs.physicalState.thirst = this.eden.entities.thirst;
+  this.attrs.physicalState.thirst.level = 0; // Since wiped due to the above
+  this.attrs.physicalState.hunger = this.eden.entities.hunger;
+  this.attrs.physicalState.hunger.level = 0; // Since wiped due to the above
+  
   targetEntity.generateName();
   
   return targetEntity;
