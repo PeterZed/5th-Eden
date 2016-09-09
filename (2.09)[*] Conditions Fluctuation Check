@@ -1,7 +1,7 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-Makes probability roll against appropriate dynamism to determine if a condition's property's 
+Makes probability roll against appropriate dynamism to check if a condition's property's 
 value fluxes this tick.
 */
 Cell.prototype.condsFluxCheck = function(dynamism) {
