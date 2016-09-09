@@ -1,7 +1,8 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-Determines for every relevant property of a cell if it undergoes a fluctuation this tick.
+Determines for every relevant property of a cell if it undergoes a fluctuation this tick, then
+modifies the value if true.
 
 ? If this slows down ticks by too much, I can always make dynamism a hard value for number of turns
 between fluctuations instead of an average value (which requires more probability rolls).
@@ -12,7 +13,7 @@ Cell.prototype.condsFluxDet = function() {
       for (var prop in this.conds[set][cond]) { // Cycles every property of each condition
         var targetCond = this.conds[set][cond][prop]; // Just shortens the prop value's reference
   
-        // Makes prob roll against appropriate dynamism to determine if value fluxes this tick
+        // Makes prob roll against appropriate dynamism to check if value fluxes this tick
         if (this.condsFluxCheck(targetCond.dynamism)) { // Makes probability roll
           targetCond.level += this.condsFlux(0, targetCond.flux); // 
         }
