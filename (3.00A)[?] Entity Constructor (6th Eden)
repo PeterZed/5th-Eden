@@ -8,6 +8,7 @@ function Entity(xCoord, yCoord) {
   
   this.ancestry = new Map(); // The direct line of its ancestors, all the way to its progenitor
   this.lineage = new Map();  // All its direct descendants, from oldest to youngest.
+  this.parent = primogenitor; // Default parent for all entities, and the parent to all progenitors
   
   this.cell = eden.garden[yCoord][xCoord]; // Its presently inhabited cell
   this.x = this.cell.x;
