@@ -1,0 +1,16 @@
+ /*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Causes the property to undergo a mutation according to a Gaussian distribution centered around 0.
+For the level fluctuating, the property's flux value serves as the standard deviation. For flux
+values, the relevant surge value serves as the standard deviation. For mutability: mutabilityFlux.
+For metaMutability: metaMutabilityFlux.
+*/
+Entity.prototype.attrMutation = function(mean, stdDev) {
+  var variance = Math.pow(stdDev, 2);
+  
+  var distribution = gaussian(mean, variance); // Generates the distribution
+  var mutation = distribution.ppf(Math.random()); // Pulls a sample from the distribution
+  
+  return mutation;
+}
