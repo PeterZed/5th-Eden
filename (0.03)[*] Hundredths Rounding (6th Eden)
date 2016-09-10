@@ -1,9 +1,0 @@
-/*
-0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-*/
-function hundredthsRounding(property) {
-  for (var val in property) {
-    // Rounds the value in question to the nearest hundredth.
-    property[val] = Math.round(property[val] * 100) / 100;
-  }
-}
