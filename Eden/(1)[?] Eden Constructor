@@ -11,8 +11,6 @@ health. Instead, perhaps make it a dynamism chance of healing based on the sever
 This way, serious injuries take longer to heal - but this doesn't quite properly emulate the real
 world, as people can stabilize and no longer be at risk and yet still take time to fully recover.
 For now, I'll leave it as a set mean by which injuries heal each tick.
-
-~ Have not yet decided how much waste will buildup each tick.
 */
 function Eden(columns, rows, name) {
   this.name = name || "8th Eden"; // Takes 'name' argument, but if absent uses default
@@ -32,10 +30,10 @@ function Eden(columns, rows, name) {
   given property. This is utilized with Eden.prototype.gardenInit()
   */
   this.variability = {
-    level: null,
-    flux: null,
-    dynamism: null,
-    dynamismFlux: null
+    ofLevel: null,
+    ofFlux: null,
+    ofDynamism: null,
+    ofDynamismFlux: null
   };
   
   /*
