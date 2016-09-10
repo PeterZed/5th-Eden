@@ -68,7 +68,9 @@ function Cell(xCoord, yCoord, eden) {
           dynamismSurge: 1}
       },
       waste: {
-        level: 0, dispersionRate: 0.88, flux: 0.11
+        level: 0, // The amount of waste currently present
+        dispersionRate: 0.88, // The mean amount that the waste level decreases by each tick
+        flux: 0.11 // The stdDev for how much the waste level decreases by each tick
       }
     },
   
