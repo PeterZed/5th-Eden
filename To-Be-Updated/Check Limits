@@ -1,0 +1,39 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Checks to see if any of the properties are below 0, or above the appropriate maximum.
+
+The metaDynamism for the world does not have its own dynamism and dynamismFlux values. As such,
+when the comparisons for those are made in the code below, the result comes up false, and thus the
+if statements' contents are not executed.
+
+Similarly, entities have mutability, but not dynamism values; and, cells have dynamism, but not
+mutability values. So, those if statements come up false, and thus they do not gain those
+properties via the code inside (for example, property.dynamism without the if statement adds
+that value to an entity's attributes).
+*/
+function checkLimits(property) {
+  if (property.level < 0) {property.level = 0;} // Checks to see if below minimum
+  else if (property.level > 100) {property.level = 100;} // Checks to see if above maximum
+  
+  if (property.flux < 0) {property.flux = 0;}
+  else if (property.flux > 10) {property.flux = 10;}
+  
+  if (property.dynamism < 0) {property.dynamism = 0;}
+  else if (property.dynamism > 100) {property.dynamism = 100;}
+  
+  if (property.dynamismFlux < 0) {property.dynamismFlux = 0;}
+  else if (property.dynamismFlux > 10) {property.dynamismFlux = 10;}
+  
+  if (property.mutability < 0) {property.mutability = 0;}
+  else if (property.mutability > 100) {property.mutability = 100;}
+  
+  if (property.mutabilityFlux < 0) {property.mutabilityFlux = 0;}
+  if (property.mutabilityFlux > 10) {property.mutabilityFlux = 10;}
+  
+  if (property.metaMutability < 0) {property.metaMutability = 0;}
+  if (property.metaMutability > 100) {property.metaMutability = 100;}
+  
+  if (property.metaMutabilityFlux < 0) {property.metaMutabilityFlux = 0;}
+  if (property.metaMutabilityFlux > 10) {property.metaMutabilityFlux = 10;}
+}
