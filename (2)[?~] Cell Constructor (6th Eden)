@@ -68,14 +68,7 @@ function Cell(xCoord, yCoord, eden) {
           dynamismSurge: 1}
       },
       waste: {
-        x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1}
+        level: 0, dispersionRate: 0.88, flux: 0.11
       }
     },
   
