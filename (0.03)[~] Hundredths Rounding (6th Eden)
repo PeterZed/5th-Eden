@@ -1,5 +1,7 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+~ Needs to be updated so it's a method used by an attribute or condition instead.
 */
 function hundredthsRounding(property) {
   for (var val in property) {
