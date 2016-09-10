@@ -1,0 +1,34 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+This method is used for initializing all cells who have at least one neighbor whose conditions
+have been initialized before theirs have. That is, the initialization of these conditions depends
+on the cell's neighbors so as to maintain a statistically smooth transition from one cell to
+another for each condition.
+*/
+Cell.prototype.condsDepInit = function() {
+  var initCount = 0;
+  
+  /*
+  Calculates the mean by which the cell conds will vary from the average of its neighboring
+  cells' conds values.
+  */
+  var meanDiffsTotal = this.eden.meanDiffsCheck(this.x, this.y);
+  
+  // Sums the initialized cells' conditions
+  for (var j = 0; j < this.localCells.length; j++) {
+    for (var i = 0; i < this.localCells[j].length; i++) {
+      if (this.localCells[j][i].initialized) {
+        this.localCondsSum(i, j);
+        initCount++;
+      }
+    }
+  }
+  
+  // Averages the initialized neighboring cell's conditions
+  this.localCondsAvg(initCount);
+  
+  // Varies this cell's condition values from the average of its neighbors
+  this.varyConds(meanDiffsTotal);
+  this.initialized = true;
+};

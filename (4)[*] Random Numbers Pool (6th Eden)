@@ -1,7 +1,4 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-
 */
-Entity.prototype.inheritAttrs = function() {
-  
-};
+var randomPool = []; // Pool used for all probability calculations. New numbers generated as needed

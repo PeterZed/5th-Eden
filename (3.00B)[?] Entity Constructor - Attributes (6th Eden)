@@ -1,0 +1,79 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+mutability is the probability * 100 of a property's non-mutability values undergoing a change from
+parent to child when the entity reproduces. mutabilityFlux is the stdDev should mutability
+itself undergo a change; mutabilitySurge is the stdDev should mutabilityFlux undergo a change.
+metaMutabilityLevel is the probability * 100 of a property's mutability values undergoing a change,
+itself included. metaMutabilityFlux is the stdDev should metaMutability itself undergo a change;
+metaMutabilitySurge is the stdDev should metaMutabilityFlux undergo a change.
+
+? Energy, Fatigue, and Exhaustion are not implemented at all.
+*/
+Entity.prototype.attrs = {
+  /*
+  They correspond to an entity's physical state that relate to its survival: Hunger, Thirst, Waste,
+  Health, Injuries.  For hunger and thirst, buildup is how quickly the mean they build up each tick,
+  and flux is that calculation's stdDev. For injuries, heal is how quickly the level reduces each
+  tick, and flux is that calculation's stdDev. There is a world value for every entity, but an
+  individual entity's values for these can be set individually.
+  
+  The flux values are all tentative, currently. I haven't a clue if they'll increase too rapidly or
+  not, so it will take a lot of tweaking and experimenting. I've set it up so that, without
+  nourishment, it takes 40 ticks before an entity dies of starvation: There are documented cases
+  of hunger strikers surviving 36, 38, and even 40 days.  Without water, an entity can survive
+  8 ticks: There are documented cases of a person (in comfortable setting) surviving over a week
+  without water. These are, of course, assuming optimal situations. Eventually, I'll have it set
+  up so that, in conditions with poor temperature and salinity for the entity, it will suffer
+  dehydration faster. With more activity, it suffers starvation and thirst faster.
+  */
+  physicalState: {
+    health: {level: 100},
+    injuries: {level: 0, heal: null, flux: null},
+    hunger: {level: 0, buildup: null, flux: null},
+    thirst: {level: 0, buildup: null, flux: null},
+  },
+  
+  /*
+  These attributes are the basics for the entity's ability to sense the external world.
+  They correspond to the sensory conditions for a cell.
+  */
+  sensory: {
+    sight: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null,
+      mutabilitySurge: 1, metaMutabilityLevel: null, metaMutabilityFlux: null,
+      metaMutabilitySurge: 1},
+    hearing: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null,
+      mutabilitySurge: 1, metaMutabilityLevel: null, metaMutabilityFlux: null,
+      metaMutabilitySurge: 1},
+    gustation: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null,
+      mutabilitySurge: 1, metaMutabilityLevel: null, metaMutabilityFlux: null,
+      metaMutabilitySurge: 1},
+    olfaction: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null,
+      mutabilitySurge: 1, metaMutabilityLevel: null, metaMutabilityFlux: null,
+      metaMutabilitySurge: 1},
+      touch: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null,
+      mutabilitySurge: 1, metaMutabilityLevel: null, metaMutabilityFlux: null,
+      metaMutabilitySurge: 1}
+  },
+  
+  /*
+  These attributes are named as such because they correspond to the environmental conditions
+  of the cell.
+  */
+  enviro: {
+    radTolerance: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null,
+      mutabilitySurge: 1, metaMutabilityLevel: null, metaMutabilityFlux: null,
+      metaMutabilitySurge: 1},
+    acidityOptimal: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null,
+      mutabilitySurge: 1, metaMutabilityLevel: null, metaMutabilityFlux: null,
+      metaMutabilitySurge: 1},
+    airCompOptimal: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null,
+      mutabilitySurge: 1, metaMutabilityLevel: null, metaMutabilityFlux: null,
+      metaMutabilitySurge: 1},
+    tempOptimal: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null,
+      mutabilitySurge: 1, metaMutabilityLevel: null, metaMutabilityFlux: null,
+      metaMutabilitySurge: 1},
+    salinityOptimal: {level: null, flux: null, surge: 1, mutability: null, mutabilityFlux: null,
+      mutabilitySurge: 1, metaMutabilityLevel: null, metaMutabilityFlux: null,
+      metaMutabilitySurge: 1}
+  }
+};

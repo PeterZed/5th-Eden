@@ -2,49 +2,22 @@
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 Divides the sum of the values for the cell's initialized neighbors' conditions by the number of
-neighbors that have been initialized. Does this for level, flux, dynamism, and dynamismFlux for
-each condition property. Rounds to the hundredths place.
+neighbors that have been initialized.
 */
 Cell.prototype.localCondsAvg = function(initCount) {
-  for (var cond in this.needsConds) {
-    for (var prop in this.needsConds[cond]) {
-      var targetCond = this.needsConds[cond][prop];
+  for (var set in this.conds) { // Cycles each condition set: physicalState, sensory, enviro
+    for (var cond in this.conds[set]) { // Cycles each cond set's condition
+      for (var prop in this.conds[set][cond]) { // Cycles every property of each condition
+        var targetCond = this.conds[set][cond][prop]; // Just shortens the prop's value reference
       
-      targetCond.level = targetCond.level / initCount;
-      targetCond.flux = targetCond.flux / initCount;
+        targetCond.level = targetCond.level / initCount;
+        targetCond.flux = targetCond.flux / initCount;
       
-      targetCond.dynamism = targetCond.dynamism / initCount;
-      targetCond.dynamismFlux = targetCond.dynamismFlux / initCount;
+        targetCond.dynamism = targetCond.dynamism / initCount;
+        targetCond.dynamismFlux = targetCond.dynamismFlux / initCount;
       
-      this.eden.hundredthsRounding(targetCond);
-    }
-  }
-  
-  for (var cond in this.sensoryConds) {
-    for (var prop in this.sensoryConds[cond]) {
-      var targetCond = this.sensoryConds[cond][prop];
-      
-      targetCond.level = targetCond.level / initCount;
-      targetCond.flux = targetCond.flux / initCount;
-      
-      targetCond.dynamism = targetCond.dynamism / initCount;
-      targetCond.dynamismFlux = targetCond.dynamismFlux / initCount;
-      
-      this.eden.hundredthsRounding(targetCond);
-    }
-  }
-  
-  for (var cond in this.enviroConds) {
-    for (var prop in this.enviroConds[cond]) {
-      var targetCond = this.enviroConds[cond][prop];
-      
-      targetCond.level = targetCond.level / initCount;
-      targetCond.flux = targetCond.flux / initCount;
-      
-      targetCond.dynamism = targetCond.dynamism / initCount;
-      targetCond.dynamismFlux = targetCond.dynamismFlux / initCount;
-      
-      this.eden.hundredthsRounding(targetCond);
+        hundredthsRounding(targetCond);
+      }
     }
   }
 };

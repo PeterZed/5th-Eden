@@ -1,19 +1,20 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-
-Calculates the composite probability of survival on each local cell for the entity. The composite
-probability on a given cell is the probability of not dying due to health prob and of not dying
-due to environmental hazards (i.e., remaining on a cell with wildly- or even mildly-
-inappropriate cell conditions).
-
-Then, assigns the probability for this local cell to the appropriate array indices for the
-survivalProb nested array that correspond to this target local cell.
 */
 Entity.prototype.survivalProbCalc = function() {
   for (var j = 0; j < this.cell.localCells.length(); j++) {
     for (var i = 0; i < this.cell.localCells[0].length(); i++) {
-      var survivalProb = this.survivalProbHealth() * this.survivalProbEnviro(i, j);
-      this.survivalProb[j][i] = survivalProb;
+      /*
+      Calculates the composite probability of survival on each local cell for the entity.
+      */
+      var survivalProb = this.survivalProbHealth() * this.survivalProbEnviro(i, j) *
+        this.survivalProbWaste(i, j);
+      
+      /*
+      Assigns the probability for this local cell to the appropriate array indices for the
+      survivalProb nested array that correspond to this target local cell.
+      */
+      this.localSurvivalProb[j][i] = survivalProb;
     }
   }
 };

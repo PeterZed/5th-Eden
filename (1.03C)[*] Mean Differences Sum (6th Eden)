@@ -1,0 +1,27 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+For a cell in the bottom-right quadrant: Sums the mean differences needed to return to baseline for
+the row with the mean differences needed to return to baseline for the column.
+*/
+Eden.prototype.meanDiffsSum = function(meanDiffsX, meanDiffsY) {
+  var meanDiffsSum = jQuery.extend(true, {}, defaultDiffs); // Deep clones defaultDiffs
+  
+  for (var set in meanDiffsX.conds) { // Cycles through each condition set
+    for (var cond in meanDiffsX.conds[set]) { // Cycles through each condition of each cond set
+      for (var prop in meanDiffsX.conds[set][cond]) { // Cycles through each property of each cond
+        var targetCondSum = meanDiffsSum.conds[set][cond][prop];
+        var targetCondX = meanDiffsX.conds[set][cond][prop];
+        var targetCondY = meanDiffsY.conds[set][cond][prop];
+    
+        targetCondSum.level = targetCondX.level + targetCondY.level;
+        targetCondSum.flux = targetCondX.flux + targetCondY.flux;
+      
+        targetCondSum.dynamism = targetCondX.dynamism + targetCondY.dynamism;
+        targetCondSum.dynamismFlux = targetCondX.dynamismFlux + targetCondY.dynamismFlux;
+      }
+    }
+  }
+  
+  return meanDiffsSum;
+};

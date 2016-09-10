@@ -1,0 +1,15 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+var num = randomPool.splice(0,1) was chosen over randomPool = randomPool.slice(1) because testing
+showed it to be about thirty times faster with a for loop iterating through an array of size 10000.
+*/
+function getRandom() {
+  if (randomPool[0] === undefined) {  // If pool is empty, generates a new set of random numbers
+    genRandom();
+  }
+  
+  // Takes index 0 value of the size 1 array that is returned by .splice() 
+  var num = randomPool.splice(0,1)[0];
+  return num;
+}

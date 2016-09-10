@@ -1,0 +1,6 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+*/
+function name(obj, newName) {
+  obj.name = newName;   // Takes the player's input to re-name the object: Eden, Cell, or Entity
+};

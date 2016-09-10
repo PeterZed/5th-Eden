@@ -1,10 +1,6 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-The purpose of the Cell.prototype.eden property is so that, when needed, the cell can reference its
-own host Eden object. That is, it readily has access to the reference value for the Eden of which it
-is a part.
-
 ? The sensory conditions will likely vary in a way that's different than the other conditions:
 Slower, perhaps; more predictable; smaller range of fluctuations - i.e., more constant.
 
@@ -13,15 +9,22 @@ an entity's presence.
 */
 function Cell(xCoord, yCoord, eden) {
   this.id = info.cells.count;
+  
+  /*
+  The purpose of the eden property is so that, when needed in methods, the cell can reference its
+  own host Eden object - i.e., it readily has access to the reference value for the Eden of which
+  it is a part.
+  */
   this.eden = eden;
   this.x = xCoord;
   this.y = yCoord;
+  this.name = "Cell #" + this.id;
   this.initialized = false;
   
-  this.entities = new Map();
+  this.entities = new Map(); // List of entities inhabiting the cell, referenced by their ID numbers
   
   /*
-  Lists references to this cell and its eight adjacent neighbors.
+  Lists references to this cell and its eight, adjacent neighbors.
   */
   this.localCells = [[],
                      [],
@@ -34,150 +37,145 @@ function Cell(xCoord, yCoord, eden) {
   the cell's Eden. The dynamismSurge is the standard dev by which the dynamismFlux changes when
   the cell undergoes fluctuation, the average being 0.
   */
+  this.conds = {
+    /*
+    Conditions related to an entity's physical state: Hunger to Nourishment, Thirst to Water,
+    Waste produced. Nourishment and water are of the form:
+    y = a * sin(bx) + c
+    where a is the amplitude (or range), b is the period coefficient, and c is the average
+    value (the value at x = 0) over one cycle. These values, and the x value, are
+    initialized at the cell's creation; from them, the initial value is calculated.
+    */
+    physicalState: {
+      nourishment: {
+        x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1}
+      },
+      water: {
+        x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1}
+      },
+      waste: {
+        level: 0, // The amount of waste currently present
+        dispersionRate: 0.88, // The mean amount that the waste level decreases by each tick
+        flux: 0.11 // The stdDev for how much the waste level decreases by each tick
+      }
+    },
   
-  /*
-  Conditions related to an entity's physical state: Hunger to Nourishment, Thirst to Water,
-  Waste produced. Nourishment and water are of the form:
-  y = a * sin(bx) + c
-  where a is the amplitude (or range), b is the period coefficient,   and c is the average
-  value (i.e., the value at x = 0) over one cycle. These values, and the x value, are
-  initialized at the cell's creation; from them, the initial value is calculated.
-  */
-  this.needsConds = {
-    nourishment: {
-      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1}
+    /*
+    These conds affect different different senses, once those are implemented. Until then they're
+    just there. Light affects an entity's visual acuity. Noise affects an entity's auditory
+    acuity. Wind affects an entity's olfaction, based on what direction and how strong the
+    wind is blowing (i.e., its level).
+  
+    I haven't decided how I want them to function yet, if I want them to follow the sinusoidal
+    variation or not.
+    */
+    sensory: {
+      light: {
+        x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1}
+      },
+      noise: {
+        x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1}
+      },
+      wind: {
+        x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1}
+      },
     },
-    water: {
-      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1}
-    },
-    waste: {
-      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1}
+  
+    /*
+    These conditions- besides the sensory conds- are more like physical measurements that could
+    correspond to some value in the real world, though their effects are vastly simpler compared
+    to their real world counterparts.
+  
+    Their fluctuation is related to neighboring cells' fluctuations.
+    */
+    enviro: {
+      radiation: {
+        x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1}
+      },
+      acidity: {
+        x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1}
+      },
+      airComp: {
+        x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1}
+      },
+      temperature: {
+        x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1}
+      },
+      salinity: {
+        x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1},
+        average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
+          dynamismSurge: 1}
+      }
     }
   };
-  
-  /*
-  These conds affect different different senses, once those are implemented. Until then they're
-  just there. Light affects an entity's visual acuity. Noise affects an entity's auditory
-  acuity. Wind affects an entity's olfaction, based on what direction and how strong the
-  wind is blowing (i.e., its level).
-  
-  I haven't decided how I want them to function yet, if I want them to follow the sinusoidal
-  variation or not.
-  */
-  this.sensoryConds = {
-    light: {
-      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1}
-    },
-    noise: {
-      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1}
-    },
-    wind: {
-      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1}
-    },
-  };
-  
-  /*
-  These conditions- besides the sensory conds- are more like physical measurements that could
-  correspond to some value in the real world, though their effects are vastly simpler compared
-  to their real world counterparts.
-  
-  Their fluctuation is related to neighboring cells' fluctuations?
-  */
-  this.enviroConds = {
-    radiation: {
-      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1}
-    },
-    acidity: {
-      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1}
-    },
-    airComp: {
-      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1}
-    },
-    temperature: {
-      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1}
-    },
-    salinity: {
-      x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1},
-      average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-        dynamismSurge: 1}
-    }
-  };
-  
   
   /*
   See Eden constructor for more details.

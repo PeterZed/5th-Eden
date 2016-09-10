@@ -1,0 +1,10 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Initializes an entity's traits' values.
+
+~ Still under development because I have yet to design any of the traits, or even name them.
+*/
+Entity.prototype.traitsInit = function() {
+
+};

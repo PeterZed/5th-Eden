@@ -1,19 +1,15 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
-Establishes which cells surround the cell. In xMod and yMod, this.x and this.y are at -1 because the
-calling cell is located at [1][1] in the localCells array. The purpose of xMod and yMod is to be
-used in conjunction with the eden.coordsWrap() to determine the actual x and y values in the garden
-for the target cell.
+Establishes the cell's eight, adjacent neighbors.
 */
 Cell.prototype.localCellsDetermination = function() {
   for (var j = 0; j < 3; j++) {
-    this.localCells[j] = [];
-    
     for (var i = 0; i < 3; i++) {
-      var xMod = this.x - 1 + i;
-      var yMod = this.y - 1 + j;
+      var xMod = this.x - 1 + i; // At -1 because the calling cell is located at localCells[1][1]
+      var yMod = this.y - 1 + j; // At -1 because the calling cell is located at localCells[1][1]
       
+      // xMod and yMod used with eden.coordsWrap() to determine the proper cell neighbor
       this.localCells[j][i] = this.eden.coordsWrap(xMod, yMod);
     }
   }

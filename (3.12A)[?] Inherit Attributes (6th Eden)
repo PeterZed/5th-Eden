@@ -1,0 +1,31 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+? In the future, perhaps I'll do it so that the player can choose for a change to an entity to be
+inheritable. E.g., changing the rate at which it heals may or may not be made into an aspect of the
+lineage.
+*/
+Entity.prototype.inheritAttrs = function() {
+  this.attrs = jQuery.extend(true, new Map(), this.parent.attrs); // Deep clone inherit of attrs
+
+  /*
+  Sets the physical state attributes' mean and std dev values. By default, every entity
+  has the same, so the child's needs to be initialized independently of whatever the parent's
+  values are, lest it inadvertently inherits a change that the player made to the parent alone.
+  
+  By making it so the entity's .injuries = the world's .injuries instead of individually running
+  through for each value, this ensures that changes to the world's values will also affect the
+  entity, unless otherwise changed. Same for .thirst and .hunger.
+  
+  The .level values need to be reset, however, since they get wiped out by this.
+  */
+  this.attrs.physicalState.injuries = this.eden.entities.injuries;
+  this.attrs.physicalState.injuries.level = 0;
+  this.attrs.physicalState.thirst = this.eden.entities.thirst;
+  this.attrs.physicalState.thirst.level = 0;
+  this.attrs.physicalState.hunger = this.eden.entities.hunger;
+  this.attrs.physicalState.hunger.level = 0;
+
+  // Checks each value belonging to each attribute to see if it mutates, and if so how much
+  this.mutationDet();
+};

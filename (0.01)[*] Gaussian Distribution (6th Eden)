@@ -1,7 +1,7 @@
 /*
 Gaussian distribution code: https://github.com/errcw/gaussian
 var distribution = gaussian(mean, variance);
-var sample = distribution.ppf(Math.random());
+var sample = distribution.ppf(getRandom());
 */
 (function(exports) {
 

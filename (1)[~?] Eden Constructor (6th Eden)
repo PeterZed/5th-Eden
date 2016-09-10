@@ -1,0 +1,119 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+The Eden constructor serves to build objects that serve as the game world. In here, information
+that governs the mechanics of the world is found.
+
+? Undecided on injuries: perhaps it would be nice to have a dynamism chance of getting worse the
+higher the number of injuries. Actually, that is essentially succumbing to one's injuries, which is
+already part of the simulation in the form of the effect of injuries on survival probability due to
+health. Instead, perhaps make it a dynamism chance of healing based on the severity of the injuries.
+This way, serious injuries take longer to heal - but this doesn't quite properly emulate the real
+world, as people can stabilize and no longer be at risk and yet still take time to fully recover.
+For now, I'll leave it as a set mean by which injuries heal each tick.
+
+~ Have not yet decided how much waste will buildup each tick.
+*/
+function Eden(columns, rows, name) {
+  this.name = name || "8th Eden"; // Takes 'name' argument, but if absent uses default
+  this.id = info.edens.count + 1; // At +1 because base value is 0 Edens in existence
+  
+  this.xAxis = columns;
+  this.yAxis = rows;
+  this.cellCount = 0;
+  /*
+  The game map is referred to as the "garden". It is an array of arrays, the nested arrays being
+  rows of the garden and the outer indices being the columns.
+  */
+  this.garden = [];
+  
+  /*
+  Variability is the world's standard deviation for expected difference from cell to cell for a
+  given property. This is utilized with Eden.prototype.gardenInit()
+  */
+  this.variability = {
+    level: null,
+    flux: null,
+    dynamism: null,
+    dynamismFlux: null
+  };
+  
+  /*
+  Meta dynamism is 100 * probability of a fluctuation occurring in the given cell's dynamism.
+  It's related to the average number of turns expected to pass before this Eden's metaDynamism
+  or metaDynamismFlux values undergo fluctuation.
+  */
+  this.metaDynamism = {
+    level: null,
+    flux: null,
+    surge: 1
+  };
+  
+  this.entities = {
+    /*
+    The probability of a new progenitor spontaneously spawning in the garden each tick. The purpose
+    of this is so that the probability of the garden dying off completely and remaining empty will
+    always be zero. Thus, there is always the chance, however small, of stability and equilibrium
+    establishing within the garden.
+    */
+    spontaneousEmergenceProb: null,
+    living: new Map(),  // A Map of all entities presently alive within this garden 
+    alive: 0,  // The number of presently living entities in the garden
+    deaths: 0,   // The number of times an entity has perished in this garden
+    
+    /*
+    The 'buildup' and 'heal' are the mean change each tick for each and any entity's corresponding
+    property. The 'flux' is the standard deviation. Flux is 1/8 the value of hunger, thirst, and
+    injuries.
+    
+    It's designed so that an entity will die of starvation at 40 ticks without food, provided it
+    takes no actions to expend any other energy. It will die after 8 ticks without water, provided
+    the same thing again. After 64 turns on the same cell, without having mitigated waste buildup
+    somehow, the entity will necessarily die as its probability approaches zero.
+    
+    Hunger and thirst essentially have permanent dynamism 100 as they will always increase.
+    Injuries too as they always heal some amount.
+    */
+    waste: {buildup: 1.56, flux: 0.20},
+    hunger: {buildup: 2.50, flux: 0.31},
+    thirst: {buildup: 12.50, flux: 1.56},
+    injuries: {heal: 8.00, flux: 1.00}
+  };
+  
+  this.turn = 1;  // Keeps track of time's passage
+  
+  /*
+  These values affect the survival probability formula for entities in this world due to the health
+  of the entity and modifications to it based on hunger, thirst, and injuries. The player can
+  adjust them as they see fit. For now, these are the default values. However, as I gain experience
+  with the worlds, I'll tweak them until I feel the default values are good for players to start.
+  
+  These are for the survival probability formula due to environmental variables. The general
+  equation:
+  probability = A / (B + C*e^(-Dx + E)) + F.
+  */
+  this.survivalProbHealth = {a: 1, b: 1, c: 1, d: 1, e: 0, f: 0};
+  
+  /*
+  These values affect the survival probability formula for entities in this world due to the
+  difference between an entity's optimal conditions and the actual conditions. The player can
+  adjust them as they see fit. For now, these are the default values. However, as I gain experience
+  with the worlds, I'll tweak them until I feel the default values are good for players to start.
+  
+  These are for the survival probability formula due to environmental variables. The general
+  equation:
+  probability = A / (B + C*e^(-Dx + E)) + F.
+  */
+  this.survivalProbEnviro = {a: 1, b: 1, c: 1, d: 1, e: 0, f: 0};
+  
+  /*
+  These values affect the survival probability formula for entities in this world due to the waste
+  level on the presently inhabited cell. The player can adjust them as they see fit. For now, these
+  are the default values. However, as I gain experience with the worlds, I'll tweak them until I
+  feel the default values are good for players to start.
+  
+  These are for the survival probability formula due to the entity's health. The general equation:
+  probability = A / (B + C*e^(-Dx + E)) + F.
+  */
+  this.survivalProbWaste = {a: 1, b: 1, c: 1, d: 1, e: 0, f: 0};
+}

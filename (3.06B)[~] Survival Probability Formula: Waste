@@ -1,5 +1,6 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+~ Have yet to figure out the mechanics behind waste.
 
 The probability calculation is of the form y = A / (B + C*e^(-Dx + E)) + F.
 A and B adjust the value of the max asymptote. The max asymptote probability = A / B.
@@ -22,32 +23,15 @@ for correcting negative probabilities and probabilities greater than 1.0.
 ? These weights will change as I experiment and tweak them until the survival probabilities
 "feel" correct. So, this will be happening for a long time, and (hopefully) can be accomplished
 with player input.
-
-? Still not sure if I want enviroConds[cond].level or if they'll follow the sinusoidal that
-physicalState does. If the latter, instead of .level the condition's level will have to
-be calculated from its average, range, frequency, x, etc.
 */
-Entity.prototype.survivalProbEnviro = function(xLocal, yLocal) {
-  var localCell = this.cell.localCells[yLocal][xLocal];
-  // Entity's rad tolerance divided by the cell's radiation level
+Entity.prototype.survivalProbWaste = function(xLocal, yLocal) {
+  var waste = 
+  // The x value is dependent on the present waste value on the cell
+  var x = (waste * -0.1980688) + 9.90344;
   
-  var radRatio = this.attrs.enviro.radTolerance.level / localCells.conds.enviro.radiation.level;
-  if (radRatio > 1) {
-    radRatio = 1; // Because tolerance that exceeds the rad yields no further survival benefits
-  }
-  
-  var optimalityRatios = 1;
-  for (var cond in localCell.conds.enviroConds) {
-    optimalityRatios *= Math.abs(localCell.enviroConds[cond].level -
-      this.enviroAttrs[cond].level) / 100;
-  }
-  
-  var condsRatio = radRatio * optimalityRatios; 
-  var x = (condsRatio * 19.80688) - 9.90344; // Range 0 to -9.90344
-  
-  var weights = this.eden.survivalProbEnviro; // Shortens the reference to the values
+  var weights = this.eden.survivalProbWaste; // The values for A, B, C, D, E, and F
   var a = weights.a, b = weights.b, c = weights.c, d = weights.d, e = weights.e, f = weights.f; 
-  var enviroProb = a / (b + c * Math.pow(Math.E, ((d * x * -1) + e)) + f;
+  var wasteProb = a / (b + c * Math.pow(Math.E, ((d * x * -1) + e)) + f;
   
-  return enviroProb;
+  return wasteProb;
 };

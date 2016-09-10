@@ -1,0 +1,17 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+In-story: Checks each tick to see if an entity coalesces from the chaos of the æther.
+*/
+Eden.prototype.spontaneousEmergence = function() {
+  do {
+    var emergence = false;
+    var roll = getRandom();
+    var prob = this.entities.spontaneousEmergenceProb;
+    
+    if (roll <= prob) { // If prob roll succeeds, spawns new progenitor at random in the garden
+      this.populate(1);
+      emergence = true; // Runs loop again to check for subsequent emergences, until the roll fails
+    }
+  } while (emergence)
+};

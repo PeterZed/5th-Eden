@@ -2,40 +2,65 @@
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 Sets each attribute's properties for the progenitor of a genetic line.
-level min initial = 0.00, max initial = 100.00
-flux min initial = 0.00, max initial = 10.00
 
 ? Still ongoing development until I work out how I want the attributes to act, but otherwise
 functions.
 */
 Entity.prototype.attrsInit = function() {
-  for (var attr in this.survivalAttrs) {
-    var targetAttr = this.survivalAttrs[attr];
-    
-    targetAttr.level = Math.floor(Math.random() * 10001) / 100;
-    targetAttr.flux = Math.floor(Math.random() * 1001) / 100;
+  /*
+  Sets the physical state attributes' mean increase and std dev values. By default, every entity
+  has the same, so it is stored as a world value in the entity's present Eden object. The player
+  has the option of changing it, however, so instead of referencing the values in the Eden object
+  directly, any references to it are made to here, where it might be changed from the Eden object's
+  values.
+  */
+  this.attrs.physicalState.injuries.heal = this.eden.entities.injuries.heal;
+  this.attrs.physicalState.injuries.flux = this.eden.entities.injuries.flux;
+  
+  this.attrs.physicalState.thirst.buildup = this.eden.entities.thirst.buildup;
+  this.attrs.physicalState.thirst.flux = this.eden.entities.thirst.flux
+  
+  this.attrs.physicalState.hunger.buildup = this.eden.entities.hunger.buildup;
+  this.attrs.physicalState.hunger.flux = this.eden.entities.hunger.flux;
+  
+
+  /*
+  Sets the sensory attributes' values
+  */
+  for (var cond in this.attrs.sensory) { // Cycles through each attribute of sensory attr set
+    for (var prop in this.attrs.sensory[cond]) { // Cycles through each property of every attribute
+      var targetAttr = this.attrs.sensory[cond][prop]; // Just shortens the prop value's reference
+        
+      targetAttr.level = getRandom() * 100;
+      targetAttr.flux = getRandom() * 10;
       
-    targetAttr.mutability = Math.floor(Math.random() * 10001) / 100;
-    targetAttr.mutabilityFlux = Math.floor(Math.random() * 1001) / 100;
+      targetAttr.mutability = getRandom() * 100;
+      targetAttr.mutabilityFlux = getRandom() * 10;
+        
+      targetAttr.metaMutability = getRandom() * 100;
+      targetAttr.metaMutabilityFlux = getRandom() * 10;
+        
+      hundredthsRounding(targetAttr);
+    }
   }
   
-  for (var attr in this.sensoryAttrs) {
-    var targetAttr = this.sensoryAttrs[attr];
-    
-    targetAttr.level = Math.floor(Math.random() * 10001) / 100;
-    targetAttr.flux = Math.floor(Math.random() * 1001) / 100;
+  /*
+  Sets the environmental attributes' values
+  */
+  for (var cond in this.attrs.enviro) { // Cycles through each attribute of enviro attr set
+    for (var prop in this.attrs.enviro[cond]) { // Cycles through each property of every attribute
+      var targetAttr = this.attrs.enviro[cond][prop]; // Just shortens the prop value's reference
+        
+      targetAttr.level = getRandom() * 100;
+      targetAttr.flux = getRandom() * 10;
       
-    targetAttr.mutability = Math.floor(Math.random() * 10001) / 100;
-    targetAttr.mutabilityFlux = Math.floor(Math.random() * 1001) / 100;
-  }
-  
-  for (var attr in this.enviroAttrs) {
-    var targetAttr = this.enviroAttrs[attr];
-    
-    targetAttr.level = Math.floor(Math.random() * 10001) / 100;
-    targetAttr.flux = Math.floor(Math.random() * 1001) / 100;
-      
-    targetAttr.mutability = Math.floor(Math.random() * 10001) / 100;
-    targetAttr.mutabilityFlux = Math.floor(Math.random() * 1001) / 100;
+      targetAttr.mutability = getRandom() * 100;
+      targetAttr.mutabilityFlux = getRandom() * 10;
+        
+      targetAttr.metaMutability = getRandom() * 100;
+      targetAttr.metaMutabilityFlux = getRandom() * 10;
+        
+      hundredthsRounding(targetAttr);
+    }
   }
 };

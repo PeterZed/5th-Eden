@@ -4,43 +4,23 @@
 Initializes a cell's conditions' values, independent of its neighbors'.
 
 ? Still ongoing development until I work out how I want all of the conditions to act, but otherwise
-functions. The initialization of sensoryConds and enviroConds are not yet determined, but I might do them
-the same as the cyclicalConds.
+functions. The initialization of condition sets sensory and enviro are not yet determined, but I
+might do them the same as the physicalState conditions.
 */
 Cell.prototype.condsIndInit = function() {
-  for (var cond in this.needsConds) {
-    for (var prop in this.needsConds[cond]) {
-      var targetCond = this.needsConds[cond][prop];
+  for (var set in this.conds) { // Cycles through each condition set: physicalState, sensory, enviro
+    for (var cond in this.conds[set]) { // Cycles through each condition of each condition set
+      for (var prop in this.conds[set][cond]) { // Cycles through each property of every condition
+        var targetCond = this.conds[set][cond][prop]; // Just shortens the prop value's refernece
     
-      targetCond.level = Math.floor(Math.random() * 10001) / 100;
-      targetCond.flux = Math.floor(Math.random() * 1001) / 100;
+        targetCond.level = getRandom() * 100;
+        targetCond.flux = getRandom() * 10;
       
-      targetCond.dynamism = Math.floor(Math.random() * 10001) / 100;
-      targetCond.dynamismFlux = Math.floor(Math.random() * 1001) / 100;
-    }
-  }
-  
-  for (var cond in this.sensoryConds) {
-    for (var prop in this.sensoryConds[cond]) {
-      var targetCond = this.sensoryConds[cond][prop];
-    
-      targetCond.level = Math.floor(Math.random() * 10001) / 100;
-      targetCond.flux = Math.floor(Math.random() * 1001) / 100;
+        targetCond.dynamism = getRandom() * 100;
+        targetCond.dynamismFlux = getRandom() * 10;
       
-      targetCond.dynamism = Math.floor(Math.random() * 10001) / 100;
-      targetCond.dynamismFlux = Math.floor(Math.random() * 1001) / 100;
-    }
-  }
-  
-  for (var cond in this.enviroConds) {
-    for (var prop in this.enviroConds[cond]) {
-      var targetCond = this.enviroConds[cond][prop];
-    
-      targetCond.level = Math.floor(Math.random() * 10001) / 100;
-      targetCond.flux = Math.floor(Math.random() * 1001) / 100;
-      
-      targetCond.dynamism = Math.floor(Math.random() * 10001) / 100;
-      targetCond.dynamismFlux = Math.floor(Math.random() * 1001) / 100;
+        hundredthsRounding(targetCond);
+      }
     }
   }
   
