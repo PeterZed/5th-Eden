@@ -14,13 +14,13 @@ Cell.prototype.varyConds = function(meanDiffs) {
         var meanDiffsVal = meanDiffs.conds[set][cond][prop]; // The mean difference for this prop
       
         // Adjusted based on mean difference and standard deviation, using a Gaussian distribution
-        targetCond.level += this.condsMod(meanDiffsVal.level, this.eden.variability.level);
-        targetCond.flux += this.condsMod(meanDiffsVal.flux, this.eden.variability.flux);
+        targetCond.level += this.condsMod(meanDiffsVal.level, this.eden.variability.ofLevel);
+        targetCond.flux += this.condsMod(meanDiffsVal.flux, this.eden.variability.ofFlux);
       
         targetCond.dynamism += this.condsMod(meanDiffsVal.dynamism,
-          this.eden.variability.dynamism);
+          this.eden.variability.ofDynamism);
         targetCond.dynamismFlux += this.condsMod(meanDiffsVal.dynamismFlux,
-          this.eden.variability.dynamismFlux);
+          this.eden.variability.ofDynamismFlux);
         
         hundredthsRounding(targetCond);
         // Checks if level, flux, dynamism, and dynamismFlux are within limits after the mod
