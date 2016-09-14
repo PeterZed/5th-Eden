@@ -6,10 +6,10 @@ functioning: metaDynamism, variability values; the probability of the spontaneou
 progenitor in the garden each tick.
 */
 Eden.prototype.gardenInit = function() {
-  this.variability.level = getRandom();
-  this.variability.flux = getRandom();
-  this.variability.dynamism = getRandom();
-  this.variability.dynamismFlux = getRandom();
+  this.variability.values.level = getRandom();
+  this.variability.values.flux = getRandom();
+  this.variability.values.dynamism = getRandom();
+  this.variability.values.dynamismFlux = getRandom();
   hundredthsRounding(this.variability);
 
   this.metaDynamism.level = getRandom() * 100;
