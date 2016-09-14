@@ -17,9 +17,7 @@ var defaultDiffs = {   // The defaults for cells' conds variation from the avera
         average: {level: 0, flux: 0, dynamism: 0, dynamismFlux: 0}
       },
       waste: {
-        level: 0,
-        dispersionRate: 0,
-        flux: 0
+        values: {level: 0, dispersionRate: 0, flux: 0}
       }
     },
   
