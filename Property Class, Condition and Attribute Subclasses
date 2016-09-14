@@ -2,7 +2,8 @@
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 */
 class Property {
-  constructor() {
+  constructor(name) {
+    this.name = name || "Unnamed Property";
   }
   
   decimalRounding(decimalPlace) {
@@ -10,8 +11,8 @@ class Property {
       if (this[aspect] instanceof Object) {
         for (var value in this[aspect]) {
           // Rounds the value in question to the nearest decimal place from the decimalPlace input.
-          this[aspect][value] = Math.round(this[value] * Math.power(10, decimalPlace)) /
-            Math.power(10, decimalPlace);
+          this[aspect][value] = Math.round(this[aspect][value] * Math.pow(10, decimalPlace)) /
+            Math.pow(10, decimalPlace);
         }
       }
     }
@@ -19,14 +20,14 @@ class Property {
 }
 
 class Condition extends Property {
-  constructor() {
-    super();
+  constructor(name) {
+    super(name);
   }
 }
  
 class CyclicalCondition extends Condition {
-  constructor() {
-    super();
+  constructor(name) {
+    super(name);
     
     this.x = {level: null, flux: null, surge: 1,
       dynamism: null, dynamismFlux: null, dynamismSurge: 1};
@@ -39,30 +40,39 @@ class CyclicalCondition extends Condition {
   }
   
   get level() {
-    var level = this.range * Math.sin(this.period * this.x) + this.average;
+    return this.range.level * Math.sin(this.period.level * this.x.level) + this.average.level;
   }
 }
 
-class AcyclicalCondition extends Condition {
-  constructor() {
-    super();
+// 'Steady' because the mean rate of change maintains the same sign and magnitude from tick to tick
+class SteadyCondition extends Condition {
+  constructor(name) {
+    super(name);
+    
+    this.values = {level: null, rateOfChange: null, flux: null};
   }
 }
 
 class Attribute extends Property {
-  constructor() {
-    super();
+  constructor(name) {
+    super(name);
   }
 }
 
-class MutableAttribute extends Attribute {
-  constructor() {
-    super();
+class InheritableAttribute extends Attribute {
+  constructor(name) {
+    super(name);
+    
+    this.values = {level: null, flux: null, surge: 1,
+      mutability: null, mutabilityFlux: null, mutabilitySurge: 1,
+      metaMutabilityLevel: null, metaMutabilityFlux: null, metaMutabilitySurge: 1};
   }
 }
 
 class PhysicalAttribute extends Attribute {
-  constructor() {
-    super();
+  constructor(name) {
+    super(name);
+    
+    this.values = {level: null, rateOfChange: null, flux: null};
   }
 }
