@@ -1,0 +1,41 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+This is to make equal the average 'smoothness' the difference in conditions values in the transition
+from any one cell to its neighbors equal throughout the garden, statistically speaking - I hope.
+I.e., There are no jumps or spikes or dips or kinks in the conditions values from one cell to another
+except by what would occur due to statistical fluctuations.
+*/        
+Cell.prototype.meanDifferencesCheck = function() {
+  var xMedian = Math.ceil(this.eden.xAxis / 2);  // x-index of the cell at the halfway point for xAxis
+  var yMedian = Math.ceil(this.eden.yAxis / 2);  // y-index of the cell at the halfway point for yAxis
+  var meanDifferencesTotal =  jQuery.extend(true, {}, defaultCellDifferences);      // Deep clone
+  
+  if (this.x < xMedian && this.y < yMedian) {         // Executes if cell is in garden's 2nd quadrant:
+                                                      // That is, the top-left  
+    return meanDifferencesTotal;
+  }
+  else if (this.x >= xMedian && this.y < yMedian) {   // Executes if cell is in garden's 1st quadrant:
+                                                      // That is, the top-right
+    meanDifferencesTotal = this.calculateMeanDifferences(this.eden.garden[this.y][0],
+                            this.eden.garden[this.y][xMedian - 1]);
+    return meanDifferencesTotal;
+  }
+  else if (this.x < xMedian && this.y >= yMedian) {   // Executes if cell is in garden's 3rd quadrant:
+                                                      // That is, the bottom-left
+    meanDifferencesTotal = this.calculateMeanDifferences(this.eden.garden[0][this.x],
+                            this.eden.garden[yMedian - 1][this.x]);
+    return meanDifferencesTotal;
+  }
+  else if (this.x >= xMedian && this.y >= yMedian) {  // Executes if cell is in garden's 4th quadrant:
+                                                      // That is, the bottom-right
+    var meanDifferencesX = this.calculateMeanDifferences(this.eden.garden[this.y][0],
+                            this.eden.garden[this.y][xMedian - 1]);
+    var meanDifferencesY = this.calculateMeanDifferences(this.eden.garden[0][this.x],
+                            this.garden[yMedian - 1][this.x]);
+    
+    // Must sum both axes' mean differences to return to baseline for both simultaneously
+    meanDifferencesTotal = this.meanDifferencesSum(meanDifferencesX, meanDifferencesY);
+    return meanDifferencesTotal;
+  }
+};
