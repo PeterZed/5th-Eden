@@ -6,25 +6,32 @@ values - that is, how similar or dissimilar cells are from each other within the
 
 ? Unknown if sensory and enviro conds will function identically to physicalState conds at this time.
 */
-Cell.prototype.varyConds = function(meanDiffs) {
-  for (var set in this.conds) { // Cycles each condition set: physicalState, sensory, enviro
-    for (var cond in this.conds[set]) { // Cycles each condition of each condition set
-      for (var prop in this.conds[set][cond]) { // Cycles every property of each condition
-        var targetCond = this.conds[set][cond][prop]; // Just shortens the prop value's reference
-        var meanDiffsVal = meanDiffs.conds[set][cond][prop]; // The mean difference for this prop
+Cell.prototype.varyConditions = function() {
+  // Calculates the mean by which the cell conds will vary from the average of its neighboring
+  // cells' conditions values
+  var meanDifferencesTotal = this.meanDifferencesCheck();
+
+  for (var set in this.conditions) { // Cycles each condition set: physicalState, sensory, enviro
+    for (var condition in this.conditions[set]) { // Cycles each condition of each condition set
+      for (var property in this.conditions[set][condition]) { // Cycles every property of each condition
+        var targetCondition = this.conditions[set][condition][property];
+        // The mean difference value for this property
+        var meanDifferencesValue = meanDifferencesTotal.conditions[set][condition][property];
       
         // Adjusted based on mean difference and standard deviation, using a Gaussian distribution
-        targetCond.level += this.condsMod(meanDiffsVal.level, this.eden.variability.ofLevel);
-        targetCond.flux += this.condsMod(meanDiffsVal.flux, this.eden.variability.ofFlux);
+        targetCondition.level += this.conditionsModify(meanDifferencesValue.level,
+          this.eden.variability.values.ofLevel);
+        targetCondition.flux += this.conditionsModify(meanDifferencesValue.flux,
+          this.eden.variability.values.ofFlux);
       
-        targetCond.dynamism += this.condsMod(meanDiffsVal.dynamism,
-          this.eden.variability.ofDynamism);
-        targetCond.dynamismFlux += this.condsMod(meanDiffsVal.dynamismFlux,
-          this.eden.variability.ofDynamismFlux);
+        targetCond.dynamism += this.conditionsModify(meanDifferencesValue.dynamism,
+          this.eden.variability.values.ofDynamism);
+        targetCond.dynamismFlux += this.conditionsModify(meanDifferencesValue.dynamismFlux,
+          this.eden.variability.values.ofDynamismFlux);
         
-        hundredthsRounding(targetCond);
+        targetCondition.decimalRounding(2);
         // Checks if level, flux, dynamism, and dynamismFlux are within limits after the mod
-        checkLimits(targetCond);
+        targetCondition.checkLimits();
       }
     }
   }
