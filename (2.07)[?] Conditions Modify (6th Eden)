@@ -5,11 +5,11 @@
 too much in the garden - i.e., the entities will have a chance at survival traveling from one cell
 to the next.
 */
-Cell.prototype.condsMod = function(mean, stdDev) {
+Cell.prototype.conditionsModify = function(mean, stdDev) {
   var variance = Math.pow(stdDev, 2);
   
   var distribution = gaussian(mean, variance); // Creates a Gaussian distribution
-  var mod = distribution.ppf(getRandom()); // Draws a pseudo random sample as the variation
+  var modification = distribution.ppf(getRandom()); // Draws a pseudo random sample as the variation
 
-  return mod;
+  return modification;
 };
