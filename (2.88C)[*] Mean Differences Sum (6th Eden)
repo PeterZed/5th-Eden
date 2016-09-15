@@ -1,0 +1,30 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+For a cell in the bottom-right quadrant: Sums the mean differences needed to return to baseline for
+the row with the mean differences needed to return to baseline for the column.
+*/
+Cell.prototype.meanDifferencesSum = function(meanDifferencesX, meanDifferencesY) {
+  var meanDifferencesSum = jQuery.extend(true, {}, defaultDifferences); // Deep clones
+  
+  // Cycles through each condition set
+  for (var set in meanDifferencesX.conditions) {
+    // Cycles through each condition of each condition set
+    for (var condition in meanDifferencesX.conditions[set]) {
+      // Cycles through each property of each condition
+      for (var property in meanDifferencesX.conditions[set][condition]) {
+        var targetConditionSum = meanDifferencesSum.conditions[set][condition][property];
+        var targetConditionX = meanDifferencesX.conditions[set][condition][property];
+        var targetConditionY = meanDifferencesY.conditions[set][condition][property];
+    
+        targetConditionSum.level = targetConditionX.level + targetConditionY.level;
+        targetConditionSum.flux = targetConditionX.flux + targetConditionY.flux;
+      
+        targetConditionSum.dynamism = targetConditionX.dynamism + targetConditionY.dynamism;
+        targetConditionSum.dynamismFlux = targetConditionX.dynamismFlux + targetConditionY.dynamismFlux;
+      }
+    }
+  }
+  
+  return meanDifferencesSum;
+};
