@@ -2,7 +2,7 @@
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 */
 Eden.prototype.formGarden = function() {
-  this.gardenInit();  // Initializes this garden's global values - variability, metaDynamism, etc.
+  this.gardenInitialization();  // Initializes this garden's global values - variability, metaDynamism, etc.
 
   for (var j = 0; j < this.yAxis; j++) {
     this.garden[j] = [];  // Creates a new row in the garden array, which serves as the game map
@@ -18,5 +18,5 @@ Eden.prototype.formGarden = function() {
     }
   }
   
-  this.gardenCellsInit(); // Initializes all the properties for every cell
+  this.gardenCellsInitialization(); // Initializes all the properties for every cell
 };
