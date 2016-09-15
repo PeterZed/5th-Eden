@@ -1,5 +1,7 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+~ Need to update checkLimits
 */
 class Property {
   constructor(name) {
@@ -42,6 +44,24 @@ class CyclicalCondition extends Condition {
   get level() {
     return this.range.level * Math.sin(this.period.level * this.x.level) + this.average.level;
   }
+  
+  checkLimits() {
+    for (var aspect in this) { // Aspects are 
+      if (this[aspect] instanceof Object) {
+        if (this[aspect].level < 0) {property.level = 0;} // Checks to see if below minimum
+        else if (this[aspect].level > 100) {property.level = 100;} // Checks to see if above maximum
+  
+        if (this[aspect].flux < 0) {property.flux = 0;}
+        else if (this[aspect].flux > 10) {property.flux = 10;}
+  
+        if (this[aspect].dynamism < 0) {property.dynamism = 0;}
+        else if (this[aspect].dynamism > 100) {property.dynamism = 100;}
+  
+        if (this[aspect].dynamismFlux < 0) {property.dynamismFlux = 0;}
+        else if (this[aspect].dynamismFlux > 10) {property.dynamismFlux = 10;}
+      }
+    }
+  }
 }
 
 // 'Steady' because the mean rate of change maintains the same sign and magnitude from tick to tick
@@ -50,6 +70,10 @@ class SteadyCondition extends Condition {
     super(name);
     
     this.values = {level: null, rateOfChange: null, flux: null};
+  }
+  
+  checkLimits() {
+  
   }
 }
 
