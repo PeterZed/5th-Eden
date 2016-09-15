@@ -1,7 +1,7 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 */
-Eden.prototype.gardenInit = function() {
+Eden.prototype.gardenInitialization = function() {
   // getRandom() returns one random number between 0 and 1, inclusive
   this.variability.values.ofLevel = getRandom() * 1.25;
   this.variability.values.ofFlux = getRandom();
