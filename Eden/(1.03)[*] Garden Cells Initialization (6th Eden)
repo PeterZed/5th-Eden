@@ -5,19 +5,20 @@ neighbors' are, the average value of their neighbors' for the relevant property 
 and that cell's condition is initialized based on this average. This is to ensure the average
 "smoothness" in the transition is equal from that cell to any of those already initialized cells.
 
-All this averaging and smoothing is handled within the Cell.prototype.condsDepInit method.
+All this averaging and smoothing is handled within the Cell.prototype.condsDependentInitialization
+method.
 */
-Eden.prototype.gardenCellsInit = function() {
+Eden.prototype.gardenCellsInitialization = function() {
   for (var j = 0; j < this.yAxis; j++) {
     for (var i = 0; i < this.xAxis; i++) {
       this.garden[j][i].localCellsDetermination();  // Determines its neighboring cells
     
       // Initializes cell (0,0), the only one determined independently of all other cells
       if (i === 0 & j === 0) {
-        this.garden[j][i].condsIndInit();
+        this.garden[j][i].conditionsIndependentInitialization();
       } else {
         // Initializes the cell conds as dependent on any neighbors' conds already initialized
-        this.garden[j][i].condsDepInit();
+        this.garden[j][i].conditionsDependentInitialization();
       }
     }
   }
