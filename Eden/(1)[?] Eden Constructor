@@ -12,7 +12,7 @@ This way, serious injuries take longer to heal - but this doesn't quite properly
 world, as people can stabilize and no longer be at risk and yet still take time to fully recover.
 For now, I'll leave it as a set mean by which injuries heal each tick.
 */
-function Eden(columns, rows, name) {
+function Eden(name, columns, rows) {
   this.name = name || "8th Eden"; // Takes 'name' argument, but if absent uses default
   this.id = info.edens.count + 1;
   
