@@ -76,7 +76,7 @@ function Eden(columns, rows, name) {
     waste: {buildup: 1.56, flux: 0.20},
     hunger: {buildup: 2.50, flux: 0.31},
     thirst: {buildup: 12.50, flux: 1.56},
-    injuries: {heal: 8.00, flux: 1.00}
+    injuries: {heal: -8.00, flux: 1.00}
   };
   
   this.turn = 1;  // Keeps track of time's passage
