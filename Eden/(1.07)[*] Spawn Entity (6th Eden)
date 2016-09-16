@@ -1,0 +1,31 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Used by every entity production method to create a new entity - whether that's by a new progenitor
+spontaneously emerging, divinely creating a new progenitor, or an entity reproducing.
+*/
+Eden.prototype.spawnEntity = function(xCoordinate, yCoordinate) {
+  var targetCell = this.garden[yCoordinate][xCoordinate]; // The home cell for the entity's birth
+  var targetEntity = new Entity(xCoordinate, yCoordinate);
+  
+  info.entities.essenceCount++; // Used in generating the entity's unique ID number
+  info.entities.living.set(targetEntity.id, targetEntity);
+  
+  this.entities.living.set(targetEntity.id, targetEntity);
+  this.alive++;
+  
+  targetCell.entities.set(targetEntity.id, targetEntity);
+  
+  // Copies the world's values of change for injuries, thirst, and hunger so that every entity
+  // gains hunger and thirst and loses injuries at the same mean rate each tick.
+  this.attributes.physicalState.injuries = jQuery.extend(true, new Object(), 
+                                            this.eden.entities.injuries);
+  this.attributes.physicalState.thirst = jQuery.extend(true, new Object(), 
+                                            this.eden.entities.thirst);
+  this.attributes.physicalState.hunger = jQuery.extend(true, new Object(), 
+                                            this.eden.entities.hunger);
+  
+  targetEntity.generateName();
+  
+  return targetEntity;
+};
