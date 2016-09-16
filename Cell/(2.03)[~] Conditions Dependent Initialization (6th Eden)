@@ -6,21 +6,21 @@ have been initialized before theirs have. That is, the initialization of these c
 on the cell's neighbors so as to maintain a statistically smooth transition from one cell to
 another for each condition.
 */
-Cell.prototype.condsDepInit = function() {
-  var initCount = 0;
+Cell.prototype.conditionsDependentInitialization = function() {
+  var initializedCount = 0;
   
   // Sums the initialized cells' conditions
   for (var j = 0; j < this.localCells.length; j++) {
     for (var i = 0; i < this.localCells[j].length; i++) {
       if (this.localCells[j][i].initialized) {
-        this.localCondsSum(i, j);
-        initCount++;
+        this.localConditionsSum(i, j);
+        initializedCount++;
       }
     }
   }
   
   // Averages the initialized neighboring cell's conditions
-  this.localCondsAvg(initCount);
+  this.localConditionsAverage(initializedCount);
   
   // Varies this cell's condition values from the average of its neighbors
   this.varyConditions();
