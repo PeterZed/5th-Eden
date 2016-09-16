@@ -2,6 +2,8 @@
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
 ~ Need to update checkLimits
+~ Perhaps introduce meanRateOfChange to every cyclical condition's aspect too? I dunno, since it's
+always zero by default it might not be necessary...
 */
 class Property {
   constructor(name) {
@@ -46,19 +48,19 @@ class CyclicalCondition extends Condition {
   }
   
   checkLimits() {
-    for (var aspect in this) { // Aspects are 
+    for (var aspect in this) { // Aspects are x, range, mean, frequency, etc. coefficients for the sine curve
       if (this[aspect] instanceof Object) {
-        if (this[aspect].level < 0) {property.level = 0;} // Checks to see if below minimum
-        else if (this[aspect].level > 100) {property.level = 100;} // Checks to see if above maximum
+        if (this[aspect].level < 0) {this[aspect].level = 0;} // Checks to see if below minimum
+        else if (this[aspect].level > 100) {this[aspect].level = 100;} // Checks to see if above maximum
   
-        if (this[aspect].flux < 0) {property.flux = 0;}
-        else if (this[aspect].flux > 10) {property.flux = 10;}
+        if (this[aspect].flux < 0) {this[aspect].flux = 0;}
+        else if (this[aspect].flux > 10) {this[aspect].flux = 10;}
   
-        if (this[aspect].dynamism < 0) {property.dynamism = 0;}
-        else if (this[aspect].dynamism > 100) {property.dynamism = 100;}
+        if (this[aspect].dynamism < 0) {this[aspect].dynamism = 0;}
+        else if (this[aspect].dynamism > 100) {this[aspect].dynamism = 100;}
   
-        if (this[aspect].dynamismFlux < 0) {property.dynamismFlux = 0;}
-        else if (this[aspect].dynamismFlux > 10) {property.dynamismFlux = 10;}
+        if (this[aspect].dynamismFlux < 0) {this[aspect].dynamismFlux = 0;}
+        else if (this[aspect].dynamismFlux > 10) {this[aspect].dynamismFlux = 10;}
       }
     }
   }
@@ -69,11 +71,12 @@ class SteadyCondition extends Condition {
   constructor(name) {
     super(name);
     
-    this.values = {level: null, rateOfChange: null, flux: null};
+    this.values = {level: null, meanRateOfChange: null, flux: null};
   }
   
   checkLimits() {
-  
+    if (this.values.level < 0) {this.values.level = 0;} // Checks to see if below minimum
+    else if (this.values.level > 100) {this.values.level = 100;} // Checks to see if above maximum
   }
 }
 
@@ -91,12 +94,20 @@ class InheritableAttribute extends Attribute {
       mutability: null, mutabilityFlux: null, mutabilitySurge: 1,
       metaMutabilityLevel: null, metaMutabilityFlux: null, metaMutabilitySurge: 1};
   }
+  
+  checkLimits() {
+    
+  }
 }
 
 class PhysicalAttribute extends Attribute {
   constructor(name) {
     super(name);
     
-    this.values = {level: null, rateOfChange: null, flux: null};
+    this.values = {level: null, meanRateOfChange: null, flux: null};
+  }
+  
+  checkLimits() {
+  
   }
 }
