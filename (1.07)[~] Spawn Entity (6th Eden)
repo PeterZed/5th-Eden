@@ -3,10 +3,12 @@
 
 Used by every entity production method to create a new entity - whether that's by a new progenitor
 spontaneously emerging, divinely creating a new progenitor, or an entity reproducing.
+
+~ Need to fix the .level resetting that occurs at the end. Surely there's a solution.
 */
-Eden.prototype.spawnEntity = function(xCoord, yCoord) {
-  var targetCell = this.garden[yCoord][xCoord]; // The home cell for the entity's birth
-  var targetEntity = new Entity(xCoord, yCoord);
+Eden.prototype.spawnEntity = function(xCoordinate, yCoordinate) {
+  var targetCell = this.garden[yCoordinate][xCoordinate]; // The home cell for the entity's birth
+  var targetEntity = new Entity(xCoordinate, yCoordinate);
   
   info.entities.essenceCount++; // Used in generating the entity's unique ID number
   info.entities.living.set(targetEntity.id, targetEntity);
@@ -23,7 +25,7 @@ Eden.prototype.spawnEntity = function(xCoord, yCoord) {
   
   The .level values need to be reset, however, since they get wiped by this.
   */
-  this.attrs.physicalState.injuries = this.eden.entities.injuries;
+  this.attributes.physicalState.injuries = this.eden.entities.injuries;
   this.attrs.physicalState.injuries.level = 0; // Since wiped due to the above
   this.attrs.physicalState.thirst = this.eden.entities.thirst;
   this.attrs.physicalState.thirst.level = 0; // Since wiped due to the above
