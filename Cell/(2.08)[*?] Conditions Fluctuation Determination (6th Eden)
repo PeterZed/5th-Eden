@@ -1,0 +1,37 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Determines for every relevant property of a cell if it undergoes a fluctuation this tick, then
+modifies the value if true.
+
+? If this slows down ticks by too much, I can always make dynamism a hard value for number of turns
+between fluctuations instead of an average value (which requires more probability rolls).
+*/
+Cell.prototype.conditionsFluxDetermination = function() {
+  for (var set in this.conditions) { // Cycles each condition set: physicalState, sensory, enviro
+    for (var condition in this.conditions[set]) { // Cycles each condition of each condition set
+      for (var property in this.conditions[set][condition]) { // Cycles every property of each condition
+        var targetCondition = this.conditions[set][condition][property]; // Just shortens the prop value's reference
+  
+        // Makes prob roll against appropriate dynamism to check if value fluxes this tick
+        if (this.conditionFluxCheck(targetCondition.dynamism)) { // Makes probability roll
+          targetCondition.level += this.conditionFlux(0, targetCondition.flux); // 
+        }
+        if (this.conditionFluxCheck(targetCondition.dynamism)) {
+          targetCondition.flux += this.conditionFlux(0, targetCondition.surge);
+        }
+      
+        if (this.conditionFluxCheck(this.metaDynamism.values.level)) {
+          targetCondition.dynamism += this.conditionFlux(0, targetCondition.dynamismFlux);
+        }
+        if (this.conditionFluxCheck(this.metaDynamism.values.level)) {
+          targetCondition.dynamismFlux += this.conditionFlux(0, targetCondition.dynamismSurge);
+        }
+        
+        targetCondition.decimalRounding(2);
+        // Checks if level, flux, dynamism, and dynamismFlux are within limits after the mod
+        targetCondition.checkLimits();
+      }
+    }
+  }
+};
