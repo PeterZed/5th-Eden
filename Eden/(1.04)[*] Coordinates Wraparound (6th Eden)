@@ -5,7 +5,7 @@ Corrects the x and y coordinates as necessary if their values fall outside the s
 Then returns the reference to the proper cell, essentially making the boundary for the garden
 wrap around at the edges.
 */
-Eden.prototype.coordsWrap = function(xWrapped, yWrapped) {
+Eden.prototype.coordinatesWraparound = function(xWrapped, yWrapped) {
   var xCorrect = xWrapped;
   var yCorrect = yWrapped;
   
