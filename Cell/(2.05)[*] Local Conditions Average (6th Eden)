@@ -1,0 +1,23 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Divides the sum of the values for the cell's initialized neighbors' conditions by the number of
+neighbors that have been initialized.
+*/
+Cell.prototype.localConditionsAverage = function(initializedCount) {
+  for (var set in this.conditions) { // Cycles each condition set: physicalState, sensory, enviro
+    for (var condition in this.conditions[set]) { // Cycles each cond set's condition
+      for (var property in this.conditions[set][condition]) { // Cycles every property of each condition
+        var targetCondition = this.conditions[set][condition][property]; // Just shortens the prop's value reference
+      
+        targetCondition.level = targetCondition.level / initializedCount;
+        targetCondition.flux = targetCondition.flux / initializedCount;
+      
+        targetCondition.dynamism = targetCondition.dynamism / initializedCount;
+        targetCondition.dynamismFlux = targetCondition.dynamismFlux / initializedCount;
+      
+        targetCondition.decimalRounding(2);
+      }
+    }
+  }
+};
