@@ -1,0 +1,28 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Initializes a cell's conditions' values, independent of its neighbors'.
+
+? Still ongoing development until I work out how I want all of the conditions to act, but otherwise
+functions. The initialization of condition sets sensory and enviro are not yet determined, but I
+might do them the same as the physicalState conditions.
+*/
+Cell.prototype.condsIndependentInitialization = function() {
+  for (var set in this.conditionss) { // Cycles through each condition set: physicalState, sensory, enviro
+    for (var condition in this.conditions[set]) { // Cycles through each condition of each condition set
+      for (var property in this.conditions[set][condition]) { // Cycles through each property of every condition
+        var targetCondition = this.conditions[set][condition][property];
+    
+        targetCondition.level = getRandom() * 100;
+        targetCondition.flux = getRandom() * 10;
+      
+        targetCondition.dynamism = getRandom() * 100;
+        targetCondition.dynamismFlux = getRandom() * 10;
+      
+        targetCondition.decimalRounding(2);
+      }
+    }
+  }
+  
+  this.initialized = true;
+};
