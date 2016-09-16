@@ -1,0 +1,23 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+This method adds the referenced local cell's values for each condition property's level, flux,
+dynamism, and dynamismFlux to the current cell's values, thus summing the localCells' values.
+*/
+Cell.prototype.localConditionsSum = function(xLocal, yLocal) {
+  var localCell = this.localCells[yLocal][xLocal];
+  
+  for (var set in this.conditions) { // Cycles each condition set: physicalState, sensory, enviro
+    for (var condition in this.conditions[set]) { // Cycles each condition set's condition
+      for (var property in this.conditions[set][condition]) { // Cycles each property of each condition
+        var targetCondition = this.conditions[set][condition][property]; // Just shortens the reference
+    
+        targetCondition.level += localCell.conditions[set][condition][property].level;
+        targetCondition.flux += localCell.conditions[set][condition][property].flux;
+      
+        targetCondition.dynamism += localCell.conditions[set][condition][property].dynamism;
+        targetCondition.dynamismFlux += localCell.conditions[set][condition][property].dynamismFlux;
+      }
+    }
+  }
+};
