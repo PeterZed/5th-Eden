@@ -1,0 +1,11 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Spawns the progenitor to create a new lineage.
+*/
+Eden.prototype.spawnProgenitor = function(xCoordinate, yCoordinate) {
+  var progenitor = this.spawnEntity(xCoordinate, yCoordinate);
+        
+  progenitor.attributesInitialization();
+  progenitor.traitsInitialization();
+};
