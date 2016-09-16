@@ -5,8 +5,8 @@ Causes the property to fluctuate from a Gaussian distribution centered around 0.
 fluctuating, the property's flux value serves as the standard deviation. For the flux value,
 the surge value serves as the standard deviation.
 */
-Cell.prototype.condFlux = function(mean, stdDev) {
-  var variance = Math.pow(stdDev, 2);
+Cell.prototype.conditionFlux = function(mean, standardDeviation) {
+  var variance = Math.pow(standardDeviation, 2);
   
   var distribution = gaussian(mean, variance); // Generates the distribution
   var flux = distribution.ppf(Math.random()); // Pulls a sample from the distribution
