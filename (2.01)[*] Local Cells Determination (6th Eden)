@@ -10,7 +10,7 @@ Cell.prototype.localCellsDetermination = function() {
       var yMod = this.y - 1 + j; // At -1 because the calling cell is located at localCells[1][1]
       
       // xMod and yMod used with eden.coordsWrap() to determine the proper cell neighbor
-      this.localCells[j][i] = this.eden.coordsWrap(xMod, yMod);
+      this.localCells[j][i] = this.eden.coordinatesWraparound(xMod, yMod);
     }
   }
 };
