@@ -4,7 +4,8 @@
 Used by every entity production method to create a new entity - whether that's by a new progenitor
 spontaneously emerging, divinely creating a new progenitor, or an entity reproducing.
 
-~ Need to fix the .level resetting that occurs at the end. Surely there's a solution.
+~ Need to fix the .level resetting that occurs at the end. Surely there's a solution that doesn't
+involve a workaround.
 */
 Eden.prototype.spawnEntity = function(xCoordinate, yCoordinate) {
   var targetCell = this.garden[yCoordinate][xCoordinate]; // The home cell for the entity's birth
