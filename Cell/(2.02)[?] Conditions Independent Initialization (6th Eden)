@@ -7,7 +7,7 @@ Initializes a cell's conditions' values, independent of its neighbors'.
 functions. The initialization of condition sets sensory and enviro are not yet determined, but I
 might do them the same as the physicalState conditions.
 */
-Cell.prototype.condsIndependentInitialization = function() {
+Cell.prototype.conditionsIndependentInitialization = function() {
   for (var set in this.conditionss) { // Cycles through each condition set: physicalState, sensory, enviro
     for (var condition in this.conditions[set]) { // Cycles through each condition of each condition set
       for (var property in this.conditions[set][condition]) { // Cycles through each property of every condition
