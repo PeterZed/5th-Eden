@@ -7,7 +7,7 @@ Slower, perhaps; more predictable; smaller range of fluctuations - i.e., more co
 ~ I haven't figured out how I want waste to fluctuate, just yet, besides being influenced by
 an entity's presence.
 */
-function Cell(xCoord, yCoord, eden) {
+function Cell(xCoordinate, yCoordinate, eden) {
   this.id = info.cells.count;
   
   /*
@@ -16,8 +16,8 @@ function Cell(xCoord, yCoord, eden) {
   it is a part.
   */
   this.eden = eden;
-  this.x = xCoord;
-  this.y = yCoord;
+  this.x = xCoordinate;
+  this.y = yCoordinate;
   this.name = "Cell #" + this.id;
   this.initialized = false;
   
@@ -37,7 +37,7 @@ function Cell(xCoord, yCoord, eden) {
   the cell's Eden. The dynamismSurge is the standard dev by which the dynamismFlux changes when
   the cell undergoes fluctuation, the average being 0.
   */
-  this.conds = {
+  this.conditions = {
     /*
     Conditions related to an entity's physical state: Hunger to Nourishment, Thirst to Water,
     Waste produced. Nourishment and water are of the form:
@@ -123,57 +123,12 @@ function Cell(xCoord, yCoord, eden) {
   
     Their fluctuation is related to neighboring cells' fluctuations.
     */
-    enviro: {
-      radiation: {
-        x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1}
-      },
-      acidity: {
-        x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1}
-      },
-      airComp: {
-        x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1}
-      },
-      temperature: {
-        x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1}
-      },
-      salinity: {
-        x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1}
-      }
+    environment: {
+      radiation: new CyclicalCondition("Radiation"),
+      acidity: new CyclicalCondition("Acidity"),
+      airComposition: new CyclicalCondition("Air Composition"),
+      temperature: new CyclicalCondition("Temperature"),
+      salinity: new CyclicalCondition("Salinity")
     }
   };
   
@@ -187,8 +142,8 @@ function Cell(xCoord, yCoord, eden) {
   have the same metaDynamism values.
   */
   this.metaDynamism = {
-    level: this.eden.metaDynamism.level,
-    flux: this.eden.metaDynamism.flux,
-    surge: this.eden.metaDynamism.surge
+    level: this.eden.metaDynamism.values.level,
+    flux: this.eden.metaDynamism.values.flux,
+    surge: this.eden.metaDynamism.values.surge
   };
 }
