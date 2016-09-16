@@ -4,13 +4,9 @@
 Makes probability roll against appropriate dynamism to check if a condition's property's 
 value fluxes this tick.
 */
-Cell.prototype.condsFluxCheck = function(dynamism) {
-  var prob = dynamism / 100; // Converts dynamism range of [0,100] to probability range [0,1]
+Cell.prototype.conditionFluxCheck = function(dynamism) {
+  var probability = dynamism / 100; // Converts dynamism range of [0,100] to probability range [0,1]
   var roll = getRandom();
   
-  if (roll <= prob) {
-    return true;
-  } else {
-    return false;
-  }
+  return roll <= probability
 };
