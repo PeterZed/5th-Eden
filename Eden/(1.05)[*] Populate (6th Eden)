@@ -1,0 +1,12 @@
+/*
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+*/
+Eden.prototype.populate = function(number) {
+  for (var i = 0; i < number; i++) { // Generates a number of progenitors across the garden
+    // Randomly generates the coordinates of the progenitor
+    var xCoordinate = Math.round(getRandom() * (this.xAxis - 1)); // At -1 because it's an index
+    var yCoordinate = Math.round(getRandom() * (this.yAxis - 1)); // At -1 because it's an index
+            
+    this.spawnProgenitor(xCoordinate, yCoordinate);
+  }
+};
