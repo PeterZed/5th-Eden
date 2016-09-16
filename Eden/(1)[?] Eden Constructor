@@ -73,10 +73,10 @@ function Eden(name, columns, rows) {
     Hunger and thirst essentially have permanent dynamism 100 as they will always increase.
     Injuries too as they always heal some amount.
     */
-    waste: {buildup: 1.56, flux: 0.20},
-    hunger: {buildup: 2.50, flux: 0.31},
-    thirst: {buildup: 12.50, flux: 1.56},
-    injuries: {heal: -8.00, flux: 1.00}
+    waste: {meanRateOfChange: 1.56, flux: 0.20},
+    hunger: {level: 0, meanRateOfChange: 2.50, flux: 0.31},
+    thirst: {level: 0, meanRateOfChange: 12.50, flux: 1.56},
+    injuries: {level: 0, meanRateOfChange: -8.00, flux: 1.00}
   };
   
   this.turn = 1;  // Keeps track of time's passage
