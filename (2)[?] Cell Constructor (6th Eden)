@@ -3,9 +3,6 @@
 
 ? The sensory conditions will likely vary in a way that's different than the other conditions:
 Slower, perhaps; more predictable; smaller range of fluctuations - i.e., more constant.
-
-~ I haven't figured out how I want waste to fluctuate, just yet, besides being influenced by
-an entity's presence.
 */
 function Cell(xCoordinate, yCoordinate, eden) {
   this.id = info.cells.count;
@@ -47,31 +44,15 @@ function Cell(xCoordinate, yCoordinate, eden) {
     initialized at the cell's creation; from them, the initial value is calculated.
     */
     physicalState: {
-      nourishment: {
-        x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1}
-      },
-      water: {
-        x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1}
-      },
-      waste: {
+      nourishment: new SteadyCondition("Nourishment"),
+      water: new SteadyCondition("Water"),
+      waste: new SteadyCondition("Waste"),
+        /*
         level: 0, // The amount of waste currently present
-        dispersionRate: 0.88, // The mean amount that the waste level decreases by each tick
+        dispersionRate: 0.88, // The mean amount that the waste level decreases by each tick back into nourishment
         flux: 0.11 // The stdDev for how much the waste level decreases by each tick
-      }
+        */
+      waterWaste: new SteadyCondition("Water Waste")
     },
   
     /*
@@ -84,36 +65,9 @@ function Cell(xCoordinate, yCoordinate, eden) {
     variation or not.
     */
     sensory: {
-      light: {
-        x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1}
-      },
-      noise: {
-        x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1}
-      },
-      wind: {
-        x: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        range: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        period: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1},
-        average: {level: null, flux: null, surge: 1, dynamism: null, dynamismFlux: null,
-          dynamismSurge: 1}
-      },
+      light: new CyclicalCondition("Light"),
+      noise: new CyclicalCondition("Noise"),
+      wind: new CyclicalCondition("Wind"),
     },
   
     /*
@@ -141,9 +95,8 @@ function Cell(xCoordinate, yCoordinate, eden) {
   refer to the same location, so changing one would change them all. But, by default, they all
   have the same metaDynamism values.
   */
-  this.metaDynamism = {
-    level: this.eden.metaDynamism.values.level,
-    flux: this.eden.metaDynamism.values.flux,
-    surge: this.eden.metaDynamism.values.surge
-  };
+  this.metaDynamism = new Property("Meta-Dynamism");
+  this.metaDynamism.values.level = this.eden.metaDynamism.values.level,
+  this.metaDynamism.values.flux = this.eden.metaDynamism.values.flux,
+  this.metaDynamism.values.surge = this.eden.metaDynamism.values.surge
 }
