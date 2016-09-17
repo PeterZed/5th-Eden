@@ -8,13 +8,13 @@ Cell.prototype.localConditionsAverage = function(initializedCount) {
   for (var set in this.conditions) { // Cycles each condition set: physicalState, sensory, enviro
     for (var condition in this.conditions[set]) { // Cycles each cond set's condition
       for (var property in this.conditions[set][condition]) { // Cycles every property of each condition
-        var targetCondition = this.conditions[set][condition][property]; // Just shortens the prop's value reference
+        var targetProperty = this.conditions[set][condition][property]; // Just shortens the prop's value reference
       
-        targetCondition.level = targetCondition.level / initializedCount;
-        targetCondition.flux = targetCondition.flux / initializedCount;
+        targetProperty.level = targetProperty.level / initializedCount;
+        targetProperty.flux = targetProperty.flux / initializedCount;
       
-        targetCondition.dynamism = targetCondition.dynamism / initializedCount;
-        targetCondition.dynamismFlux = targetCondition.dynamismFlux / initializedCount;
+        targetProperty.dynamism = targetProperty.dynamism / initializedCount;
+        targetProperty.dynamismFlux = targetProperty.dynamismFlux / initializedCount;
       
         this.conditions[set][condition].decimalRounding(2);
       }
