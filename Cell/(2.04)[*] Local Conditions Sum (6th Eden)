@@ -10,13 +10,13 @@ Cell.prototype.localConditionsSum = function(xLocal, yLocal) {
   for (var set in this.conditions) { // Cycles each condition set: physicalState, sensory, enviro
     for (var condition in this.conditions[set]) { // Cycles each condition set's condition
       for (var property in this.conditions[set][condition]) { // Cycles each property of each condition
-        var targetCondition = this.conditions[set][condition][property]; // Just shortens the reference
+        var targetProperty = this.conditions[set][condition][property]; // Just shortens the reference
     
-        targetCondition.level += localCell.conditions[set][condition][property].level;
-        targetCondition.flux += localCell.conditions[set][condition][property].flux;
+        targetProperty.level += localCell.conditions[set][condition][property].level;
+        targetProperty.flux += localCell.conditions[set][condition][property].flux;
       
-        targetCondition.dynamism += localCell.conditions[set][condition][property].dynamism;
-        targetCondition.dynamismFlux += localCell.conditions[set][condition][property].dynamismFlux;
+        targetProperty.dynamism += localCell.conditions[set][condition][property].dynamism;
+        targetProperty.dynamismFlux += localCell.conditions[set][condition][property].dynamismFlux;
       }
     }
   }
