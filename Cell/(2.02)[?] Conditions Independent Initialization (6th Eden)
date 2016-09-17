@@ -11,13 +11,13 @@ Cell.prototype.conditionsIndependentInitialization = function() {
   for (var set in this.conditionss) { // Cycles through each condition set: physicalState, sensory, enviro
     for (var condition in this.conditions[set]) { // Cycles through each condition of each condition set
       for (var property in this.conditions[set][condition]) { // Cycles through each property of every condition
-        var targetCondition = this.conditions[set][condition][property];
+        var targetProperty = this.conditions[set][condition][property];
     
-        targetCondition.level = getRandom() * 100;
-        targetCondition.flux = getRandom() * 10;
+        targetProperty.level = getRandom() * 100;
+        targetProperty.flux = getRandom() * 10;
       
-        targetCondition.dynamism = getRandom() * 100;
-        targetCondition.dynamismFlux = getRandom() * 10;
+        targetProperty.dynamism = getRandom() * 100;
+        targetProperty.dynamismFlux = getRandom() * 10;
       
         this.conditions[set][condition].decimalRounding(2);
       }
