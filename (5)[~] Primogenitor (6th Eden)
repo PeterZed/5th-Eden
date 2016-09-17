@@ -1,10 +1,8 @@
 var primogenitor = {
-  this.id = 0;
-  this.name = "Charity";
-
-  this.state = "Alive";
-  
-  this.victories = 0;
-  this.kills = 0;
-  this.murders = 0; 
+  id: 0,
+  name: "Charity",
+  state: "Alive",
+  victories: 0,
+  kills: 0,
+  murders: 0
 };
