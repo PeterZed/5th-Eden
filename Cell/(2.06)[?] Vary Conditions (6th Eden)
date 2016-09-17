@@ -14,19 +14,19 @@ Cell.prototype.varyConditions = function() {
   for (var set in this.conditions) { // Cycles each condition set: physicalState, sensory, enviro
     for (var condition in this.conditions[set]) { // Cycles each condition of each condition set
       for (var property in this.conditions[set][condition]) { // Cycles every property of each condition
-        var targetCondition = this.conditions[set][condition][property];
+        var targetProperty = this.conditions[set][condition][property];
         // The mean difference value for this property
         var meanDifferencesValue = meanDifferencesTotal.conditions[set][condition][property];
       
         // Adjusted based on mean difference and standard deviation, using a Gaussian distribution
-        targetCondition.level += this.conditionsModify(meanDifferencesValue.level,
+        targetProperty.level += this.conditionsModify(meanDifferencesValue.level,
           this.eden.variability.values.ofLevel);
-        targetCondition.flux += this.conditionsModify(meanDifferencesValue.flux,
+        targetProperty.flux += this.conditionsModify(meanDifferencesValue.flux,
           this.eden.variability.values.ofFlux);
       
-        targetCond.dynamism += this.conditionsModify(meanDifferencesValue.dynamism,
+        targetProperty.dynamism += this.conditionsModify(meanDifferencesValue.dynamism,
           this.eden.variability.values.ofDynamism);
-        targetCond.dynamismFlux += this.conditionsModify(meanDifferencesValue.dynamismFlux,
+        targetProperty.dynamismFlux += this.conditionsModify(meanDifferencesValue.dynamismFlux,
           this.eden.variability.values.ofDynamismFlux);
         
         this.conditions[set][condition].decimalRounding(2);
