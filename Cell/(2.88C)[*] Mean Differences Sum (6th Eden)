@@ -13,15 +13,15 @@ Cell.prototype.meanDifferencesSum = function(meanDifferencesX, meanDifferencesY)
     for (var condition in meanDifferencesX.conditions[set]) {
       // Cycles through each property of each condition
       for (var property in meanDifferencesX.conditions[set][condition]) {
-        var targetConditionSum = meanDifferencesSum.conditions[set][condition][property];
-        var targetConditionX = meanDifferencesX.conditions[set][condition][property];
-        var targetConditionY = meanDifferencesY.conditions[set][condition][property];
+        var targetPropertySum = meanDifferencesSum.conditions[set][condition][property];
+        var targetPropertyX = meanDifferencesX.conditions[set][condition][property];
+        var targetPropertyY = meanDifferencesY.conditions[set][condition][property];
     
-        targetConditionSum.level = targetConditionX.level + targetConditionY.level;
-        targetConditionSum.flux = targetConditionX.flux + targetConditionY.flux;
+        targetPropertySum.level = targetPropertyX.level + targetPropertyY.level;
+        targetPropertySum.flux = targetPropertyX.flux + targetPropertyY.flux;
       
-        targetConditionSum.dynamism = targetConditionX.dynamism + targetConditionY.dynamism;
-        targetConditionSum.dynamismFlux = targetConditionX.dynamismFlux + targetConditionY.dynamismFlux;
+        targetPropertySum.dynamism = targetPropertyX.dynamism + targetPropertyY.dynamism;
+        targetPropertySum.dynamismFlux = targetPropertyX.dynamismFlux + targetPropertyY.dynamismFlux;
       }
     }
   }
