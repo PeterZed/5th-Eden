@@ -46,7 +46,6 @@ function Eden(name, columns, rows) {
   this.metaDynamism.values.level = null;
   this.metaDynamism.values.flux = null;
   this.metaDynamism.values.surge = 1;
-  };
   
   this.entities = {
     /*
