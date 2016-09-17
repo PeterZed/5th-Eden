@@ -31,7 +31,7 @@ Cell.prototype.varyConditions = function() {
         
         this.conditions[set][condition].decimalRounding(2);
         // Checks if level, flux, dynamism, and dynamismFlux are within limits after the mod
-        targetCondition.checkLimits();
+        this.conditions[set][condition].checkLimits();
       }
     }
   }
