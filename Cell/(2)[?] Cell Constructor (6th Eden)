@@ -77,7 +77,7 @@ function Cell(xCoordinate, yCoordinate, eden) {
   
     Their fluctuation is related to neighboring cells' fluctuations.
     */
-    environment: {
+    environmental: {
       radiation: new CyclicalCondition("Radiation"),
       acidity: new CyclicalCondition("Acidity"),
       airComposition: new CyclicalCondition("Air Composition"),
