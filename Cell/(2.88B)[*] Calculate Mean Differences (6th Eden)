@@ -21,27 +21,27 @@ Cell.prototype.calculateMeanDifferences = function(baselineCell, medianCell) {
     for (var condition in meanDifferences.conditions[set]) {
       // Cycles each property of each condition
       for (var property in meanDifferences.conditions[set][condition]) {
-        var targetCondition = meanDiffs.conditions[set][condition][property];
+        var targetProperty = meanDiffs.conditions[set][condition][property];
     
-        targetCondition.level += baselineCell.conditions[set][condition][property].level -
+        targetProperty.level += baselineCell.conditions[set][condition][property].level -
           medianCell.conditions[set][condition][property].level;
         // Calculates the mean change needed per remaining cell
-        targetCondition.level /= remainingCells;
+        targetProperty.level /= remainingCells;
         
-        targetCondition.flux += baselineCell.conditions[set][condition][property].flux -
+        targetProperty.flux += baselineCell.conditions[set][condition][property].flux -
           medianCell.conditions[set][condition][property].flux;
         // Calculates the mean change needed per remaining cell  
-        targetCondition.flux /= remainingCells;
+        targetProperty.flux /= remainingCells;
       
-        targetCondition.dynamism += baselineCell.conditions[set][condition][property].dynamism -
+        targetProperty.dynamism += baselineCell.conditions[set][condition][property].dynamism -
           medianCell.conditions[set][condition][property].dynamism;
         // Calculates the mean change needed per remaining cell  
-        targetCondition.dynamism /= remainingCells;
+        targetProperty.dynamism /= remainingCells;
         
-        targetCondition.dynamismFlux += baselineCell.conditions[set][condition][property].dynamismFlux -
+        targetProperty.dynamismFlux += baselineCell.conditions[set][condition][property].dynamismFlux -
           medianCell.conditions[set][condition][property].dynamismFlux;
         // Calculates the mean change needed per remaining cell  
-        targetCondition.dynamismFlux /= remainingCells;
+        targetProperty.dynamismFlux /= remainingCells;
       }
     }
   }
