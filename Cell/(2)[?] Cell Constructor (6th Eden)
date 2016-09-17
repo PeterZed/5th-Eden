@@ -96,6 +96,7 @@ function Cell(xCoordinate, yCoordinate, eden) {
   have the same metaDynamism values.
   */
   this.metaDynamism = new Property("Meta-Dynamism");
+  this.metaDynamism = {};
   this.metaDynamism.values.level = this.eden.metaDynamism.values.level,
   this.metaDynamism.values.flux = this.eden.metaDynamism.values.flux,
   this.metaDynamism.values.surge = this.eden.metaDynamism.values.surge
