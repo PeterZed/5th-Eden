@@ -1,9 +1,10 @@
 /*
 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 
+~ Update dependentInitialization onward
 ~ Need to update checkLimits
 ~ Perhaps introduce meanRateOfChange to every cyclical condition's aspect too? I dunno, since it's
-always zero by default it might not be necessary...
+always zero by default it might not be necessary..
 */
 class Property {
   constructor(name) {
@@ -64,6 +65,24 @@ class CyclicalCondition extends Condition {
       }
     }
   }
+  
+  independentInitialization() {
+    for (var property in this) {
+      if (this[property] == this.name) { // Breaks current iteration if it's the name property
+        continue;
+      }
+      
+      var targetProperty = this.conditions[set][condition][property];
+    
+      targetProperty.level = getRandom() * 100;
+      targetProperty.flux = getRandom() * 10;
+      
+      targetProperty.dynamism = getRandom() * 100;
+      targetProperty.dynamismFlux = getRandom() * 10;
+      
+      this.conditions[set][condition].decimalRounding(2); // Round to hundredths place 
+    }
+  }
 }
 
 // 'Steady' because the mean rate of change maintains the same sign and magnitude from tick to tick
@@ -77,6 +96,13 @@ class SteadyCondition extends Condition {
   checkLimits() {
     if (this.values.level < 0) {this.values.level = 0;} // Checks to see if below minimum
     else if (this.values.level > 100) {this.values.level = 100;} // Checks to see if above maximum
+  }
+  
+  independentInitialization() {
+    for (var property in this.values) {     // For each of level, meanRateOfChange, and flux, sets the
+                                            // cell's value to the Eden global value for the quantity.
+      this.values[property] = this.eden[this.name][property]
+    }
   }
 }
 
